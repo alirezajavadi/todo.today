@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bg_main_widget"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_header_main_widget"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="@string/titleDialogNewJobTitle_menu"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/view" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/messageDialogNewJobTitle_menu"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/edt_newJobTitle_dialogNewJobTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:textSize="15sp"
+        android:layout_marginRight="8dp"
+        android:hint="نام کار روازنه"
+        android:maxLength="18"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/view" />
+
+    <TextView
+        android:id="@+id/txv_addNewJobTitle_dialogNewJobTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_footer"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="@string/add"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

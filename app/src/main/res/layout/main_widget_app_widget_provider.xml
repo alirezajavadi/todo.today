@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_bg_main_widget">
+
+    <LinearLayout
+        android:id="@+id/lnl_viewA"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/shape_bg_header_main_widget"
+        android:orientation="horizontal"
+        android:padding="1dp">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/endTo_mainWidget"
+            android:textColor="#1D1D1D"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/test"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/jobToDo_mainWidget"
+            android:textColor="#1D1D1D"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="22dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/startFrom_mainWidget"
+            android:textColor="#1D1D1D"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/lnl_viewA"
+        android:background="@color/view" />
+
+    <ListView
+        android:id="@+id/lsv_todoList_mainWidget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/img_openMenu_mainWidget"
+        android:layout_below="@id/lnl_viewA" />
+    <TextView
+        android:id="@+id/txv_emptyView_mainWidget"
+        android:text="@string/emptyListView_mainWidget"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingRight="8dp"
+        android:paddingLeft="8dp"
+        android:layout_above="@id/img_openMenu_mainWidget"
+        android:layout_below="@id/lnl_viewA" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/img_openMenu_mainWidget"
+        android:background="@color/view" />
+
+    <ImageView
+        android:id="@+id/img_openMenu_mainWidget"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/selector_bg_footer"
+        android:padding="3dp"
+        android:src="@drawable/ic_menu_widget" />
+</RelativeLayout>

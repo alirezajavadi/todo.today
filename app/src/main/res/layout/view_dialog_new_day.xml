@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bg_main_widget"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_bg_header_main_widget"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="@string/titleDialogNewDay_menu"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/view" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/messageDialogNewDay_menu"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/view" />
+
+    <TextView
+        android:id="@+id/txv_selectTodayDate_dialogNewDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:text="@string/tapHere"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view" />
+
+    <TextView
+        android:id="@+id/txv_addNewDay_dialogNewDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_footer"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="@string/add"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>
