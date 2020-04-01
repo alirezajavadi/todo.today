@@ -16,10 +16,18 @@
 
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
+            android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/endTo_mainWidget"
+            android:textColor="#1D1D1D"
+            android:textSize="12sp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="@string/startFrom_mainWidget"
             android:textColor="#1D1D1D"
             android:textSize="12sp" />
 
@@ -29,19 +37,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:layout_marginRight="39dp"
             android:text="@string/jobToDo_mainWidget"
             android:textColor="#1D1D1D"
             android:textSize="12sp" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="22dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/startFrom_mainWidget"
-            android:textColor="#1D1D1D"
-            android:textSize="12sp" />
+
 
     </LinearLayout>
 

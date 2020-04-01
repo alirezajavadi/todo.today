@@ -30,7 +30,7 @@
         android:id="@+id/txv_startFrom_itemListTodoMainWidget"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.8"
+        android:layout_weight="0.7"
         android:textSize="12sp"
         android:gravity="left"
         android:textColor="@android:color/black"

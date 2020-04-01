@@ -11,13 +11,7 @@
         <activity
             android:name=".activity.MenuActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/ActivityPopupWidget" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/ActivityPopupWidget" />
 
         <receiver android:name=".widget.MainWidgetAppWidgetProvider">
             <intent-filter>
