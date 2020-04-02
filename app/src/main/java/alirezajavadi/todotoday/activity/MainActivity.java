@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
 
     //initial
     private void init() {
-        Prefs.init(MainActivity.this);
+        Prefs.initial(MainActivity.this);
 
 
         //get pixel
@@ -317,7 +317,6 @@ public class MainActivity extends AppCompatActivity {
 
             undoneJobHourList.set(i, hour);
             undoneJobMinuteList.set(i, minute);
-
         }
 
         for (int i = 0; i < doneJobMinuteList.size(); i++)
@@ -403,6 +402,7 @@ public class MainActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+                        //todo change this "if()"
                         if (year < startDateYear || monthOfYear < startDateMonth || dayOfMonth < startDateDay) {
                             //if user select past date
                             Toast.makeText(MainActivity.this, getString(R.string.errorSelectPastDate_main), Toast.LENGTH_SHORT).show();

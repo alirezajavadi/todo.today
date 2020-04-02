@@ -8,20 +8,8 @@
         android:label="@string/app_name"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activity.MenuActivity"
-            android:excludeFromRecents="true"
-            android:theme="@style/ActivityPopupWidget" />
-
-        <receiver android:name=".widget.MainWidgetAppWidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/main_widget_app_widget_provider_info" />
-        </receiver>
-
+        <activity android:name=".activity.NewJobTitle"/>
+        <activity android:name=".activity.NewJobTodo" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,6 +17,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.NewDayActivity" />
+        <activity
+            android:name=".activity.MenuActivity"
+            android:excludeFromRecents="true" />
+
+        <receiver android:name=".widget.MainWidgetAppWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/main_widget_app_widget_provider_info" />
+        </receiver>
 
         <service
             android:name=".widget.MainWidgetWidgetService"

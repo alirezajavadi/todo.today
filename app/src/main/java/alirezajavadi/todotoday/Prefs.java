@@ -16,7 +16,7 @@ public class Prefs {
 
     }
 
-    public static void init(Context context) {
+    public static void initial(Context context) {
         if (mSharedPref == null)
             mSharedPref = context.getSharedPreferences(context.getPackageName(), Activity.MODE_PRIVATE);
     }
