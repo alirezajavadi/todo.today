@@ -317,10 +317,6 @@ public class MainActivity extends AppCompatActivity {
 
             undoneJobHourList.set(i, hour);
             undoneJobMinuteList.set(i, minute);
-            //todo delete this lines
-            Log.i(TAG, "Done: minute" + undoneJobMinuteList.get(i) + "       hour:" + undoneJobHourList.get(i) + "    title:" + jobTitleList.get(i));
-            Log.i(TAG, "unDone: minute" + doneJobMinuteList.get(i) + "       hour:" + doneJobHourList.get(i) + "    title:" + jobTitleList.get(i));
-            Log.i(TAG, ": dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd");
 
         }
 

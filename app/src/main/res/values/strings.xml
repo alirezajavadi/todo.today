@@ -23,6 +23,10 @@
         (از این نام برای تهیه نمودار استفاده خواهد شد.)
     </string>
     <string name="titleDialogNewJobTitle_menu">یک نام وارد کنید</string>
+    <string name="errorInsertedNewJobTitle_menu">عنوان وارد شده در لیست موجود است
+    \n
+    میتوانید از این عنوان در برنامه ریزی روزانه استفاده کنید
+    </string>
 
     <string name="titleDialogNewJobTodo_menu">یک کار روزانه تعریف کنید</string>
     <string name="startFromNewJobTodo_menu">شروع از ساعت:</string>

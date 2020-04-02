@@ -210,10 +210,20 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         txv_addNewJobTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (edt_jobTitle.getText().length() == 0) {
+                String newJobTitle = edt_jobTitle.getText().toString();
+                //if edt_jobTitle is empty
+                if (newJobTitle.length() == 0) {
                     Toast.makeText(MenuActivity.this, ":|", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                //if the "new job title" is entered, already in the database
+                for (int i = 0; i < jobTitleList.size(); i++)
+                    if (jobTitleList.get(i).equals(newJobTitle)) {
+                        Toast.makeText(MenuActivity.this, getString(R.string.errorInsertedNewJobTitle_menu), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                //add new jobTitle to database
                 int result = dataBase.addNewJobTitle(edt_jobTitle.getText().toString());
                 if (result == 1) {
                     Toast.makeText(MenuActivity.this, getString(R.string.toastAddSuccess_menu), Toast.LENGTH_SHORT).show();
@@ -381,12 +391,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                         String month;
                         String day;
                         if (monthOfYear < 9)
-                            month = "0" + String.valueOf(monthOfYear + 1);
+                            month = "0" + (monthOfYear + 1);
                         else
                             month = String.valueOf(monthOfYear + 1);
 
                         if (dayOfMonth <= 9)
-                            day = "0" + String.valueOf(dayOfMonth);
+                            day = "0" + (dayOfMonth);
                         else
                             day = String.valueOf(dayOfMonth);
 
@@ -412,12 +422,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         String month;
         String day;
         if ((calendar.getPersianMonth() + 1) < 9)
-            month = "0" + String.valueOf((calendar.getPersianMonth() + 1));
+            month = "0" +(calendar.getPersianMonth() + 1);
         else
             month = String.valueOf((calendar.getPersianMonth() + 1));
 
         if (calendar.getPersianDay() <= 9)
-            day = "0" + String.valueOf(calendar.getPersianDay());
+            day = "0" + (calendar.getPersianDay());
         else
             day = String.valueOf(calendar.getPersianDay());
 
