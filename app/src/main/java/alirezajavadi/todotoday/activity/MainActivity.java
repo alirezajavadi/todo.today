@@ -102,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     //initial
     private void init() {
         Prefs.initial(MainActivity.this);
@@ -143,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     private void initUnDoneChart() {
         chartUnDone.setDrawBarShadow(false);
         chartUnDone.setDrawValueAboveBar(true);
@@ -260,10 +260,10 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        int hour = 0;
-        float minute = 0;
-        int lastHour = 0;
-        float lastMinute = 0;
+        int hour ;
+        float minute ;
+        int lastHour ;
+        float lastMinute ;
         //search in lists and separate it based on the jobTitles
         for (int i = 0; i < jobTitleList.size(); i++) {
             String jobTitle = jobTitleList.get(i);
@@ -273,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
                     hour = todoChart.getHour();
                     minute = (float) todoChart.getMinute();
                     lastHour = doneJobHourList.get(i);
-                    lastMinute = (float) doneJobMinuteList.get(i);
+                    lastMinute = doneJobMinuteList.get(i);
 
                     doneJobHourList.set(i, lastHour + hour);
                     doneJobMinuteList.set(i, lastMinute + minute);
@@ -402,12 +402,20 @@ public class MainActivity extends AppCompatActivity {
                 DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-                        //todo change this "if()"
-                        if (year < startDateYear || monthOfYear < startDateMonth || dayOfMonth < startDateDay) {
-                            //if user select past date
+                        //if user select past date
+                        if (year < startDateYear) {
                             Toast.makeText(MainActivity.this, getString(R.string.errorSelectPastDate_main), Toast.LENGTH_SHORT).show();
                             return;
-                        }
+                        } else if (year == startDateYear)
+                            if (monthOfYear < startDateMonth) {
+                                Toast.makeText(MainActivity.this, getString(R.string.errorSelectPastDate_main), Toast.LENGTH_SHORT).show();
+                                return;
+                            } else if (monthOfYear == startDateMonth)
+                                if (dayOfMonth < startDateDay) {
+                                    Toast.makeText(MainActivity.this, getString(R.string.errorSelectPastDate_main), Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
 
                         String month;
                         String day;
@@ -537,8 +545,7 @@ public class MainActivity extends AppCompatActivity {
             va.setDuration(400);
             va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 public void onAnimationUpdate(ValueAnimator animation) {
-                    Integer value = (Integer) animation.getAnimatedValue();
-                    v.getLayoutParams().height = value.intValue();
+                    v.getLayoutParams().height = (Integer) animation.getAnimatedValue();
                     v.requestLayout();
                 }
             });
@@ -553,8 +560,7 @@ public class MainActivity extends AppCompatActivity {
             va.setDuration(400);
             va.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 public void onAnimationUpdate(ValueAnimator animation) {
-                    Integer value = (Integer) animation.getAnimatedValue();
-                    v.getLayoutParams().height = value.intValue();
+                    v.getLayoutParams().height = (Integer) animation.getAnimatedValue();
                     v.requestLayout();
                 }
             });
