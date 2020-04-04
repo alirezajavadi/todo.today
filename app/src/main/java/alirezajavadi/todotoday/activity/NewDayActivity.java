@@ -94,13 +94,13 @@ public class NewDayActivity extends AppCompatActivity implements View.OnClickLis
         String date = txv_selectTodayDate.getText().toString();
         //dose user select date or not
         if (date.equals(getString(R.string.tapHere))) {
-            Toast.makeText(NewDayActivity.this, getString(R.string.errorSelectDateNewDay_menu), Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewDayActivity.this, getString(R.string.errorSelectDate_newDay), Toast.LENGTH_SHORT).show();
             return;
         }
 
         //update DB , sharedPrefs and show message
         dataBase.updateForNewDay(lastDay);
-        Toast.makeText(NewDayActivity.this, getString(R.string.toastAddNewDaySuccessDialogNewDay_menu), Toast.LENGTH_SHORT).show();
+        Toast.makeText(NewDayActivity.this, getString(R.string.toastAddNewDaySuccess_newDay), Toast.LENGTH_SHORT).show();
         Prefs.write(Prefs.TODAY_DATE, date);
 
         //close the current activity if user click on txv_addNewDay_newDay (return back to menu)

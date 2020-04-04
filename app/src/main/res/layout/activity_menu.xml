@@ -1,108 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lnl_rootView_menu"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="28dp"
+    android:background="@drawable/shape_bg_activities"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="28dp"
-        android:background="@drawable/shape_bg_main_widget"
-        android:orientation="vertical"
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@drawable/shape_bg_header_main_widget"
+        android:padding="3dp"
+        android:src="@drawable/ic_menu_widget" />
+
+    <TextView
+        android:id="@+id/txv_titleFirstRun_menu"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@drawable/shape_bg_header_main_widget"
         android:gravity="center"
-        android:layout_gravity="center">
+        android:text="@string/firstRunTitle_menu"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="22dp"
-            android:background="@drawable/shape_bg_header_main_widget"
-            android:padding="3dp"
-            android:src="@drawable/ic_menu_widget" />
+    <View
+        android:layout_width="match_parent"
+        android:id="@+id/view_topView_menu"
+        android:layout_height="1dp"
+        android:background="@color/view" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view" />
+    <TextView
+        android:id="@+id/txv_descriptionFirstRun_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:paddingLeft="16dp"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:text="@string/firstRunDescription_menu"
+        android:textColor="@android:color/black"
+        android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/txv_newDay_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/newDay_menuActivity"
-            android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/txv_newDay_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/newDay_menu"
+        android:textColor="@android:color/black" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view" />
 
-        <TextView
-            android:id="@+id/txv_newJobTodo_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/newJobTodo_menuActivity"
-            android:textColor="@android:color/black"/>
+    <TextView
+        android:id="@+id/txv_newTaskTodo_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/newTaskTodo_menu"
+        android:textColor="@android:color/black" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view" />
 
-        <TextView
-            android:id="@+id/txv_newJobTitle_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/newJobTitle_menuActivity"
-            android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/txv_newTaskTitle_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/newTaskTitle_menu"
+        android:textColor="@android:color/black" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view" />
 
-        <TextView
-            android:id="@+id/txv_help_menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:padding="5dp"
-            android:text="@string/help"
-            android:textColor="@android:color/black"/>
+    <TextView
+        android:id="@+id/txv_charts_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/charts_menu"
+        android:textColor="@android:color/black" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/view" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/view" />
 
-        <ImageView
-            android:id="@+id/img_closeMenu_menu"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:background="@drawable/selector_bg_footer"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="3dp"
-            android:src="@drawable/ic_close" />
+    <TextView
+        android:id="@+id/txv_help_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_bg_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="@string/help"
+        android:textColor="@android:color/black" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/view_bottomView_menu"
+        android:background="@color/view" />
+
+    <ImageView
+        android:id="@+id/img_closeMenu_menu"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@drawable/selector_bg_footer"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="3dp"
+        android:src="@drawable/ic_close" />
+
+    <TextView
+        android:id="@+id/txv_okFirstRun_menu"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@drawable/selector_bg_footer"
+        android:gravity="center"
+        android:text="@string/intimateOk"
+        android:clickable="true"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:focusable="true" />
 
 
-    </LinearLayout>
-
-</FrameLayout>
+</LinearLayout>

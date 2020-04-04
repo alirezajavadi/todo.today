@@ -1,23 +1,17 @@
 package alirezajavadi.todotoday.widget;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import alirezajavadi.todotoday.DataBase;
 import alirezajavadi.todotoday.activity.MenuActivity;
 import alirezajavadi.todotoday.R;
-
-import static android.content.ContentValues.TAG;
 
 public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
     public static final String ACTION_CLICK_LIST_VIEW = "actionClickListView";
@@ -88,13 +82,13 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
 
                 //check update database is success or not
                 if (result == 0)
-                    Toast.makeText(context, context.getString(R.string.toastAddUnSuccess_menu), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
             } else {
                 //update database if user clicked on img_deleteItem_itemListTodoMainWidget and delete a record
                 int result = dataBase.deleteARecord(databaseId);
                 //check delete record in database is success or not
                 if (result == 0)
-                    Toast.makeText(context, context.getString(R.string.toastAddUnSuccess_menu), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, context.getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
             }
 
             //update widget

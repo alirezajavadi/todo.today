@@ -66,27 +66,27 @@ public class MainWidgetWidgetService extends RemoteViewsService {
             //bind data to list view
             Todo todo = todoList.get(position);
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.view_item_list_todo_main_widget);
-            views.setTextViewText(R.id.txv_jobTitle_itemListTodoMainWidget, todo.getJobTitle());
+            views.setTextViewText(R.id.txv_taskTitle_itemListTodoMainWidget, todo.getTaskTitle());
             views.setTextViewText(R.id.txv_startFrom_itemListTodoMainWidget, todo.getStartFrom());
             views.setTextViewText(R.id.txv_endTo_itemListTodoMainWidget, todo.getEndTo());
             int imageRecId;
             if (todo.getIsDone() == 1) {
                 //draw the line on the all textViews and change its color
-                views.setInt(R.id.txv_jobTitle_itemListTodoMainWidget, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG);
+                views.setInt(R.id.txv_taskTitle_itemListTodoMainWidget, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG);
                 views.setInt(R.id.txv_startFrom_itemListTodoMainWidget, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG);
                 views.setInt(R.id.txv_endTo_itemListTodoMainWidget, "setPaintFlags", Paint.STRIKE_THRU_TEXT_FLAG);
-                views.setTextColor(R.id.txv_jobTitle_itemListTodoMainWidget, ContextCompat.getColor(context, R.color.doneJob_itemListTodoMainWidget));
-                views.setTextColor(R.id.txv_startFrom_itemListTodoMainWidget, ContextCompat.getColor(context, R.color.doneJob_itemListTodoMainWidget));
-                views.setTextColor(R.id.txv_endTo_itemListTodoMainWidget, ContextCompat.getColor(context, R.color.doneJob_itemListTodoMainWidget));
+                views.setTextColor(R.id.txv_taskTitle_itemListTodoMainWidget, ContextCompat.getColor(context, R.color.doneTask_itemListTodoMainWidget));
+                views.setTextColor(R.id.txv_startFrom_itemListTodoMainWidget, ContextCompat.getColor(context, R.color.doneTask_itemListTodoMainWidget));
+                views.setTextColor(R.id.txv_endTo_itemListTodoMainWidget, ContextCompat.getColor(context, R.color.doneTask_itemListTodoMainWidget));
 
                 //set img_checkBox_itemListTodoMainWidget resource
                 imageRecId = R.drawable.ic_checkbox_checked;
             } else {
                 //clear the line on the all textViews and change its color
-                views.setInt(R.id.txv_jobTitle_itemListTodoMainWidget, "setPaintFlags", Paint.ANTI_ALIAS_FLAG);
+                views.setInt(R.id.txv_taskTitle_itemListTodoMainWidget, "setPaintFlags", Paint.ANTI_ALIAS_FLAG);
                 views.setInt(R.id.txv_startFrom_itemListTodoMainWidget, "setPaintFlags", Paint.ANTI_ALIAS_FLAG);
                 views.setInt(R.id.txv_endTo_itemListTodoMainWidget, "setPaintFlags", Paint.ANTI_ALIAS_FLAG);
-                views.setTextColor(R.id.txv_jobTitle_itemListTodoMainWidget, ContextCompat.getColor(context, android.R.color.black));
+                views.setTextColor(R.id.txv_taskTitle_itemListTodoMainWidget, ContextCompat.getColor(context, android.R.color.black));
                 views.setTextColor(R.id.txv_startFrom_itemListTodoMainWidget, ContextCompat.getColor(context, android.R.color.black));
                 views.setTextColor(R.id.txv_endTo_itemListTodoMainWidget, ContextCompat.getColor(context, android.R.color.black));
 

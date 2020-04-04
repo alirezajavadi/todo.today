@@ -10,6 +10,8 @@
 
     <color name="bgMain_mainWidget">#D9F5F5F5</color>
 
+    <color name="bgActivities">#E6EAEAEA</color>
+
     <color name="view">#535353</color>
 
     <color name="bgItem_notPressed">@color/none</color>
@@ -18,7 +20,7 @@
     <color name="bgHeaderFooter_notPressed">@color/bgHeader_mainWidget</color>
     <color name="bgHeaderFooter_pressed">#6E535353</color>\
 
-    <color name="doneJob_itemListTodoMainWidget">#515151</color>
+    <color name="doneTask_itemListTodoMainWidget">#515151</color>
 
 
 

@@ -3,7 +3,7 @@ package alirezajavadi.todotoday.model;
 public class Todo {
     private String startFrom;
     private String endTo;
-    private String jobTitle;
+    private String taskTitle;
     private int isDone;
     private String date;
     private int isDisplayInList;
@@ -25,12 +25,12 @@ public class Todo {
         this.endTo = endTo;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getTaskTitle() {
+        return taskTitle;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
     }
 
     public int getIsDone() {

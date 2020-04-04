@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_bg_main_widget"
+    android:background="@drawable/shape_bg_activities"
     android:orientation="vertical">
 
     <TextView
@@ -12,7 +12,7 @@
         android:background="@drawable/shape_bg_header_main_widget"
         android:gravity="center"
         android:padding="3dp"
-        android:text="@string/titleDialogNewJobTodo_menu"
+        android:text="@string/title_newTaskTodo"
         android:textColor="@android:color/black" />
 
     <View
@@ -22,7 +22,7 @@
         android:background="@color/view" />
 
     <TextView
-        android:id="@+id/txv_message_newJobTodo"
+        android:id="@+id/txv_message_newTaskTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -30,7 +30,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:textColor="@android:color/black"
-        tools:text="@string/messageNewJobTodo_menu" />
+        tools:text="@string/message_newTaskTodo" />
 
     <View
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
         android:background="@color/view" />
 
     <Spinner
-        android:id="@+id/spn_selectJobTitle_newJobTodo"
+        android:id="@+id/spn_selectTaskTitle_newTaskTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_arrow_icon_spinner"
@@ -57,7 +57,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txv_startFrom_newJobTodo"
+            android:id="@+id/txv_startFrom_newTaskTodo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -81,7 +81,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:singleLine="true"
-            android:text="@string/startFromNewJobTodo_menu"
+            android:text="@string/startFrom_newTaskTodo"
             android:textColor="@android:color/black" />
 
     </LinearLayout>
@@ -97,7 +97,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txv_endTo_newJobTodo"
+            android:id="@+id/txv_endTo_newTaskTodo"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -119,7 +119,7 @@
             android:paddingTop="8dp"
             android:paddingBottom="8dp"
             android:singleLine="true"
-            android:text="@string/endToNewJobTodo_menu"
+            android:text="@string/endTo_newTaskTodo"
             android:textColor="@android:color/black" />
     </LinearLayout>
 
@@ -129,7 +129,7 @@
         android:background="@color/view" />
 
     <TextView
-        android:id="@+id/txv_addNewJobTodo_newJobTodo"
+        android:id="@+id/txv_addNewTaskTodo_newTaskTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_bg_footer"

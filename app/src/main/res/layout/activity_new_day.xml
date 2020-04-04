@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_bg_main_widget"
+    android:background="@drawable/shape_bg_activities"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:background="@drawable/shape_bg_header_main_widget"
         android:gravity="center"
         android:padding="3dp"
-        android:text="@string/titleDialogNewDay_menu"
+        android:text="@string/title_newDay"
         android:textColor="@android:color/black" />
 
     <View
@@ -28,7 +28,7 @@
         android:gravity="center"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:text="@string/messageDialogNewDay_menu"
+        android:text="@string/message_newDay"
         android:textColor="@android:color/black" />
 
     <View

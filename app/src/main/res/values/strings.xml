@@ -5,85 +5,98 @@
 
     <string name="startFrom_mainWidget">شروع</string>
     <string name="endTo_mainWidget">پایان</string>
-    <string name="jobToDo_mainWidget">کارهای روزانه</string>
+    <string name="taskToDo_mainWidget">کارهای روزانه</string>
+    <string name="emptyListView_mainWidget">شما تا کنون کاری تعریف نکره اید. لطفا راهنمای برنامه را مطالعه فرمایید!</string>
 
     <string name="add">اضافه کن</string>
 
-    <string name="emptyListView_mainWidget">شما تا کنون کاری تعریف نکره اید. لطفا راهنمای برنامه را مطالعه فرمایید!</string>
 
-    <string name="newJobTodo_menuActivity">اضافه کردن کار جدید</string>
-    <string name="newDay_menuActivity">روز جدید</string>
-    <string name="newJobTitle_menuActivity">اضافه کردن یک کار به لیست کارهای روزانه</string>
+    <string name="newTaskTodo_menu">اضافه کردن کار جدید</string>
+    <string name="newDay_menu">روز جدید</string>
+    <string name="newTaskTitle_menu">اضافه کردن یک کار به لیست کارهای روزانه</string>
+    <string name="charts_menu">نمودارها</string>
+    <string name="firstRunTitle_menu">اولین اجرا</string>
+    <string name="firstRunDescription_menu">
+<!--        todo change this string-->
+        شما برای اولین از برنامه استفاده میکنید
+       \n
+        ویجت را فعال کنید
+        \n
+        بقیه راهنما
+        این تست است
+        یک دو سه
+        این تست است
+        یک دو سه
+        این تست است
+        یک دو سه
+        این تست است
+        یک دو سه
+        این تست است
+        یک دو سه
+    </string>
 
     <string name="help">راهنما</string>
     <string name="aboutUs">درباره ما</string>
+    <string name="tapHere">لمس کنید!</string>
+    <string name="intimateOk">حله</string>
+    <string name="toastAddSuccess">با موفقیت اضافه شد</string>
+    <string name="toastAddUnSuccess">مشکلی پیش آمده</string>
 
-    <string name="messageDialogNewJobTitle_menu">یک نام برای کارهای روزانه خود انتخاب کنید
+    <string name="message_newTaskTitle">یک نام برای کارهای روزانه خود انتخاب کنید
     \n
         (از این نام برای تهیه نمودار استفاده خواهد شد.)
     </string>
-    <string name="titleDialogNewJobTitle_menu">یک نام وارد کنید</string>
-    <string name="errorInsertedNewJobTitle_menu">عنوان وارد شده در لیست موجود است
+    <string name="title_newTaskTitle">یک نام وارد کنید</string>
+    <string name="errorExistTitle_newTaskTitle">عنوان وارد شده در لیست موجود است
     \n
     میتوانید از این عنوان در برنامه ریزی روزانه استفاده کنید
     </string>
 
-    <string name="titleDialogNewJobTodo_menu">یک کار روزانه تعریف کنید</string>
-    <string name="startFromNewJobTodo_menu">شروع از ساعت:</string>
-    <string name="endToNewJobTodo_menu">پایان در ساعت:</string>
-    <string name="selectJobTitle_menuNewJobTodo">یکی از وظایف خود را انتخاب کنید</string>
-    <string name="errorSelectPassedTimeNewJobTodo_menu">شما زمان گذشته را نمیتوانید انتخاب کنید!</string>
-    <string name="errorSelectStartFromFirstNewJobTodo_menu">ابتدا زمان شروع را انتخاب کنید!</string>
-    <string name="errorEmptyCellsNewJobTodo_menu">لطفا همه اطلاعات را پرکنید!</string>
-    <string name="messageNewJobTodo_menu">
+    <string name="title_newTaskTodo">یک کار روزانه تعریف کنید</string>
+    <string name="message_newTaskTodo">
         شما در حال برنامه ریزی برای روز
         %s
         هستید
         \n
          در غیر اینصورت "روز جدید" انتخاب کنید!
     </string>
+    <string name="startFrom_newTaskTodo">شروع از ساعت:</string>
+    <string name="endTo_newTaskTodo">پایان تا ساعت:</string>
+    <string name="selectTaskTitle_newTaskTodo">یکی از وظایف خود را انتخاب کنید</string>
+    <string name="errorSelectPastTime_newTaskTodo">زمان گذشته را نمیتوانید انتخاب کنید!</string>
+    <string name="errorSelectStartFromFirst_newTaskTodo">ابتدا زمان شروع را انتخاب کنید!</string>
+    <string name="errorEmptyCells_newTaskTodo">لطفا همه اطلاعات را پرکنید!</string>
 
-
-    <string name="tapHere">لمس کنید!</string>
-
-    <string name="toastAddSuccess_menu">با موفقیت اضافه شد</string>
-    <string name="toastAddUnSuccess_menu">مشکلی پیش آمده</string>
-
-    <string name="titleDialogNewDay_menu"> روز جدید :)</string>
-    <string name="messageDialogNewDay_menu">تاریخی که در حال برنامه ریزی برای آن روز هستید را انتخاب کنید
+    <string name="title_newDay"> روز جدید :)</string>
+    <string name="message_newDay">تاریخی که در حال برنامه ریزی برای آن روز هستید را انتخاب کنید
     \n
         (روز قبلی شما وارد دیتابیس شده و می توانید نتایج را در نمودارها مشاهده کنید)
     </string>
-    <string name="errorSelectDateNewDay_menu">یک روز انتخاب کنید!</string>
-    <string name="toastAddNewDaySuccessDialogNewDay_menu">روز جدید با موفقیت افزوده شد
+    <string name="errorSelectDate_newDay">یک روز انتخاب کنید!</string>
+    <string name="toastAddNewDaySuccess_newDay">روز جدید با موفقیت افزوده شد
     \n
     میتوانید برای امروز برنامه ریزی کنید.
     </string>
 
 
-    <string name="descriptionFirstRun_main">
-        شما برای اولین بار از برنامه استفاده میکنید!!!
-        \n
-        دیتایی برای نمایش در نمودارها وجود ندارد
-        \n
-        لطفا راهنمای برنامه را مطالعه کنید سپس از برنامه استفاده کنید.
+
+    <string name="selectDateFrom_dialogSelectDate">از تاریخ:</string>
+    <string name="selectDateTo_dialogSelectData">تا تاریخ:</string>
+    <string name="okSelectDate_dialogSelectDate">تایید</string>
+    <string name="selectDate_charts">انتخاب تاریخ</string>
+    <string name="detailChartsDate_charts">
+        نمودارهای شما بین تاریخ
+        %s
+        و
+        %s
     </string>
-    <string name="selectDateFrom_main">تاریخ شروع:</string>
-    <string name="selectDateTo_main">تاریخ پایان:</string>
-    <string name="okSelectDate_main">تایید</string>
-    <string name="titleSelectDateOpen_main">انتخاب تاریخ</string>
-    <string name="titleSelectDateClosed_main">فیلتر کردن تاریخ</string>
-    <string name="descriptionMain_main">برای نمایش نمودارها ابتدا تاریخ را انتخاب کنید.</string>
-    <string name="errorSelectPastDate_main">زمان گذشته را نمیتوانید انتخاب کنید!</string>
-    <string name="errorSelectStartDateFirst_main">ابتدا تاریخ شروع را انتخاب کنید!</string>
-    <string name="errorFirstSelectDate_main">برای نمایش نمودار ها ابتدا تاریخ انتخاب کنید!</string>
-    <string name="descriptionAxisChart_main">
-       محور x: بر اساس ساعت
-        \n
-        محور y: نمایش کارهای روزانه
-    </string>
-    <string name="descriptionDoneChart_main">نمودار کارهای انجام شده.</string>
-    <string name="descriptionUnDoneChart_main">نمودار کارهای انجام نشده.</string>
+    <string name="errorSelectPastDate_charts">زمان گذشته را نمیتوانید انتخاب کنید!</string>
+    <string name="errorSelectStartDateFirst_charts">ابتدا تاریخ شروع را انتخاب کنید!</string>
+    <string name="errorFirstSelectDate_charts">برای نمایش نمودار ها ابتدا تاریخ انتخاب کنید!</string>
+    <string name="descriptionXAxisChart_charts">ساعت</string>
+    <string name="descriptionYAxisChart_charts">کارهای روزانه</string>
+    <string name="descriptionDoneChart_charts">کارهای انجام شده</string>
+    <string name="descriptionUndoneChart_charts">کارهای انجام نشده</string>
 
 
 </resources>

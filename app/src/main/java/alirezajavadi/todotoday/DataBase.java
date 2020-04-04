@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -27,13 +26,13 @@ public class DataBase extends SQLiteOpenHelper {
     private static final String KEY_MAIN_END_TO = "mainEndTo";
     private static final String KEY_MAIN_IS_DONE = "mainIsDone";
     private static final String KEY_MAIN_DATE = "mainDate";
-    private static final String KEY_MAIN_JOB_TITLE = "mainJobTitle";
+    private static final String KEY_MAIN_TASK_TITLE = "mainTaskTitle";
     private static final String KEY_MAIN_IS_DISPLAY_IN_LIST = "mainIsDisplayInList"; //that mean is: show in charts or not (if displayInList is true -> it will not apply to the chart)
 
-    //table jobTitle
-    private static final String TB_NAME_JOB_TITLE = "tableJobTitle";
-    private static final String KEY_JOB_TITLE_ID = "jobTitleId";
-    private static final String KEY_JOB_TITLE_JOB_TITLE = "jobTitleJobTitle";
+    //table taskTitle
+    private static final String TB_NAME_TASK_TITLE = "tableTaskTitle";
+    private static final String KEY_TASK_TITLE_ID = "taskTitleId";
+    private static final String KEY_TASK_TITLE_TASK_TITLE = "taskTitleTaskTitle";
 
     public DataBase(@Nullable Context context) {
         super(context, DATA_BASE_NAME, null, 1);
@@ -47,15 +46,15 @@ public class DataBase extends SQLiteOpenHelper {
                 KEY_MAIN_END_TO + " TEXT , " +
                 KEY_MAIN_IS_DONE + " INTEGER , " +
                 KEY_MAIN_DATE + " TEXT , " +
-                KEY_MAIN_JOB_TITLE + " TEXT , " +
+                KEY_MAIN_TASK_TITLE + " TEXT , " +
                 KEY_MAIN_IS_DISPLAY_IN_LIST + " INTEGER )";
         db.execSQL(CREATE_TB_MAIN);
 
-        String CREATE_TB_JOB_TITLE = "CREATE TABLE " + TB_NAME_JOB_TITLE + " ( " +
-                KEY_JOB_TITLE_ID + " INTEGER PRIMARY KEY , " +
-                KEY_JOB_TITLE_JOB_TITLE + " TEXT )";
+        String CREATE_TB_TASK_TITLE = "CREATE TABLE " + TB_NAME_TASK_TITLE + " ( " +
+                KEY_TASK_TITLE_ID + " INTEGER PRIMARY KEY , " +
+                KEY_TASK_TITLE_TASK_TITLE + " TEXT )";
 
-        db.execSQL(CREATE_TB_JOB_TITLE);
+        db.execSQL(CREATE_TB_TASK_TITLE);
 
     }
 
@@ -64,12 +63,12 @@ public class DataBase extends SQLiteOpenHelper {
 
     }
 
-    //insert new jobTitle in DB
-    public int addNewJobTitle(String jobTitle) {
+    //insert new taskTitle in DB
+    public int addNewTaskTitle(String taskTitle) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_JOB_TITLE_JOB_TITLE, jobTitle);
-        if (db.insert(TB_NAME_JOB_TITLE, null, values) == -1) {
+        values.put(KEY_TASK_TITLE_TASK_TITLE, taskTitle);
+        if (db.insert(TB_NAME_TASK_TITLE, null, values) == -1) {
             db.close();
             return -1;
         }
@@ -77,35 +76,35 @@ public class DataBase extends SQLiteOpenHelper {
         return 1;
     }
 
-    public List<String> getAllJobTitle() {
-        List<String> jobTitleList = new ArrayList<>();
+    public List<String> getAllTaskTitles() {
+        List<String> taskTitleList = new ArrayList<>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM " + TB_NAME_JOB_TITLE;
+        String query = "SELECT * FROM " + TB_NAME_TASK_TITLE;
 
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor == null || cursor.getCount() == 0)
-            return jobTitleList;
+            return taskTitleList;
 
         cursor.moveToFirst();
         do {
-            jobTitleList.add(cursor.getString(cursor.getColumnIndex(KEY_JOB_TITLE_JOB_TITLE)));
+            taskTitleList.add(cursor.getString(cursor.getColumnIndex(KEY_TASK_TITLE_TASK_TITLE)));
         } while (cursor.moveToNext());
         db.close();
         cursor.close();
-        return jobTitleList;
+        return taskTitleList;
 
     }
 
-    //insert new jobTodo in DB - displayInList is true(default)
-    public int addNewJobTodo(Todo todo) {
+    //insert new taskTodo in DB - displayInList is true(default)
+    public int addNewTaskTodo(Todo todo) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(KEY_MAIN_START_FROM, todo.getStartFrom());
         values.put(KEY_MAIN_END_TO, todo.getEndTo());
-        values.put(KEY_MAIN_JOB_TITLE, todo.getJobTitle());
+        values.put(KEY_MAIN_TASK_TITLE, todo.getTaskTitle());
         values.put(KEY_MAIN_IS_DONE, todo.getIsDone());
         values.put(KEY_MAIN_IS_DISPLAY_IN_LIST, 1);//true == 1
         values.put(KEY_MAIN_DATE, todo.getDate());
@@ -125,7 +124,7 @@ public class DataBase extends SQLiteOpenHelper {
         List<Todo> todoList = new ArrayList<>();
 
         String query = "SELECT " +
-                KEY_MAIN_JOB_TITLE + " , " +
+                KEY_MAIN_TASK_TITLE + " , " +
                 KEY_MAIN_DATE + " , " +
                 KEY_MAIN_IS_DONE + " , " +
                 KEY_MAIN_ID + " , " +
@@ -145,7 +144,7 @@ public class DataBase extends SQLiteOpenHelper {
         do {
             Todo todo = new Todo();
             todo.setDate(cursor.getString(cursor.getColumnIndex(KEY_MAIN_DATE)));
-            todo.setJobTitle(cursor.getString(cursor.getColumnIndex(KEY_MAIN_JOB_TITLE)));
+            todo.setTaskTitle(cursor.getString(cursor.getColumnIndex(KEY_MAIN_TASK_TITLE)));
             todo.setStartFrom(cursor.getString(cursor.getColumnIndex(KEY_MAIN_START_FROM)));
             todo.setEndTo(cursor.getString(cursor.getColumnIndex(KEY_MAIN_END_TO)));
             todo.setIsDone(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_IS_DONE)));
@@ -158,8 +157,8 @@ public class DataBase extends SQLiteOpenHelper {
         return todoList;
     }
 
-    //update isDone (change it to 1). that mean is: user click on "newDay" then last jobTodo is done and start new day(newJobTodo)
-    //update isDisplayInList (change it to 0).  that mean is: user click on "newDay" then last jobTodo is done and start new day(newJobTodo) with new list of to do work
+    //update isDone (change it to 1). that mean is: user click on "newDay" then last taskTodo is done and start new day(newTaskTodo)
+    //update isDisplayInList (change it to 0).  that mean is: user click on "newDay" then last taskTodo is done and start new day(newTaskTodo) with new list of to do work
     public void updateForNewDay(String lastDayDate) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -197,7 +196,7 @@ public class DataBase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "SELECT " +
-                KEY_MAIN_JOB_TITLE + " , " +
+                KEY_MAIN_TASK_TITLE + " , " +
                 KEY_MAIN_DATE + " , " +
                 KEY_MAIN_IS_DONE + " , " +
                 KEY_MAIN_ID + " , " +
@@ -215,7 +214,7 @@ public class DataBase extends SQLiteOpenHelper {
         do {
             Todo todo = new Todo();
             todo.setDate(cursor.getString(cursor.getColumnIndex(KEY_MAIN_DATE)));
-            todo.setJobTitle(cursor.getString(cursor.getColumnIndex(KEY_MAIN_JOB_TITLE)));
+            todo.setTaskTitle(cursor.getString(cursor.getColumnIndex(KEY_MAIN_TASK_TITLE)));
             todo.setStartFrom(cursor.getString(cursor.getColumnIndex(KEY_MAIN_START_FROM)));
             todo.setEndTo(cursor.getString(cursor.getColumnIndex(KEY_MAIN_END_TO)));
             todo.setIsDone(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_IS_DONE)));

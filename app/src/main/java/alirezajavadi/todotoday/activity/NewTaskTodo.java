@@ -20,13 +20,12 @@ import alirezajavadi.todotoday.R;
 import alirezajavadi.todotoday.model.Todo;
 
 
-public class NewJobTodo extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "NewJobTodo";
+public class NewTaskTodo extends AppCompatActivity implements View.OnClickListener {
 
     private TextView txv_startFrom;
     private TextView txv_endTo;
-    private TextView txv_addNewJobTodo;
-    private Spinner spn_selectJobTitle;
+    private TextView txv_addNewTaskTodo;
+    private Spinner spn_selectTaskTitle;
 
     private DataBase dataBase;
 
@@ -38,35 +37,35 @@ public class NewJobTodo extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_job_todo);
+        setContentView(R.layout.activity_new_task_todo);
         init();
 
-        //get jobTitles from database for spinner
-        List<String> jobTitleList = dataBase.getAllJobTitle();
-        jobTitleList.add(0, getString(R.string.selectJobTitle_menuNewJobTodo));//helps the user to choose the jobTitle
+        //get taskTitles from database for spinner
+        List<String> taskTitleList = dataBase.getAllTaskTitles();
+        taskTitleList.add(0, getString(R.string.selectTaskTitle_newTaskTodo));//helps the user to choose the taskTitle
 
-        //init spinnerAdapter with received jobTitles from database and set that to spinner
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, R.layout.view_spinner_text_view, jobTitleList);
+        //init spinnerAdapter with received taskTitles from database and set that to spinner
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(this, R.layout.view_spinner_text_view, taskTitleList);
         spinnerAdapter.setDropDownViewResource(R.layout.view_spinner_drop_down);
-        spn_selectJobTitle.setAdapter(spinnerAdapter);
+        spn_selectTaskTitle.setAdapter(spinnerAdapter);
 
         //
         txv_startFrom.setOnClickListener(this);
         txv_endTo.setOnClickListener(this);
-        txv_addNewJobTodo.setOnClickListener(this);
+        txv_addNewTaskTodo.setOnClickListener(this);
 
 
     }
 
     private void init() {
         CurrentDate.initial();
-        dataBase = new DataBase(NewJobTodo.this);
-        txv_startFrom = findViewById(R.id.txv_startFrom_newJobTodo);
-        txv_endTo = findViewById(R.id.txv_endTo_newJobTodo);
-        txv_addNewJobTodo = findViewById(R.id.txv_addNewJobTodo_newJobTodo);
-        spn_selectJobTitle = findViewById(R.id.spn_selectJobTitle_newJobTodo);
+        dataBase = new DataBase(NewTaskTodo.this);
+        txv_startFrom = findViewById(R.id.txv_startFrom_newTaskTodo);
+        txv_endTo = findViewById(R.id.txv_endTo_newTaskTodo);
+        txv_addNewTaskTodo = findViewById(R.id.txv_addNewTaskTodo_newTaskTodo);
+        spn_selectTaskTitle = findViewById(R.id.spn_selectTaskTitle_newTaskTodo);
         //get currentDay from sharedPrefs and set text to textView "message"
-        ((TextView) findViewById(R.id.txv_message_newJobTodo)).setText(getString(R.string.messageNewJobTodo_menu, Prefs.read(Prefs.TODAY_DATE, CurrentDate.getCurrentDate())));
+        ((TextView) findViewById(R.id.txv_message_newTaskTodo)).setText(getString(R.string.message_newTaskTodo, Prefs.read(Prefs.TODAY_DATE, CurrentDate.getCurrentDate())));
 
     }
 
@@ -75,22 +74,22 @@ public class NewJobTodo extends AppCompatActivity implements View.OnClickListene
         int id = v.getId();
 
         switch (id) {
-            case R.id.txv_startFrom_newJobTodo:
+            case R.id.txv_startFrom_newTaskTodo:
                 clickTxvStartFrom();
                 break;
-            case R.id.txv_endTo_newJobTodo:
+            case R.id.txv_endTo_newTaskTodo:
                 clickTxvEndTo();
                 break;
-            case R.id.txv_addNewJobTodo_newJobTodo:
-                clickAddTxvNewJobTodo();
+            case R.id.txv_addNewTaskTodo_newTaskTodo:
+                clickAddTxvNewTaskTodo();
                 break;
         }
     }
 
-    private void clickAddTxvNewJobTodo() {
+    private void clickAddTxvNewTaskTodo() {
         //is everything imported ?
-        if (!isTxvEndToClicked || startFromH == -1 || startFromM == -1 || spn_selectJobTitle.getSelectedItem().toString().equals(getString(R.string.selectJobTitle_menuNewJobTodo))) {
-            Toast.makeText(NewJobTodo.this, getString(R.string.errorEmptyCellsNewJobTodo_menu), Toast.LENGTH_SHORT).show();
+        if (!isTxvEndToClicked || startFromH == -1 || startFromM == -1 || spn_selectTaskTitle.getSelectedItem().toString().equals(getString(R.string.selectTaskTitle_newTaskTodo))) {
+            Toast.makeText(NewTaskTodo.this, getString(R.string.errorEmptyCells_newTaskTodo), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -99,16 +98,16 @@ public class NewJobTodo extends AppCompatActivity implements View.OnClickListene
         todo.setIsDone(0);
         todo.setEndTo(txv_endTo.getText().toString());
         todo.setStartFrom(txv_startFrom.getText().toString());
-        todo.setJobTitle(spn_selectJobTitle.getSelectedItem().toString());
+        todo.setTaskTitle(spn_selectTaskTitle.getSelectedItem().toString());
         todo.setDate(Prefs.read(Prefs.TODAY_DATE, CurrentDate.getCurrentDate()));
         //add to database
-        int result = dataBase.addNewJobTodo(todo);
+        int result = dataBase.addNewTaskTodo(todo);
         if (result == 1)
-            Toast.makeText(NewJobTodo.this, getString(R.string.toastAddSuccess_menu), Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewTaskTodo.this, getString(R.string.toastAddSuccess), Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(NewJobTodo.this, getString(R.string.toastAddUnSuccess_menu), Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewTaskTodo.this, getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
 
-        //close the current activity if user click on txv_addNewJobTodo (return back to menu)
+        //close the current activity if user click on txv_addNewTaskTodo (return back to menu)
         onBackPressed();
 
     }
@@ -116,15 +115,15 @@ public class NewJobTodo extends AppCompatActivity implements View.OnClickListene
     private void clickTxvEndTo() {
         //txv_startFrom is Clicked first orc not
         if (startFromH == -1 && startFromM == -1) {
-            Toast.makeText(NewJobTodo.this, getString(R.string.errorSelectStartFromFirstNewJobTodo_menu), Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewTaskTodo.this, getString(R.string.errorSelectStartFromFirst_newTaskTodo), Toast.LENGTH_SHORT).show();
             return;
         }
         //show time picker
-        TimePickerDialog timePickerDialog = new TimePickerDialog(NewJobTodo.this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(NewTaskTodo.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 if (hourOfDay == startFromH && minute <= startFromM || hourOfDay < startFromH) {
-                    Toast.makeText(NewJobTodo.this, getString(R.string.errorSelectPassedTimeNewJobTodo_menu), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewTaskTodo.this, getString(R.string.errorSelectPastTime_newTaskTodo), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -146,7 +145,7 @@ public class NewJobTodo extends AppCompatActivity implements View.OnClickListene
 
     private void clickTxvStartFrom() {
         //show time Picker
-        TimePickerDialog timePickerDialog = new TimePickerDialog(NewJobTodo.this, new TimePickerDialog.OnTimeSetListener() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(NewTaskTodo.this, new TimePickerDialog.OnTimeSetListener() {
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 String minuteString = String.valueOf(minute);

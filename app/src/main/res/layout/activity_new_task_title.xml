@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_bg_main_widget"
+    android:background="@drawable/shape_bg_activities"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:background="@drawable/shape_bg_header_main_widget"
         android:gravity="center"
         android:padding="3dp"
-        android:text="@string/titleDialogNewJobTitle_menu"
+        android:text="@string/title_newTaskTitle"
         android:textColor="@android:color/black" />
 
     <View
@@ -28,16 +28,17 @@
         android:gravity="center"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:text="@string/messageDialogNewJobTitle_menu"
+        android:text="@string/message_newTaskTitle"
         android:textColor="@android:color/black" />
 
     <EditText
-        android:id="@+id/edt_newJobTitle_newJobTitle"
+        android:id="@+id/edt_newTaskTitle_newTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:textSize="15sp"
         android:layout_marginRight="8dp"
+        android:inputType="text"
         android:hint="نام کار روازنه"
         android:maxLength="18"
         android:maxLines="1"
@@ -52,7 +53,7 @@
         android:background="@color/view" />
 
     <TextView
-        android:id="@+id/txv_addNewJobTitle_newJobTitle"
+        android:id="@+id/txv_addNewTaskTitle_newTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_bg_footer"

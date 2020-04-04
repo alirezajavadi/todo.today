@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_bg_activities"
+    android:scrollbars="none">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txv_detailChartsDate_charts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:visibility="visible"
+            tools:text="@string/detailChartsDate_charts" />
+
+
+        <TextView
+            android:id="@+id/txv_showDialogSelectDate_charts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txv_detailChartsDate_charts"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_bg_button"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/selectDate_charts"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <View
+            android:id="@+id/view_viewA"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/txv_showDialogSelectDate_charts"
+            android:background="@color/view" />
+
+        <TextView
+            android:id="@+id/txv_descriptionDoneChart_charts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_viewA"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/descriptionDoneChart_charts"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+        <alirezajavadi.todotoday.view.VerticalTextView
+            android:id="@+id/txv_descriptionXAxisDoneChart_charts"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txv_descriptionDoneChart_charts"
+            android:layout_alignTop="@id/barChart_doneTask_charts"
+            android:layout_alignBottom="@id/barChart_doneTask_charts"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:textSize="12sp"
+            android:gravity="bottom|center"
+            android:text="@string/descriptionXAxisChart_charts" />
+
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart_doneTask_charts"
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:layout_below="@id/txv_descriptionDoneChart_charts"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/txv_descriptionXAxisDoneChart_charts" />
+
+        <TextView
+            android:id="@+id/txv_descriptionYAxisDoneChart_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/barChart_doneTask_charts"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:text="@string/descriptionYAxisChart_charts" />
+
+        <View
+            android:id="@+id/view_viewB"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/txv_descriptionYAxisDoneChart_chart"
+            android:background="@color/view" />
+
+
+        <TextView
+            android:id="@+id/txv_descriptionUndoneChart_charts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view_viewB"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/descriptionUndoneChart_charts"
+            android:textColor="@android:color/black"
+            android:textSize="12sp" />
+
+
+
+        <alirezajavadi.todotoday.view.VerticalTextView
+            android:id="@+id/txv_descriptionXAxisUndoneChart_charts"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txv_descriptionUndoneChart_charts"
+            android:layout_alignTop="@id/barChart_undoneTask_charts"
+            android:layout_alignBottom="@id/barChart_undoneTask_charts"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="8dp"
+            android:textSize="12sp"
+            android:gravity="bottom|center"
+            android:text="@string/descriptionXAxisChart_charts" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart_undoneTask_charts"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_below="@id/txv_descriptionUndoneChart_charts"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_toEndOf="@id/txv_descriptionXAxisUndoneChart_charts" />
+
+        <TextView
+            android:id="@+id/txv_descriptionYAxisUndoneChart_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/barChart_undoneTask_charts"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:text="@string/descriptionYAxisChart_charts" />
+    </RelativeLayout>
+</ScrollView>
+

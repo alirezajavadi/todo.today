@@ -3,7 +3,7 @@ package alirezajavadi.todotoday.model;
 public class TodoChart {
     private int minute;
     private int hour;
-    private String jobTitle;
+    private String taskTitle;
 
     public int getMinute() {
         return minute;
@@ -21,11 +21,11 @@ public class TodoChart {
         this.hour = hour;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public String getTaskTitle() {
+        return taskTitle;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setTaskTitle(String taskTitle) {
+        this.taskTitle = taskTitle;
     }
 }

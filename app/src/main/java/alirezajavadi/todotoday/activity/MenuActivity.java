@@ -2,33 +2,26 @@ package alirezajavadi.todotoday.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.mohamadamin.persianmaterialdatetimepicker.utils.PersianCalendar;
-
-import java.util.List;
-
-import alirezajavadi.todotoday.DataBase;
+import alirezajavadi.todotoday.CurrentDate;
 import alirezajavadi.todotoday.Prefs;
 import alirezajavadi.todotoday.R;
 import alirezajavadi.todotoday.widget.MainWidgetAppWidgetProvider;
 
 public class MenuActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "MenuActivity";
 
     private TextView txv_newDay;
-    private TextView txv_newJobTodo;
-    private TextView txv_newJobTitle;
+    private TextView txv_newTaskTodo;
+    private TextView txv_newTaskTitle;
+    private TextView txv_charts;
     private TextView txv_help;
     private ImageView img_close;
 
@@ -42,12 +35,16 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_menu);
         init();
 
+        //settings for first run
+        firstRun();
+
 
         //set onclick listener
         txv_help.setOnClickListener(this);
         txv_newDay.setOnClickListener(this);
-        txv_newJobTitle.setOnClickListener(this);
-        txv_newJobTodo.setOnClickListener(this);
+        txv_newTaskTitle.setOnClickListener(this);
+        txv_newTaskTodo.setOnClickListener(this);
+        txv_charts.setOnClickListener(this);
         img_close.setOnClickListener(this);
 
         //get all appWidgetId to update them
@@ -56,11 +53,45 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    private void firstRun() {
+        if (Prefs.read(Prefs.IS_FIRST_RUN, true)) {
+            //get all child and add gone visibility to them
+            LinearLayout rootView = findViewById(R.id.lnl_rootView_menu);
+            for (int i = 0; i < rootView.getChildCount(); i++)
+                rootView.getChildAt(i).setVisibility(View.GONE);
+
+            //set VISIBLE visibility to first run views
+            findViewById(R.id.txv_titleFirstRun_menu).setVisibility(View.VISIBLE);
+            findViewById(R.id.view_topView_menu).setVisibility(View.VISIBLE);
+            findViewById(R.id.txv_descriptionFirstRun_menu).setVisibility(View.VISIBLE);
+            findViewById(R.id.view_bottomView_menu).setVisibility(View.VISIBLE);
+            findViewById(R.id.txv_okFirstRun_menu).setVisibility(View.VISIBLE);
+
+            //set onClick to txv_okFirstRun and close to app because user should work with appWidget
+            findViewById(R.id.txv_okFirstRun_menu).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+
+            //save today's date to sharedPrefs (display it by default in the charts)
+            Prefs.write(Prefs.FIRST_RUN_DATE,CurrentDate.getCurrentDate());
+
+            //next run, is not the first run :|
+            Prefs.write(Prefs.IS_FIRST_RUN,false);
+
+        }
+    }
+
     private void init() {
+        Prefs.initial(MenuActivity.this);
+        CurrentDate.initial();
         txv_newDay = findViewById(R.id.txv_newDay_menu);
         txv_help = findViewById(R.id.txv_help_menu);
-        txv_newJobTitle = findViewById(R.id.txv_newJobTitle_menu);
-        txv_newJobTodo = findViewById(R.id.txv_newJobTodo_menu);
+        txv_newTaskTitle = findViewById(R.id.txv_newTaskTitle_menu);
+        txv_newTaskTodo = findViewById(R.id.txv_newTaskTodo_menu);
+        txv_charts = findViewById(R.id.txv_charts_menu);
         img_close = findViewById(R.id.img_closeMenu_menu);
     }
 
@@ -75,12 +106,16 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 // TODO add activity help
                 break;
 
-            case R.id.txv_newJobTitle_menu:
-                startActivity(new Intent(MenuActivity.this, NewJobTitle.class));
+            case R.id.txv_newTaskTitle_menu:
+                startActivity(new Intent(MenuActivity.this, NewTaskTitle.class));
                 break;
 
-            case R.id.txv_newJobTodo_menu:
-                startActivity(new Intent(MenuActivity.this, NewJobTodo.class));
+            case R.id.txv_newTaskTodo_menu:
+                startActivity(new Intent(MenuActivity.this, NewTaskTodo.class));
+                break;
+
+            case R.id.txv_charts_menu:
+                startActivity(new Intent(MenuActivity.this, ChartsActivity.class));
                 break;
 
             case R.id.img_closeMenu_menu:
@@ -92,19 +127,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
 
     @Override
-    public void onBackPressed() {
-        //when the user pressed back button, this method will called
+    protected void onPause() {
+        //when user change activity (all activities of user phone), this method will called
         //and the appWidget on the homeScreen needs to be updated
         updateWidgets();
-        super.onBackPressed();
-    }
-
-    @Override
-    protected void onUserLeaveHint() {
-        //when the user leave the app (with pressed home button or incoming call or ...), this method will called
-        //and the appWidget on the homeScreen needs to be updated
-        updateWidgets();
-        super.onUserLeaveHint();
+        super.onPause();
     }
 
     private void updateWidgets() {

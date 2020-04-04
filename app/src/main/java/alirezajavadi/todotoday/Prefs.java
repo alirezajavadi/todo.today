@@ -9,6 +9,13 @@ public class Prefs {
     //today date
     public static final String TODAY_DATE = "todayDate";
 
+    //
+    public static final String FIRST_RUN_DATE = "firstRunDate";
+
+    //
+    public static final String DEFAULT_START_DATE_CHARTS = "defaultStartDateCharts";
+
+
     private static SharedPreferences mSharedPref;
 
 
