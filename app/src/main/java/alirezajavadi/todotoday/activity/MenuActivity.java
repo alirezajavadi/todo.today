@@ -35,8 +35,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_menu);
         init();
 
-        //settings for first run
-        firstRun();
 
 
         //set onclick listener
@@ -53,36 +51,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void firstRun() {
-        if (Prefs.read(Prefs.IS_FIRST_RUN, true)) {
-            //get all child and add gone visibility to them
-            LinearLayout rootView = findViewById(R.id.lnl_rootView_menu);
-            for (int i = 0; i < rootView.getChildCount(); i++)
-                rootView.getChildAt(i).setVisibility(View.GONE);
 
-            //set VISIBLE visibility to first run views
-            findViewById(R.id.txv_titleFirstRun_menu).setVisibility(View.VISIBLE);
-            findViewById(R.id.view_topView_menu).setVisibility(View.VISIBLE);
-            findViewById(R.id.txv_descriptionFirstRun_menu).setVisibility(View.VISIBLE);
-            findViewById(R.id.view_bottomView_menu).setVisibility(View.VISIBLE);
-            findViewById(R.id.txv_okFirstRun_menu).setVisibility(View.VISIBLE);
-
-            //set onClick to txv_okFirstRun and close to app because user should work with appWidget
-            findViewById(R.id.txv_okFirstRun_menu).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
-
-            //save today's date to sharedPrefs (display it by default in the charts)
-            Prefs.write(Prefs.FIRST_RUN_DATE,CurrentDate.getCurrentDate());
-
-            //next run, is not the first run :|
-            Prefs.write(Prefs.IS_FIRST_RUN,false);
-
-        }
-    }
 
     private void init() {
         Prefs.initial(MenuActivity.this);

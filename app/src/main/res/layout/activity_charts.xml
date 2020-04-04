@@ -86,7 +86,6 @@
             android:layout_height="400dp"
             android:layout_below="@id/txv_descriptionDoneChart_charts"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:layout_toEndOf="@id/txv_descriptionXAxisDoneChart_charts" />
@@ -148,7 +147,6 @@
             android:layout_height="400dp"
             android:layout_below="@id/txv_descriptionUndoneChart_charts"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:layout_toEndOf="@id/txv_descriptionXAxisUndoneChart_charts" />

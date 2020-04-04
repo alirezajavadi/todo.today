@@ -16,35 +16,11 @@
         android:padding="3dp"
         android:src="@drawable/ic_menu_widget" />
 
-    <TextView
-        android:id="@+id/txv_titleFirstRun_menu"
-        android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:background="@drawable/shape_bg_header_main_widget"
-        android:gravity="center"
-        android:text="@string/firstRunTitle_menu"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
     <View
         android:layout_width="match_parent"
         android:id="@+id/view_topView_menu"
         android:layout_height="1dp"
         android:background="@color/view" />
-
-    <TextView
-        android:id="@+id/txv_descriptionFirstRun_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:paddingLeft="16dp"
-        android:paddingTop="8dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="8dp"
-        android:text="@string/firstRunDescription_menu"
-        android:textColor="@android:color/black"
-        android:visibility="gone" />
 
     <TextView
         android:id="@+id/txv_newDay_menu"

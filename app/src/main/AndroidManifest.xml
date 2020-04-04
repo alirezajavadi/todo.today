@@ -4,22 +4,33 @@
 
     <application
         android:allowBackup="true"
-        android:excludeFromRecents="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="false"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.ChartsActivity" />
-        <activity android:name=".activity.NewTaskTitle" />
-        <activity android:name=".activity.NewTaskTodo" />
-        <activity android:name=".activity.NewDayActivity" />
-        <activity android:name=".activity.MenuActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.ChartsActivity"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name=".activity.NewTaskTitle"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name=".activity.NewTaskTodo"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name=".activity.NewDayActivity"
+            android:excludeFromRecents="true" />
+        <activity
+            android:name=".activity.MenuActivity"
+            android:excludeFromRecents="true" />
+
 
         <receiver android:name=".widget.MainWidgetAppWidgetProvider">
             <intent-filter>

@@ -10,6 +10,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import alirezajavadi.todotoday.DataBase;
+import alirezajavadi.todotoday.activity.ChartsActivity;
 import alirezajavadi.todotoday.activity.MenuActivity;
 import alirezajavadi.todotoday.R;
 
