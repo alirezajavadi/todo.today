@@ -156,12 +156,12 @@ public class NewTaskTodoActivity extends AppCompatActivity implements View.OnCli
                 if (hourOfDay < 10)
                     hourString = "0" + hourString;
                 txv_endTo.setText(hourString + ":" + minuteString);
-
+                isTxvEndToClicked = true;
             }
         }, startFromH, startFromM, true);
         timePickerDialog.show();
 
-        isTxvEndToClicked = true;
+
     }
 
     private void clickTxvStartFrom() {
