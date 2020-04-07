@@ -3,7 +3,9 @@ package alirezajavadi.todotoday;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -55,14 +57,14 @@ public class Reminder {
     }
 
 
-    public static void MakeNewCalendarEntry(String title, long startTime, long endTime) {
+    public static long MakeNewReminder(String title, long startTime, long endTime) {
 
         if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED)
-            return;
+            return 0;
 
         List<String> calendarIdList = getCalenderIdList();
         if (calendarIdList.size() == 0)
-            return;
+            return 0;
 
         int calendarId = Integer.parseInt(calendarIdList.get(0));
 
@@ -89,7 +91,7 @@ public class Reminder {
         reminders.put(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT);
         reminders.put(CalendarContract.Reminders.MINUTES, selectedReminderValue);
         cr.insert(CalendarContract.Reminders.CONTENT_URI, reminders);
-
+        return eventID;
 
     }
 
@@ -114,6 +116,11 @@ public class Reminder {
         } while (managedCursor.moveToNext());
         managedCursor.close();
         return calenderIdList;
+    }
+
+    public static void deleteReminder(long reminderId, Context context) {
+        Uri deleteUri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, Long.parseLong(String.valueOf(reminderId)));
+        context.getContentResolver().delete(deleteUri, null, null);
     }
 
 }

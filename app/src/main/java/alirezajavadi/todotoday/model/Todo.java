@@ -7,7 +7,8 @@ public class Todo {
     private int isDone;
     private String date;
     private int isDisplayInList;
-    private int idDatabase;
+    private int databaseId;
+    private long reminderId;
 
     public String getStartFrom() {
         return startFrom;
@@ -57,11 +58,19 @@ public class Todo {
         isDisplayInList = displayInList;
     }
 
-    public int getIdDatabase() {
-        return idDatabase;
+    public int getDatabaseId() {
+        return databaseId;
     }
 
-    public void setIdDatabase(int idDatabase) {
-        this.idDatabase = idDatabase;
+    public void setDatabaseId(int databaseId) {
+        this.databaseId = databaseId;
+    }
+
+    public long getReminderId() {
+        return reminderId;
+    }
+
+    public void setReminderId(long reminderId) {
+        this.reminderId = reminderId;
     }
 }

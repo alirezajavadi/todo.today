@@ -1,5 +1,6 @@
 package alirezajavadi.todotoday.widget;
 
+import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
@@ -10,7 +11,7 @@ import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import alirezajavadi.todotoday.DataBase;
-import alirezajavadi.todotoday.activity.ChartsActivity;
+import alirezajavadi.todotoday.Reminder;
 import alirezajavadi.todotoday.activity.MenuActivity;
 import alirezajavadi.todotoday.R;
 
@@ -20,6 +21,7 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
     public static final String EXTRA_ITEM_POSITION = "itemPosition";
     public static final String EXTRA_ITEM_POSITION_IN_DATABASE = "itemPositionInDatabase";
     public static final String EXTRA_ITEM_IS_DONE = "itemIsDone";
+    public static final String EXTRA_ITEM_REMINDER_ID = "itemIsDone";
 
 
     @Override
@@ -70,6 +72,7 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
             int clickedItem = intent.getIntExtra(EXTRA_ITEM_CLICKED, 0);
             int databaseId = intent.getIntExtra(EXTRA_ITEM_POSITION_IN_DATABASE, 0);
 
+
             if (clickedItem == R.id.img_checkBox_itemListTodoMainWidget) {
                 RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.main_widget_app_widget_provider);
 
@@ -85,12 +88,16 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
                 if (result == 0)
                     Toast.makeText(context, context.getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
             } else {
-                //todo delete this reminder from calender
+                long reminderId = intent.getLongExtra(EXTRA_ITEM_REMINDER_ID, 0);
                 //update database if user clicked on img_deleteItem_itemListTodoMainWidget and delete a record
-                int result = dataBase.deleteARecord(databaseId);
+                int result = dataBase.deleteRecord(databaseId);
                 //check delete record in database is success or not
-                if (result == 0)
+                if (result != 0) {
+                    //delete reminder from calender if currentRecord successfully deleted from database
+                    Reminder.deleteReminder(reminderId,context);
+                } else {
                     Toast.makeText(context, context.getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
+                }
             }
 
             //update widget

@@ -17,7 +17,7 @@ public class NewTaskTitleActivity extends AppCompatActivity {
     private TextView txv_addNewTaskTitle;
     private EditText edt_newTaskTitle;
 
-    private List<String> TaskTitleList;
+    private List<String> taskTitleList;
 
     private DataBase dataBase;
 
@@ -29,7 +29,7 @@ public class NewTaskTitleActivity extends AppCompatActivity {
         init();
 
         //get all Task titles to check that new TaskTitle (user will enter) is not a duplicate
-        TaskTitleList =dataBase.getAllTaskTitles();
+        taskTitleList =dataBase.getAllTaskTitles();
 
         //add to database and show Toast
         txv_addNewTaskTitle.setOnClickListener(new View.OnClickListener() {
@@ -42,8 +42,8 @@ public class NewTaskTitleActivity extends AppCompatActivity {
                     return;
                 }
                 //if the "new task title" is entered, already in the database
-                for (int i = 0; i < TaskTitleList.size(); i++)
-                    if (TaskTitleList.get(i).equals(newTaskTitle)) {
+                for (int i = 0; i < taskTitleList.size(); i++)
+                    if (taskTitleList.get(i).equals(newTaskTitle)) {
                         Toast.makeText(NewTaskTitleActivity.this, getString(R.string.errorExistTitle_newTaskTitle), Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -53,7 +53,7 @@ public class NewTaskTitleActivity extends AppCompatActivity {
                 if (result == 1) {
                     Toast.makeText(NewTaskTitleActivity.this, getString(R.string.toastAddSuccess), Toast.LENGTH_SHORT).show();
                     //add new taskTitle in taskTitleList (it will show in spinner)
-                    TaskTitleList.add(TaskTitleList.size(), edt_newTaskTitle.getText().toString());
+                    taskTitleList.add(taskTitleList.size(), edt_newTaskTitle.getText().toString());
                 } else
                     Toast.makeText(NewTaskTitleActivity.this, getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
 

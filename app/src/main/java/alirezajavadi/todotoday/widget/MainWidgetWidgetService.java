@@ -18,6 +18,7 @@ import alirezajavadi.todotoday.model.Todo;
 import static alirezajavadi.todotoday.widget.MainWidgetAppWidgetProvider.EXTRA_ITEM_CLICKED;
 import static alirezajavadi.todotoday.widget.MainWidgetAppWidgetProvider.EXTRA_ITEM_IS_DONE;
 import static alirezajavadi.todotoday.widget.MainWidgetAppWidgetProvider.EXTRA_ITEM_POSITION_IN_DATABASE;
+import static alirezajavadi.todotoday.widget.MainWidgetAppWidgetProvider.EXTRA_ITEM_REMINDER_ID;
 
 public class MainWidgetWidgetService extends RemoteViewsService {
     @Override
@@ -100,7 +101,7 @@ public class MainWidgetWidgetService extends RemoteViewsService {
             Intent fillIntentCheckBox = new Intent();
             fillIntentCheckBox.putExtra(EXTRA_ITEM_CLICKED, R.id.img_checkBox_itemListTodoMainWidget);
             fillIntentCheckBox.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            fillIntentCheckBox.putExtra(EXTRA_ITEM_POSITION_IN_DATABASE, todo.getIdDatabase());
+            fillIntentCheckBox.putExtra(EXTRA_ITEM_POSITION_IN_DATABASE, todo.getDatabaseId());
             fillIntentCheckBox.putExtra(EXTRA_ITEM_IS_DONE, todo.getIsDone());
             views.setOnClickFillInIntent(R.id.img_checkBox_itemListTodoMainWidget, fillIntentCheckBox);
 
@@ -108,7 +109,8 @@ public class MainWidgetWidgetService extends RemoteViewsService {
             Intent fillIntentDelete = new Intent();
             fillIntentDelete.putExtra(EXTRA_ITEM_CLICKED, R.id.img_deleteItem_itemListTodoMainWidget);
             fillIntentDelete.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-            fillIntentDelete.putExtra(EXTRA_ITEM_POSITION_IN_DATABASE, todo.getIdDatabase());
+            fillIntentDelete.putExtra(EXTRA_ITEM_POSITION_IN_DATABASE, todo.getDatabaseId());
+            fillIntentDelete.putExtra(EXTRA_ITEM_REMINDER_ID, todo.getReminderId());
             views.setOnClickFillInIntent(R.id.img_deleteItem_itemListTodoMainWidget, fillIntentDelete);
 
             return views;

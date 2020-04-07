@@ -3,8 +3,8 @@ package alirezajavadi.todotoday.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.TimePickerDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -26,6 +26,7 @@ import saman.zamani.persiandate.PersianDate;
 
 public class NewTaskTodoActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private static final String TAG = "NewTaskTodoActivity";
     private TextView txv_startFrom;
     private TextView txv_endTo;
     private TextView txv_addNewTaskTodo;
@@ -109,24 +110,19 @@ public class NewTaskTodoActivity extends AppCompatActivity implements View.OnCli
         todo.setStartFrom(txv_startFrom.getText().toString());
         todo.setTaskTitle(spn_selectTaskTitle.getSelectedItem().toString());
         todo.setDate(Prefs.read(Prefs.TODAY_DATE, CurrentDate.getCurrentDate()));
+        long reminderId = 0;
+        if (Prefs.read(Prefs.IS_ENABLE_REMINDER, false))
+            reminderId = makeReminder(spn_selectTaskTitle.getSelectedItem().toString());//make reminder and save its id in database
+        todo.setReminderId(reminderId);
         //add to database
         int result = dataBase.addNewTaskTodo(todo);
         if (result == 1)
             Toast.makeText(NewTaskTodoActivity.this, getString(R.string.toastAddSuccess), Toast.LENGTH_SHORT).show();
         else {
             Toast.makeText(NewTaskTodoActivity.this, getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
-            return;//don't make Reminder
+            Reminder.deleteReminder(reminderId,NewTaskTodoActivity.this);
+            return;
         }
-
-        //make Reminder if user enable that
-        if (Prefs.read(Prefs.IS_ENABLE_REMINDER, false))
-            //make new reminder in another thread
-            AsyncTask.execute(new Runnable() {
-                @Override
-                public void run() {
-                    makeReminder(spn_selectTaskTitle.getSelectedItem().toString());
-                }
-            });
 
         //close the current activity if user click on txv_addNewTaskTodo (return back to menu)
         onBackPressed();
@@ -186,7 +182,7 @@ public class NewTaskTodoActivity extends AppCompatActivity implements View.OnCli
         timePickerDialog.show();
     }
 
-    private void makeReminder(String title) {
+    private long makeReminder(String title) {
         String finalTitle = getString(R.string.reminderTitle, title);
         //convert ShamsiDate to long
         String[] stringsDate = Prefs.read(Prefs.TODAY_DATE, CurrentDate.getCurrentDate()).split("/");
@@ -210,6 +206,6 @@ public class NewTaskTodoActivity extends AppCompatActivity implements View.OnCli
         long alarmDateAndTimeEndTo = startDayAlarm + longHourEndTo + longMinuteEndTo;//final long
 
 
-        Reminder.MakeNewCalendarEntry(finalTitle, alarmDateAndTimeStartFrom, alarmDateAndTimeEndTo);
+        return Reminder.MakeNewReminder(finalTitle, alarmDateAndTimeStartFrom, alarmDateAndTimeEndTo);
     }
 }

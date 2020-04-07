@@ -28,6 +28,7 @@ public class DataBase extends SQLiteOpenHelper {
     private static final String KEY_MAIN_DATE = "mainDate";
     private static final String KEY_MAIN_TASK_TITLE = "mainTaskTitle";
     private static final String KEY_MAIN_IS_DISPLAY_IN_LIST = "mainIsDisplayInList"; //that mean is: show in charts or not (if displayInList is true -> it will not apply to the chart)
+    private static final String KEY_MAIN_REMINDER_ID = "mainReminderId";
 
     //table taskTitle
     private static final String TB_NAME_TASK_TITLE = "tableTaskTitle";
@@ -47,6 +48,7 @@ public class DataBase extends SQLiteOpenHelper {
                 KEY_MAIN_IS_DONE + " INTEGER , " +
                 KEY_MAIN_DATE + " TEXT , " +
                 KEY_MAIN_TASK_TITLE + " TEXT , " +
+                KEY_MAIN_REMINDER_ID + " INTEGER , " +
                 KEY_MAIN_IS_DISPLAY_IN_LIST + " INTEGER )";
         db.execSQL(CREATE_TB_MAIN);
 
@@ -108,6 +110,7 @@ public class DataBase extends SQLiteOpenHelper {
         values.put(KEY_MAIN_IS_DONE, todo.getIsDone());
         values.put(KEY_MAIN_IS_DISPLAY_IN_LIST, 1);//true == 1
         values.put(KEY_MAIN_DATE, todo.getDate());
+        values.put(KEY_MAIN_REMINDER_ID, todo.getReminderId());
 
         long result = db.insert(TB_NAME_MAIN, null, values);
         if (result == -1) {
@@ -128,6 +131,7 @@ public class DataBase extends SQLiteOpenHelper {
                 KEY_MAIN_DATE + " , " +
                 KEY_MAIN_IS_DONE + " , " +
                 KEY_MAIN_ID + " , " +
+                KEY_MAIN_REMINDER_ID + " , " +
                 KEY_MAIN_END_TO + " , " +
                 KEY_MAIN_START_FROM +
                 " FROM " + TB_NAME_MAIN +
@@ -148,8 +152,9 @@ public class DataBase extends SQLiteOpenHelper {
             todo.setStartFrom(cursor.getString(cursor.getColumnIndex(KEY_MAIN_START_FROM)));
             todo.setEndTo(cursor.getString(cursor.getColumnIndex(KEY_MAIN_END_TO)));
             todo.setIsDone(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_IS_DONE)));
-            todo.setIdDatabase(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_ID)));
+            todo.setDatabaseId(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_ID)));
             todo.setIsDisplayInList(1);
+            todo.setReminderId(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_REMINDER_ID)));
             todoList.add(todo);
         } while (cursor.moveToNext());
         db.close();
@@ -183,7 +188,7 @@ public class DataBase extends SQLiteOpenHelper {
     }
 
     //delete one record from database (if user clicked on img_deleteItem_itemListTodoMainWidget)
-    public int deleteARecord(int id) {
+    public int deleteRecord(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         int result = db.delete(TB_NAME_MAIN, KEY_MAIN_ID + "=?", new String[]{id + ""});
         db.close();
@@ -218,7 +223,7 @@ public class DataBase extends SQLiteOpenHelper {
             todo.setStartFrom(cursor.getString(cursor.getColumnIndex(KEY_MAIN_START_FROM)));
             todo.setEndTo(cursor.getString(cursor.getColumnIndex(KEY_MAIN_END_TO)));
             todo.setIsDone(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_IS_DONE)));
-            todo.setIdDatabase(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_ID)));
+            todo.setDatabaseId(cursor.getInt(cursor.getColumnIndex(KEY_MAIN_ID)));
             todo.setIsDisplayInList(0);
             todoList.add(todo);
         } while (cursor.moveToNext());
