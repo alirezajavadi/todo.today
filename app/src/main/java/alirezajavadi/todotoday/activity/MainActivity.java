@@ -1,16 +1,13 @@
 package alirezajavadi.todotoday.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.ComponentName;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-
 import alirezajavadi.todotoday.CurrentDate;
 import alirezajavadi.todotoday.Prefs;
 import alirezajavadi.todotoday.R;
+import saman.zamani.persiandate.PersianDate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
         CurrentDate.initial();
         //settings for first run
         firstRun();
-
     }
 
     private void firstRun() {
@@ -37,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            //hide app icon
-            PackageManager p = getPackageManager();
-            ComponentName componentName = new ComponentName(this, MainActivity.class); // activity which is first time open in manifest file which is declare as <category android:name="android.intent.category.LAUNCHER" />
-            p.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+//todo remove this comments in the end
+//            //hide app icon
+//            PackageManager p = getPackageManager();
+//            ComponentName componentName = new ComponentName(this, MainActivity.class); // activity which is first time open in manifest file which is declare as <category android:name="android.intent.category.LAUNCHER" />
+//            p.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 
             //save today's date to sharedPrefs (display it by default in the charts)
             Prefs.write(Prefs.FIRST_RUN_DATE, CurrentDate.getCurrentDate());

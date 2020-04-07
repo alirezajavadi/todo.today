@@ -15,6 +15,9 @@ public class Prefs {
     //
     public static final String DEFAULT_START_DATE_CHARTS = "defaultStartDateCharts";
 
+    //
+    public static final String IS_ENABLE_REMINDER = "isEnableReminder";
+
 
     private static SharedPreferences mSharedPref;
 

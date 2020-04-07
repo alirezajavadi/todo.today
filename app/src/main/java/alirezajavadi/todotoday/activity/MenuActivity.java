@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import alirezajavadi.todotoday.CurrentDate;
@@ -23,6 +22,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txv_newTaskTitle;
     private TextView txv_charts;
     private TextView txv_help;
+    private TextView txv_settings;
     private ImageView img_close;
 
 
@@ -44,6 +44,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         txv_newTaskTodo.setOnClickListener(this);
         txv_charts.setOnClickListener(this);
         img_close.setOnClickListener(this);
+        txv_settings.setOnClickListener(this);
 
         //get all appWidgetId to update them
         ComponentName name = new ComponentName(MenuActivity.this, MainWidgetAppWidgetProvider.class);
@@ -60,6 +61,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         txv_help = findViewById(R.id.txv_help_menu);
         txv_newTaskTitle = findViewById(R.id.txv_newTaskTitle_menu);
         txv_newTaskTodo = findViewById(R.id.txv_newTaskTodo_menu);
+        txv_settings=findViewById(R.id.txv_settings_menu);
         txv_charts = findViewById(R.id.txv_charts_menu);
         img_close = findViewById(R.id.img_closeMenu_menu);
     }
@@ -76,11 +78,11 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.txv_newTaskTitle_menu:
-                startActivity(new Intent(MenuActivity.this, NewTaskTitle.class));
+                startActivity(new Intent(MenuActivity.this, NewTaskTitleActivity.class));
                 break;
 
             case R.id.txv_newTaskTodo_menu:
-                startActivity(new Intent(MenuActivity.this, NewTaskTodo.class));
+                startActivity(new Intent(MenuActivity.this, NewTaskTodoActivity.class));
                 break;
 
             case R.id.txv_charts_menu:
@@ -89,6 +91,9 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.img_closeMenu_menu:
                 onBackPressed();
+                break;
+            case R.id.txv_settings_menu:
+                startActivity(new Intent(MenuActivity.this,SettingsActivity.class));
                 break;
 
         }

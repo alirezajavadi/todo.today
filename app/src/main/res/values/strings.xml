@@ -36,6 +36,7 @@
     </string>
 
     <string name="help">راهنما</string>
+    <string name="settings">تنظیمات</string>
     <string name="aboutUs">درباره ما</string>
     <string name="tapHere">لمس کنید!</string>
     <string name="intimateOk">حله</string>
@@ -66,6 +67,7 @@
     <string name="errorSelectPastTime_newTaskTodo">زمان گذشته را نمیتوانید انتخاب کنید!</string>
     <string name="errorSelectStartFromFirst_newTaskTodo">ابتدا زمان شروع را انتخاب کنید!</string>
     <string name="errorEmptyCells_newTaskTodo">لطفا همه اطلاعات را پرکنید!</string>
+    <string name="reminderTitle">وقت %s رسیده :)</string>
 
     <string name="title_newDay"> روز جدید :)</string>
     <string name="message_newDay">تاریخی که در حال برنامه ریزی برای آن روز هستید را انتخاب کنید
@@ -96,6 +98,14 @@
     <string name="descriptionYAxisChart_charts">کارهای روزانه</string>
     <string name="descriptionDoneChart_charts">کارهای انجام شده</string>
     <string name="descriptionUndoneChart_charts">کارهای انجام نشده</string>
+
+    <string name="switchReminder_settings">یادآور کارهای روزانه</string>
+    <string name="saveSettings_settings">ذخیره</string>
+    <string name="errorNoCalender_settings">
+        تقویمی یافت نشد!
+        \n
+        لطفا مطمئن شوید که تقویم دستگاه شما فعال است
+    </string>
 
 
 </resources>

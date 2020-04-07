@@ -85,6 +85,7 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
                 if (result == 0)
                     Toast.makeText(context, context.getString(R.string.toastAddUnSuccess), Toast.LENGTH_SHORT).show();
             } else {
+                //todo delete this reminder from calender
                 //update database if user clicked on img_deleteItem_itemListTodoMainWidget and delete a record
                 int result = dataBase.deleteARecord(databaseId);
                 //check delete record in database is success or not
