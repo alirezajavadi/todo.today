@@ -8,8 +8,8 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +34,7 @@ import alirezajavadi.todotoday.model.Todo;
 import alirezajavadi.todotoday.model.TodoChart;
 
 public class ChartsActivity extends AppCompatActivity {
+    private static final String TAG = "ChartsActivity";
     private TextView txv_showDialogSelectDate;
     private TextView txv_detailChartsDate;
     private BarChart chart_doneTask;
@@ -41,13 +42,17 @@ public class ChartsActivity extends AppCompatActivity {
     private DataBase dataBase;
 
     private List<Todo> taskList;
-    private List<TodoChart> doneTaskList_todoChart;
-    private List<TodoChart> undoneTaskList_todoChart;
+    //    private List<TodoChart> doneTaskList_todoChart;
+//    private List<TodoChart> undoneTaskList_todoChart;
     private List<String> taskTitleList;
-    private List<Integer> doneTaskHourList;
-    private List<Float> doneTaskMinuteList;
-    private List<Integer> undoneTaskHourList;
-    private List<Float> undoneTaskMinuteList;
+//    private List<Float> doneTaskHourList;
+//    private List<Float> doneTaskMinuteList;
+//    private List<Float> undoneTaskHourList;
+//    private List<Float> undoneTaskMinuteList;
+
+    //new
+    private List<TodoChart> finalTaskDataDone;
+    private List<TodoChart> finalTaskDataUndone;
 
     //dialog select date
     private Dialog dialog_selectDate;
@@ -73,8 +78,7 @@ public class ChartsActivity extends AppCompatActivity {
         txv_detailChartsDate.setText(getString(R.string.detailChartsDate_charts, startFrom, endTo));
         getTasksData(startFrom, endTo);
         initDoneChart();
-        initUnDoneChart();
-
+        initUndoneChart();
 
 
         //handle everything about selectData dialog (like onClick, getAllData from database, dismissDialog and ...)
@@ -99,13 +103,10 @@ public class ChartsActivity extends AppCompatActivity {
         chart_doneTask = findViewById(R.id.barChart_doneTask_charts);
         chart_undoneTask = findViewById(R.id.barChart_undoneTask_charts);
 
-        doneTaskList_todoChart = new ArrayList<>();
-        undoneTaskList_todoChart = new ArrayList<>();
-        doneTaskHourList = new ArrayList<>();
-        undoneTaskHourList = new ArrayList<>();
-        doneTaskMinuteList = new ArrayList<>();
-        undoneTaskHourList = new ArrayList<>();
-        undoneTaskMinuteList = new ArrayList<>();
+        //new
+        finalTaskDataDone = new ArrayList<>();
+        finalTaskDataUndone = new ArrayList<>();
+        taskTitleList = new ArrayList<>();
     }
 
     //handle everything about selectData dialog
@@ -231,7 +232,7 @@ public class ChartsActivity extends AppCompatActivity {
 
                 //initial charts with new data
                 initDoneChart();
-                initUnDoneChart();
+                initUndoneChart();
 
                 //update detailSelectDate
                 txv_detailChartsDate.setText(getString(R.string.detailChartsDate_charts, txv_selectDateFrom.getText(), txv_selectDateTo.getText()));
@@ -246,126 +247,121 @@ public class ChartsActivity extends AppCompatActivity {
 
     //get data from database to show in the charts
     private void getTasksData(String startFrom, String endTo) {
-
-
-        //get all jobTitle
-        taskTitleList = dataBase.getAllTaskTitles();
-
-        if (taskList != null && taskList.size() != 0)
-            taskList.clear();
-        //get all date between date "start" and "end"
+        //
         taskList = dataBase.getAllData(startFrom, endTo);
+        //
+        float hourStartFrom;
+        float hourEndTo;
+        float hour;
+        float finalHour;
 
-        //get all "to do" object from list and separate it to "done job" and "undone job";
-        doneTaskList_todoChart.clear();//if user selects dates("start" and "end") more than once
-        undoneTaskList_todoChart.clear();//if user selects dates("start" and "end") more than once
-        for (int i = 0; i < taskList.size(); i++) {
+        float minuteStartFrom;
+        float minuteEndTo;
+        float minute;
+        float finalMinute;
+
+        String[] stringsStartFrom;
+        String[] stringsEndTo;
+
+        finalTaskDataUndone.clear();
+        finalTaskDataDone.clear();
+
+        //search in taskList and separate it based on the titles
+        for (Todo task : taskList) {
             TodoChart todoChart = new TodoChart();
 
-            todoChart.setTaskTitle(taskList.get(i).getTaskTitle());
+            //
+            stringsStartFrom = task.getStartFrom().split(":"); //convert "10:34" to {"10","34"}
+            stringsEndTo = task.getEndTo().split(":"); //convert "10:34" to {"10","34"}
 
-            String[] stringsStartFrom = taskList.get(i).getStartFrom().split(":"); //convert "10:34" to {"10","34"}
-            String[] stringsEndTo = taskList.get(i).getEndTo().split(":"); //convert "10:34" to {"10","34"}
+            //calculate hour and minute
+            hourStartFrom = Float.parseFloat(stringsStartFrom[0]);//convert string to float (hourStart)
+            hourEndTo = Float.parseFloat(stringsEndTo[0]);//convert string to float
 
-            //calculate hour
-            int startHourFrom = Integer.parseInt(stringsStartFrom[0]);//convert string to int (hourStart)
-            int endHourTo = Integer.parseInt(stringsEndTo[0]);//convert string to int ()
+            minuteStartFrom = Float.parseFloat(stringsStartFrom[1]);
+            minuteEndTo = Float.parseFloat(stringsEndTo[1]);
 
-            todoChart.setHour(endHourTo - startHourFrom);
+            if (minuteEndTo >= minuteStartFrom)
+                hour = hourEndTo - hourStartFrom;
+            else
+                hour = hourEndTo - hourStartFrom - 1;
 
-            //calculate minute
-            int minuteStartFrom = Integer.parseInt(stringsStartFrom[1]);
-            int minuteEndTo = Integer.parseInt(stringsEndTo[1]);
-            int finalMin = minuteEndTo - minuteStartFrom;
-            finalMin = finalMin >= 0 ? finalMin : finalMin * -1;//for example: 10(minuteEndTo) - 40(minuteStartFrom) = -30(finalMin) ---->must multiplied in -1
-            todoChart.setMinute(finalMin);
-            //separate to "done job" and "undone job"
-            if (taskList.get(i).getIsDone() == 1) {
-                doneTaskList_todoChart.add(todoChart);
+            if (minuteStartFrom > minuteEndTo)
+                minute = (60 - minuteStartFrom) + minuteEndTo;
+            else
+                minute = (minuteStartFrom - minuteEndTo) * -1;
 
-            } else {
-                undoneTaskList_todoChart.add(todoChart);
-            }
+            //separate all date based on the isDone
+            if (task.getIsDone() == 1) {
+                int finalI = 0;
+                boolean isAlreadyInList = false;//fuck this name
+                for (int i = 0; i < finalTaskDataDone.size(); i++)
+                    //if the title is already in the list
+                    if (task.getTaskTitle().equals(finalTaskDataDone.get(i).getTaskTitle())) {
+                        isAlreadyInList = true;
+                        finalI = i;
+                        break;
+                    }
 
-        }
+                if (isAlreadyInList) {
+                    //calculate minute
+                    minute += finalTaskDataDone.get(finalI).getMinute();
 
-        //add zero in all list Hour and Minute
-        for (int i = 0; i < taskTitleList.size(); i++) {
-            if (doneTaskMinuteList.size() < taskTitleList.size()) {
-                doneTaskHourList.add(i, 0);
-                doneTaskMinuteList.add(i, 0f);
-                undoneTaskHourList.add(i, 0);
-                undoneTaskMinuteList.add(i, 0f);
-            } else {
-                doneTaskHourList.set(i, 0);
-                doneTaskMinuteList.set(i, 0f);
-                undoneTaskHourList.set(i, 0);
-                undoneTaskMinuteList.set(i, 0f);
-            }
-        }
+                    //if minute more than 60 ---> hour = minute / 60   and    minute = minute % 60
+                    hour += Math.round(minute) / 60;
+                    finalHour = finalTaskDataDone.get(finalI).getHour() + hour;
+                    minute %= 60;
+                    finalMinute = minute / 60;// that mean is: minute = minute * 1 / 60 (minute per natural number)
 
-        int hour;
-        float minute;
-        int lastHour;
-        float lastMinute;
-        //search in lists and separate it based on the jobTitles
-        for (int i = 0; i < taskTitleList.size(); i++) {
-            String jobTitle = taskTitleList.get(i);
-
-            //search in done jobs
-            for (TodoChart todoChart : doneTaskList_todoChart) {
-                if (jobTitle.equals(todoChart.getTaskTitle())) {
-                    hour = todoChart.getHour();
-                    minute = (float) todoChart.getMinute();
-                    lastHour = doneTaskHourList.get(i);
-                    lastMinute = doneTaskMinuteList.get(i);
-
-                    doneTaskHourList.set(i, lastHour + hour);
-                    doneTaskMinuteList.set(i, lastMinute + minute);
+                    //set new time
+                    finalTaskDataDone.get(finalI).setMinute(finalMinute);
+                    finalTaskDataDone.get(finalI).setHour(finalHour);
+                } else {
+                    todoChart.setHour(hour);
+                    todoChart.setMinute(minute);
+                    todoChart.setTaskTitle(task.getTaskTitle());
+                    finalTaskDataDone.add(todoChart);
                 }
 
-            }
+            } else {
+                boolean isAlreadyInList = false;//too
+                int finalI = 0;
+                for (int i = 0; i < finalTaskDataUndone.size(); i++)
+                    if (task.getTaskTitle().equals(finalTaskDataUndone.get(i).getTaskTitle())) {
+                        isAlreadyInList = true;
+                        finalI = i;
+                        break;
+                    }
 
-            //search in undone jobs
-            for (TodoChart todoChart : undoneTaskList_todoChart) {
-                if (jobTitle.equals(todoChart.getTaskTitle())) {
-                    hour = todoChart.getHour();
-                    minute = todoChart.getMinute();
-                    lastHour = undoneTaskHourList.get(i);
-                    lastMinute = undoneTaskMinuteList.get(i);
 
-                    undoneTaskHourList.set(i, lastHour + hour);
-                    undoneTaskMinuteList.set(i, lastMinute + minute);
+                if (isAlreadyInList) {
+                    //calculate minute
+                    minute += finalTaskDataUndone.get(finalI).getMinute();
 
+                    //if minute more than 60 ---> hour = minute / 60   and    minute = minute % 60
+                    hour += Math.round(minute) / 60;
+                    finalHour = finalTaskDataUndone.get(finalI).getHour() + hour;
+                    minute %= 60;
+                    finalMinute = minute / 60;// that mean is: minute = minute * 1 / 60 (minute per natural number)
+
+                    //set new time
+                    finalTaskDataUndone.get(finalI).setMinute(finalMinute);
+                    finalTaskDataUndone.get(finalI).setHour(finalHour);
+                } else {
+                    todoChart.setHour(hour);
+                    todoChart.setMinute(minute);
+                    todoChart.setTaskTitle(task.getTaskTitle());
+                    finalTaskDataUndone.add(todoChart);
                 }
+
+
             }
+
         }
 
-
-        for (int i = 0; i < taskTitleList.size(); i++) {
-            //if minute more than 60 ---> hour = minute / 60   and    minute = minute % 60
-            //calculate done job time
-            hour = Math.round(doneTaskMinuteList.get(i)) / 60;
-            hour += doneTaskHourList.get(i);
-            minute = doneTaskMinuteList.get(i) % 60;
-            minute /= 60;// that mean is: minute = minute * 1 / 60 (minute per natural number)
-
-            doneTaskHourList.set(i, hour);
-            doneTaskMinuteList.set(i, minute);
-
-            //if minute more than 60 ---> hour = minute / 60   and    minute = minute % 60
-            //calculate undone job time
-            hour = Math.round(undoneTaskMinuteList.get(i)) / 60;
-            hour += undoneTaskHourList.get(i);
-            minute = undoneTaskMinuteList.get(i) % 60;
-            minute /= 60;// that mean is: minute = minute * 1 / 60 (minute per natural number)
-
-            undoneTaskHourList.set(i, hour);
-            undoneTaskMinuteList.set(i, minute);
-        }
     }
 
-    private void initUnDoneChart() {
+    private void initUndoneChart() {
         chart_undoneTask.setDrawBarShadow(false);
         chart_undoneTask.setDrawValueAboveBar(true);
         chart_undoneTask.getDescription().setEnabled(false);
@@ -374,15 +370,18 @@ public class ChartsActivity extends AppCompatActivity {
         chart_undoneTask.animateXY(1000, 1000);
 
         // scaling can now only be done on x- and y-axis separately
-        //todo check this in real device
+        ///todo check this in real device
         chart_undoneTask.setPinchZoom(true);
 
+        taskTitleList.clear();
+        for (TodoChart todoChart : finalTaskDataUndone)
+            taskTitleList.add(todoChart.getTaskTitle());
 
         XAxis xAxis = chart_undoneTask.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
-        xAxis.setLabelCount(taskTitleList.size());
+        xAxis.setLabelCount(finalTaskDataUndone.size());
         xAxis.setValueFormatter(new IndexAxisValueFormatter(taskTitleList));
 
 
@@ -398,8 +397,8 @@ public class ChartsActivity extends AppCompatActivity {
 
 
         ArrayList<BarEntry> values = new ArrayList<>();
-        for (int i = 0; i < taskTitleList.size(); i++) {
-            values.add(new BarEntry(i, (float) undoneTaskHourList.get(i) + undoneTaskMinuteList.get(i)));
+        for (int i = 0; i < finalTaskDataUndone.size(); i++) {
+            values.add(new BarEntry(i, finalTaskDataUndone.get(i).getHour() + finalTaskDataUndone.get(i).getMinute()));
         }
 
 
@@ -436,12 +435,15 @@ public class ChartsActivity extends AppCompatActivity {
         //todo check this in real device
         chart_doneTask.setPinchZoom(true);
 
+        taskTitleList.clear();
+        for (TodoChart todoChart : finalTaskDataDone)
+            taskTitleList.add(todoChart.getTaskTitle());
 
         XAxis xAxis = chart_doneTask.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
-        xAxis.setLabelCount(taskTitleList.size());
+        xAxis.setLabelCount(finalTaskDataDone.size());
         xAxis.setValueFormatter(new IndexAxisValueFormatter(taskTitleList));
 
 
@@ -457,8 +459,8 @@ public class ChartsActivity extends AppCompatActivity {
 
 
         ArrayList<BarEntry> values = new ArrayList<>();
-        for (int i = 0; i < taskTitleList.size(); i++) {
-            values.add(new BarEntry(i, (float) doneTaskHourList.get(i) + doneTaskMinuteList.get(i)));
+        for (int i = 0; i < finalTaskDataDone.size(); i++) {
+            values.add(new BarEntry(i, finalTaskDataDone.get(i).getHour() + finalTaskDataDone.get(i).getMinute()));
         }
 
 

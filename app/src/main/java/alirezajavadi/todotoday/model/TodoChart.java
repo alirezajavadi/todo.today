@@ -1,23 +1,23 @@
 package alirezajavadi.todotoday.model;
 
 public class TodoChart {
-    private int minute;
-    private int hour;
+    private float minute;
+    private float hour;
     private String taskTitle;
 
-    public int getMinute() {
+    public float getMinute() {
         return minute;
     }
 
-    public void setMinute(int minute) {
+    public void setMinute(float minute) {
         this.minute = minute;
     }
 
-    public int getHour() {
+    public float getHour() {
         return hour;
     }
 
-    public void setHour(int hour) {
+    public void setHour(float hour) {
         this.hour = hour;
     }
 
