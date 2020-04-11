@@ -8,19 +8,18 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+//
+//import com.github.mikephil.charting.charts.BarChart;
+//import com.github.mikephil.charting.components.XAxis;
+//import com.github.mikephil.charting.components.YAxis;
+//import com.github.mikephil.charting.data.BarData;
+//import com.github.mikephil.charting.data.BarDataSet;
+//import com.github.mikephil.charting.data.BarEntry;
+//import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+//import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 
 import java.util.ArrayList;
@@ -32,27 +31,26 @@ import alirezajavadi.todotoday.Prefs;
 import alirezajavadi.todotoday.R;
 import alirezajavadi.todotoday.model.Todo;
 import alirezajavadi.todotoday.model.TodoChart;
+import lecho.lib.hellocharts.formatter.ColumnChartValueFormatter;
+import lecho.lib.hellocharts.gesture.ZoomType;
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
+import lecho.lib.hellocharts.model.Column;
+import lecho.lib.hellocharts.model.ColumnChartData;
+import lecho.lib.hellocharts.model.SubcolumnValue;
+import lecho.lib.hellocharts.view.ColumnChartView;
 
 public class ChartsActivity extends AppCompatActivity {
     private static final String TAG = "ChartsActivity";
     private TextView txv_showDialogSelectDate;
     private TextView txv_detailChartsDate;
-    private BarChart chart_doneTask;
-    private BarChart chart_undoneTask;
+
     private DataBase dataBase;
 
-    private List<Todo> taskList;
-    //    private List<TodoChart> doneTaskList_todoChart;
-//    private List<TodoChart> undoneTaskList_todoChart;
-    private List<String> taskTitleList;
-//    private List<Float> doneTaskHourList;
-//    private List<Float> doneTaskMinuteList;
-//    private List<Float> undoneTaskHourList;
-//    private List<Float> undoneTaskMinuteList;
+    private List<Todo> taskList;//all data
 
-    //new
-    private List<TodoChart> finalTaskDataDone;
-    private List<TodoChart> finalTaskDataUndone;
+    private List<TodoChart> finalTaskDataDone;//all doneTasks data
+    private List<TodoChart> finalTaskDataUndone;//all undoneTasks data
 
     //dialog select date
     private Dialog dialog_selectDate;
@@ -63,6 +61,21 @@ public class ChartsActivity extends AppCompatActivity {
     int startDateYear = 0;
     int startDateMonth = 0;
     int startDateDay = 0;
+
+
+    //chart
+    private ColumnChartData doneChartData;
+    private ColumnChartView chartViewDone;
+    private List<AxisValue> axisXValueListDone;
+    private Axis axisXDoneChart;
+    private List<Column> columnListDoneChart;
+
+    private ColumnChartData undoneChartData;
+    private ColumnChartView chartViewUndone;
+    private List<AxisValue> axisXValueListUndone;
+    private Axis axisXUndoneChart;
+    private List<Column> columnListUndoneChart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +90,10 @@ public class ChartsActivity extends AppCompatActivity {
         String endTo = CurrentDate.getCurrentDate();
         txv_detailChartsDate.setText(getString(R.string.detailChartsDate_charts, startFrom, endTo));
         getTasksData(startFrom, endTo);
-        initDoneChart();
-        initUndoneChart();
+
+        //charts
+        doneChart();
+        undoneChart();
 
 
         //handle everything about selectData dialog (like onClick, getAllData from database, dismissDialog and ...)
@@ -93,20 +108,19 @@ public class ChartsActivity extends AppCompatActivity {
         });
     }
 
-
     private void init() {
         Prefs.initial(ChartsActivity.this);
         CurrentDate.initial();
         dataBase = new DataBase(ChartsActivity.this);
         txv_detailChartsDate = findViewById(R.id.txv_detailChartsDate_charts);
         txv_showDialogSelectDate = findViewById(R.id.txv_showDialogSelectDate_charts);
-        chart_doneTask = findViewById(R.id.barChart_doneTask_charts);
-        chart_undoneTask = findViewById(R.id.barChart_undoneTask_charts);
 
-        //new
+
         finalTaskDataDone = new ArrayList<>();
         finalTaskDataUndone = new ArrayList<>();
-        taskTitleList = new ArrayList<>();
+
+        //
+        initCharts();
     }
 
     //handle everything about selectData dialog
@@ -231,8 +245,8 @@ public class ChartsActivity extends AppCompatActivity {
                 getTasksData(txv_selectDateFrom.getText().toString(), txv_selectDateTo.getText().toString());
 
                 //initial charts with new data
-                initDoneChart();
-                initUndoneChart();
+                doneChart();
+                undoneChart();
 
                 //update detailSelectDate
                 txv_detailChartsDate.setText(getString(R.string.detailChartsDate_charts, txv_selectDateFrom.getText(), txv_selectDateTo.getText()));
@@ -361,128 +375,131 @@ public class ChartsActivity extends AppCompatActivity {
 
     }
 
-    private void initUndoneChart() {
-        chart_undoneTask.setDrawBarShadow(false);
-        chart_undoneTask.setDrawValueAboveBar(true);
-        chart_undoneTask.getDescription().setEnabled(false);
-        chart_undoneTask.setDrawGridBackground(false);
-        chart_undoneTask.getLegend().setEnabled(false);
-        chart_undoneTask.animateXY(1000, 1000);
 
-        // scaling can now only be done on x- and y-axis separately
-        ///todo check this in real device
-        chart_undoneTask.setPinchZoom(true);
+    private void initCharts() {
+        //
 
-        taskTitleList.clear();
-        for (TodoChart todoChart : finalTaskDataUndone)
-            taskTitleList.add(todoChart.getTaskTitle());
+        //axis Y setting
+        Axis axisY = new Axis();
+        axisY.setHasLines(true);
+        axisY.setName(getString(R.string.descriptionYAxisChart_charts));
+        axisY.setLineColor(ContextCompat.getColor(ChartsActivity.this, android.R.color.black));
+        axisY.setTextColor(ContextCompat.getColor(ChartsActivity.this, android.R.color.black));
+        axisY.setTextSize(10);
 
-        XAxis xAxis = chart_undoneTask.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1f);
-        xAxis.setLabelCount(finalTaskDataUndone.size());
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(taskTitleList));
+        //axisX doneChart Setting
+        axisXDoneChart = new Axis();
+        axisXDoneChart.setName(getString(R.string.descriptionXAxisChart_charts));
+        axisXDoneChart.setLineColor(ContextCompat.getColor(ChartsActivity.this, android.R.color.black));
+        axisXDoneChart.setTextColor(ContextCompat.getColor(ChartsActivity.this, android.R.color.black));
+        axisXDoneChart.setHasTiltedLabels(false);
+        axisXDoneChart.setAutoGenerated(false);
+        axisXDoneChart.setTextSize(10);
 
+        //doneChart init
+        chartViewDone = findViewById(R.id.chart_doneTask_charts);
+        chartViewDone.setZoomEnabled(true);
+        doneChartData = new ColumnChartData();
+        doneChartData.setAxisXBottom(axisXDoneChart);
+        doneChartData.setAxisYLeft(axisY);
+        columnListDoneChart = new ArrayList<>();
 
-        YAxis leftAxis = chart_undoneTask.getAxisLeft();
-        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        leftAxis.setSpaceTop(15f);
-        leftAxis.setAxisMinimum(0f);
+        axisXValueListDone = new ArrayList<>();
 
-        YAxis rightAxis = chart_undoneTask.getAxisRight();
-        rightAxis.setDrawLabels(false);
-        rightAxis.setDrawAxisLine(false);
-        rightAxis.setDrawGridLines(false);
-
-
-        ArrayList<BarEntry> values = new ArrayList<>();
-        for (int i = 0; i < finalTaskDataUndone.size(); i++) {
-            values.add(new BarEntry(i, finalTaskDataUndone.get(i).getHour() + finalTaskDataUndone.get(i).getMinute()));
-        }
-
-
-        if (chart_undoneTask.getData() != null && chart_undoneTask.getData().getDataSetCount() > 0) {
-            chart_undoneTask.invalidate();
-            chart_undoneTask.clear();
-        }
-
-        BarDataSet barDataSet = new BarDataSet(values, "");
-        barDataSet.setColor(ContextCompat.getColor(ChartsActivity.this, R.color.bgHeader_mainWidget));
+        //axisX undoneChart setting
+        axisXUndoneChart = new Axis();
+        axisXUndoneChart.setName(getString(R.string.descriptionXAxisChart_charts));
+        axisXUndoneChart.setLineColor(ContextCompat.getColor(ChartsActivity.this, android.R.color.black));
+        axisXUndoneChart.setTextColor(ContextCompat.getColor(ChartsActivity.this, android.R.color.black));
+        axisXUndoneChart.setHasTiltedLabels(false);
+        axisXUndoneChart.setAutoGenerated(false);
+        axisXUndoneChart.setTextSize(10);
 
 
-        ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-        dataSets.add(barDataSet);
+        //undoneChart init
+        chartViewUndone = findViewById(R.id.chart_undoneTask_charts);
+        chartViewUndone.setZoomEnabled(true);
+        chartViewUndone.setZoomType(ZoomType.HORIZONTAL_AND_VERTICAL);
+        undoneChartData = new ColumnChartData();
+        undoneChartData.setAxisYLeft(axisY);
+        undoneChartData.setAxisXBottom(axisXUndoneChart);
+        columnListUndoneChart=new ArrayList<>();
 
+        axisXValueListUndone = new ArrayList<>();
 
-        BarData data = new BarData(dataSets);
-        data.setValueTextSize(10f);
-        data.setBarWidth(0.9f);
-
-        chart_undoneTask.setData(data);
 
     }
 
-    private void initDoneChart() {
-        chart_doneTask.setDrawBarShadow(false);
-        chart_doneTask.setDrawValueAboveBar(true);
-        chart_doneTask.getDescription().setEnabled(false);
-        chart_doneTask.setDrawGridBackground(false);
-        chart_doneTask.getLegend().setEnabled(false);
-        chart_doneTask.animateXY(1000, 1000);
-
-        // scaling can now only be done on x- and y-axis separately
-        //todo check this in real device
-        chart_doneTask.setPinchZoom(true);
-
-        taskTitleList.clear();
-        for (TodoChart todoChart : finalTaskDataDone)
-            taskTitleList.add(todoChart.getTaskTitle());
-
-        XAxis xAxis = chart_doneTask.getXAxis();
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawGridLines(false);
-        xAxis.setGranularity(1f);
-        xAxis.setLabelCount(finalTaskDataDone.size());
-        xAxis.setValueFormatter(new IndexAxisValueFormatter(taskTitleList));
-
-
-        YAxis leftAxis = chart_doneTask.getAxisLeft();
-        leftAxis.setPosition(YAxis.YAxisLabelPosition.OUTSIDE_CHART);
-        leftAxis.setSpaceTop(15f);
-        leftAxis.setAxisMinimum(0f);
-
-        YAxis rightAxis = chart_doneTask.getAxisRight();
-        rightAxis.setDrawLabels(false);
-        rightAxis.setDrawAxisLine(false);
-        rightAxis.setDrawGridLines(false);
-
-
-        ArrayList<BarEntry> values = new ArrayList<>();
+    private void doneChart() {
+        //set label to axisX(task Title)
+        axisXValueListDone.clear();
         for (int i = 0; i < finalTaskDataDone.size(); i++) {
-            values.add(new BarEntry(i, finalTaskDataDone.get(i).getHour() + finalTaskDataDone.get(i).getMinute()));
+            AxisValue axisValue = new AxisValue(i);
+            axisValue.setLabel(finalTaskDataDone.get(i).getTaskTitle());
+            axisXValueListDone.add(axisValue);
         }
+        axisXDoneChart.setValues(axisXValueListDone);
 
+        //set value , animation
+        columnListDoneChart.clear();
+        for (TodoChart todoChart : finalTaskDataDone) {
+            List<SubcolumnValue> subColumnValueList = new ArrayList<>();
+            SubcolumnValue subcolumnValue = new SubcolumnValue();
+            subcolumnValue.setColor( ContextCompat.getColor(ChartsActivity.this, R.color.bgHeader_mainWidget));
+            subcolumnValue.setTarget(todoChart.getHour() + todoChart.getMinute());
+            subcolumnValue.setLabel(todoChart.getHour() + todoChart.getMinute()+"");
+            subColumnValueList.add(subcolumnValue);
 
-        if (chart_doneTask.getData() != null && chart_doneTask.getData().getDataSetCount() > 0) {
-            chart_doneTask.invalidate();
-            chart_doneTask.clear();
+            Column column = new Column(subColumnValueList);
+            column.setHasLabels(true);
+            column.setHasLabelsOnlyForSelected(false);
+            columnListDoneChart.add(column);
         }
+        //
+        doneChartData.setColumns(columnListDoneChart);
 
-        BarDataSet barDataSet = new BarDataSet(values, "");
-        barDataSet.setColor(ContextCompat.getColor(ChartsActivity.this, R.color.bgHeader_mainWidget));
+        //
+        chartViewDone.startDataAnimation(1000L);
 
-        ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-        dataSets.add(barDataSet);
-
-
-        BarData data = new BarData(dataSets);
-        data.setValueTextSize(10f);
-        data.setBarWidth(0.9f);
-
-        chart_doneTask.setData(data);
-
-
+        //
+        chartViewDone.setColumnChartData(doneChartData);
     }
 
+    private void undoneChart() {
+        //set label to axisX(task Title)
+        axisXValueListUndone.clear();
+        for (int i = 0; i < finalTaskDataUndone.size(); i++) {
+            AxisValue axisValue = new AxisValue(i);
+            axisValue.setLabel(finalTaskDataUndone.get(i).getTaskTitle());
+            axisXValueListUndone.add(axisValue);
+        }
+        axisXUndoneChart.setValues(axisXValueListUndone);
+
+
+        //set value , animation
+        columnListUndoneChart.clear();
+        for (TodoChart todoChart : finalTaskDataUndone) {
+
+            List<SubcolumnValue> subColumnValueList = new ArrayList<>();
+            SubcolumnValue subcolumnValue = new SubcolumnValue();
+            subcolumnValue.setColor( ContextCompat.getColor(ChartsActivity.this, R.color.bgHeader_mainWidget));
+            subcolumnValue.setTarget(todoChart.getHour() + todoChart.getMinute());
+            subcolumnValue.setLabel(todoChart.getHour() + todoChart.getMinute()+"");
+            subColumnValueList.add(subcolumnValue);
+
+            Column column = new Column(subColumnValueList);
+            column.setHasLabels(true);
+            column.setHasLabelsOnlyForSelected(false);
+            columnListUndoneChart.add(column);
+        }
+        //
+        undoneChartData.setColumns(columnListUndoneChart);
+
+        //
+        chartViewUndone.startDataAnimation(1000L);
+
+        //
+        chartViewUndone.setColumnChartData(undoneChartData);
+
+    }
 }

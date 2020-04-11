@@ -94,8 +94,8 @@
     <string name="errorSelectPastDate_charts">زمان گذشته را نمیتوانید انتخاب کنید!</string>
     <string name="errorSelectStartDateFirst_charts">ابتدا تاریخ شروع را انتخاب کنید!</string>
     <string name="errorFirstSelectDate_charts">برای نمایش نمودار ها ابتدا تاریخ انتخاب کنید!</string>
-    <string name="descriptionXAxisChart_charts">ساعت</string>
-    <string name="descriptionYAxisChart_charts">کارهای روزانه</string>
+    <string name="descriptionXAxisChart_charts">کارهای روزانه</string>
+    <string name="descriptionYAxisChart_charts">ساعت</string>
     <string name="descriptionDoneChart_charts">کارهای انجام شده</string>
     <string name="descriptionUndoneChart_charts">کارهای انجام نشده</string>
 
