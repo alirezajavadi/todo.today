@@ -53,7 +53,6 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
     private void init() {
         Prefs.initial(MenuActivity.this);
         CurrentDate.initial();
@@ -61,7 +60,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         txv_help = findViewById(R.id.txv_help_menu);
         txv_newTaskTitle = findViewById(R.id.txv_newTaskTitle_menu);
         txv_newTaskTodo = findViewById(R.id.txv_newTaskTodo_menu);
-        txv_settings=findViewById(R.id.txv_settings_menu);
+        txv_settings = findViewById(R.id.txv_settings_menu);
         txv_charts = findViewById(R.id.txv_charts_menu);
         img_close = findViewById(R.id.img_closeMenu_menu);
     }
@@ -93,7 +92,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 onBackPressed();
                 break;
             case R.id.txv_settings_menu:
-                startActivity(new Intent(MenuActivity.this,SettingsActivity.class));
+                startActivity(new Intent(MenuActivity.this, SettingsActivity.class));
                 break;
 
         }

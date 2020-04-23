@@ -40,19 +40,52 @@
         android:text="@string/switchReminder_settings"
         android:textColor="@android:color/black" />
 
+    <View
+        android:id="@+id/viewA_setting"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/textViewReminder"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/view" />
+
+    <Switch
+        android:id="@+id/sw_dailyNotification_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/viewA_setting"
+        android:layout_marginLeft="16dp"
+        android:checked="false" />
+
+    <TextView
+        android:id="@+id/textViewDailyNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/sw_dailyNotification_settings"
+        android:layout_alignBottom="@id/sw_dailyNotification_settings"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_toRightOf="@id/sw_dailyNotification_settings"
+        android:checked="false"
+        android:gravity="right"
+        android:paddingTop="2dp"
+        android:text="@string/dailyNotification_settings"
+        android:textColor="@android:color/black" />
+
+
     <TextView
         android:id="@+id/txv_saveSettings_settings"
         android:layout_width="match_parent"
         android:layout_height="24dp"
-        android:layout_below="@id/textViewReminder"
+        android:layout_below="@id/sw_dailyNotification_settings"
         android:layout_marginTop="16dp"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
+        android:padding="3dp"
         android:text="@string/saveSettings_settings"
         android:textColor="@android:color/black"
-        android:padding="3dp"
         android:textStyle="bold" />
 
 </RelativeLayout>

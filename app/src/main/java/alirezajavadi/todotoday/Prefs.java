@@ -18,6 +18,9 @@ public class Prefs {
     //
     public static final String IS_ENABLE_REMINDER = "isEnableReminder";
 
+    //
+    public static final String IS_ENABLE_DAILY_NOTIFICATION="isEnableDailyNotification";
+
 
     private static SharedPreferences mSharedPref;
 

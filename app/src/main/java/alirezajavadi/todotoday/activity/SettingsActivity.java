@@ -10,6 +10,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import alirezajavadi.todotoday.dailyNotification.DailyNotificationBroadcastReceiver;
 import alirezajavadi.todotoday.Prefs;
 import alirezajavadi.todotoday.R;
 import alirezajavadi.todotoday.Reminder;
@@ -18,6 +19,7 @@ import static alirezajavadi.todotoday.Reminder.PERMISSION_REQUEST_CODE_CALENDAR;
 
 public class SettingsActivity extends AppCompatActivity {
     private Switch sw_reminder;
+    private Switch sw_dailyNotification;
     private TextView txv_saveSetting;
 
     @Override
@@ -26,8 +28,9 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         init();
 
-        //request calender permissions
+        //reminder is on or off? set it to Switch
         sw_reminder.setChecked(Prefs.read(Prefs.IS_ENABLE_REMINDER, false));
+        //request calender permissions
         sw_reminder.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -46,12 +49,28 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
 
+        //dailyNotification is on or off? set it to Switch
+        sw_dailyNotification.setChecked(Prefs.read(Prefs.IS_ENABLE_DAILY_NOTIFICATION, false));
+
+
         //save settings in sharedPrefs and close activity
         txv_saveSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                //reminder
                 //save reminder in sharedPrefs
                 Prefs.write(Prefs.IS_ENABLE_REMINDER, sw_reminder.isChecked());
+
+                //dailyNotification
+                //start the alarmManager and set it to show notification every day or stop
+                if (sw_dailyNotification.isChecked() && !Prefs.read(Prefs.IS_ENABLE_DAILY_NOTIFICATION, false))
+                    DailyNotificationBroadcastReceiver.startAlarm(SettingsActivity.this);
+                //stop the alarmManager
+                if (!sw_dailyNotification.isChecked() && Prefs.read(Prefs.IS_ENABLE_DAILY_NOTIFICATION, false))
+                    DailyNotificationBroadcastReceiver.stopAlarm(SettingsActivity.this);
+                //save dailyNotification status in sharedPrefs
+                Prefs.write(Prefs.IS_ENABLE_DAILY_NOTIFICATION, sw_dailyNotification.isChecked());
 
                 //close Activity
                 onBackPressed();
@@ -64,6 +83,7 @@ public class SettingsActivity extends AppCompatActivity {
         Reminder.initial(SettingsActivity.this);
         sw_reminder = findViewById(R.id.sw_reminder_settings);
         txv_saveSetting = findViewById(R.id.txv_saveSettings_settings);
+        sw_dailyNotification = findViewById(R.id.sw_dailyNotification_settings);
     }
 
     @Override
