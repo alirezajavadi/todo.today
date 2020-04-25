@@ -6,22 +6,27 @@
 
     <color name="none">#00FFFFFF</color>
 
+    <color name="appColor">#808080</color>
+
+    <color name="textColor">#1D1D1D</color>
+    <color name="textColorHigh">#090909</color>
+    <color name="textColorLow">#494949</color>
+
+    <color name="bgPopupSpinner">#BDBDBD</color>
+    <color name="bgDropDownItemSelected">#A8A8A8</color>
+
     <color name="bgHeader_mainWidget">#6E818181</color>
 
     <color name="bgMain_mainWidget">#D9F5F5F5</color>
 
     <color name="bgActivities">#E6EAEAEA</color>
 
-    <color name="view">#535353</color>
+    <color name="view">#616161</color>
 
-    <color name="bgItem_notPressed">@color/none</color>
-    <color name="bgItem_pressed">#D9CDCDCD</color>
-
-    <color name="bgHeaderFooter_notPressed">@color/bgHeader_mainWidget</color>
+    <color name="bgHeaderFooter">@color/bgHeader_mainWidget</color>
     <color name="bgHeaderFooter_pressed">#6E535353</color>\
 
     <color name="doneTask_itemListTodoMainWidget">#515151</color>
-
 
 
 </resources>

@@ -93,7 +93,7 @@ public class NewDayActivity extends AppCompatActivity implements View.OnClickLis
     private void clickAddTxvNewDay() {
         String date = txv_selectTodayDate.getText().toString();
         //dose user select date or not
-        if (date.equals(getString(R.string.tapHere))) {
+        if (date.equals(getString(R.string.btnAddDate_newDay))) {
             Toast.makeText(NewDayActivity.this, getString(R.string.errorSelectDate_newDay), Toast.LENGTH_SHORT).show();
             return;
         }

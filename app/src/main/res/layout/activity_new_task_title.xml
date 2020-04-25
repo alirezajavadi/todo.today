@@ -8,49 +8,59 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_bg_header_main_widget"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:background="@drawable/shape_bg_header"
         android:gravity="center"
-        android:padding="3dp"
         android:text="@string/title_newTaskTitle"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/textColorHigh" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_header_shadow" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="5dp"
         android:gravity="center"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/message_newTaskTitle"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/textColor" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="@string/description_newTaskTitle"
+        android:textColor="@color/textColorLow"
+        android:textSize="@dimen/textSizeDescription" />
+
 
     <EditText
         android:id="@+id/edt_newTaskTitle_newTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:textSize="15sp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="5dp"
+        android:hint="@string/hintEdtTaskTitle_taskTitle"
         android:inputType="text"
-        android:hint="نام کار روازنه"
         android:maxLength="18"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@android:color/black"
-        android:textColorHint="@android:color/darker_gray" />
+        android:textColor="@color/textColor"
+        android:textSize="15sp" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_footer_shadow" />
 
     <TextView
         android:id="@+id/txv_addNewTaskTitle_newTaskTitle"
@@ -62,6 +72,7 @@
         android:gravity="center"
         android:padding="3dp"
         android:text="@string/add"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
 </LinearLayout>

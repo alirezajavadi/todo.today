@@ -6,7 +6,7 @@
     <string name="startFrom_mainWidget">شروع</string>
     <string name="endTo_mainWidget">پایان</string>
     <string name="taskToDo_mainWidget">کارهای روزانه</string>
-    <string name="emptyListView_mainWidget">شما تا کنون کاری تعریف نکره اید. لطفا راهنمای برنامه را مطالعه فرمایید!</string>
+    <string name="emptyListView_mainWidget">لیست شما خالی است!</string>
 
     <string name="add">اضافه کن</string>
 
@@ -43,17 +43,16 @@
     <string name="toastAddSuccess">با موفقیت اضافه شد</string>
     <string name="toastAddUnSuccess">مشکلی پیش آمده</string>
 
-    <string name="message_newTaskTitle">یک نام برای کارهای روزانه خود انتخاب کنید
-    \n
-        (از این نام برای تهیه نمودار استفاده خواهد شد.)
-    </string>
-    <string name="title_newTaskTitle">یک نام وارد کنید</string>
+    <string name="message_newTaskTitle">یک عنوان برای کارهای روزانه خود وارد کنید.</string>
+    <string name="title_newTaskTitle">عنوان</string>
     <string name="errorExistTitle_newTaskTitle">عنوان وارد شده در لیست موجود است
     \n
     میتوانید از این عنوان در برنامه ریزی روزانه استفاده کنید
     </string>
+    <string name="description_newTaskTitle">از این عنوان برای تهیه نمودار استفاده خواهد شد.</string>
+    <string name="hintEdtTaskTitle_taskTitle">عنوان…</string>
 
-    <string name="title_newTaskTodo">یک کار روزانه تعریف کنید</string>
+    <string name="title_newTaskTodo">برنامه ریزی</string>
     <string name="message_newTaskTodo">
         شما در حال برنامه ریزی برای روز
         %s
@@ -69,16 +68,15 @@
     <string name="errorEmptyCells_newTaskTodo">لطفا همه اطلاعات را پرکنید!</string>
     <string name="reminderTitle">وقت %s رسیده :)</string>
 
-    <string name="title_newDay"> روز جدید :)</string>
-    <string name="message_newDay">تاریخی که در حال برنامه ریزی برای آن روز هستید را انتخاب کنید
-    \n
-        (روز قبلی شما وارد دیتابیس شده و می توانید نتایج را در نمودارها مشاهده کنید)
-    </string>
+    <string name="title_newDay"> روز جدید</string>
+    <string name="message_newDay">تاریخی که در حال برنامه ریزی برای آن هستید را انتخاب کنید.</string>
+    <string name="description_newDay">روز قبلی شما از لیست حذف شده و به دیتابیس انتقال می یابد؛ نتایج روزهای قبل را  میتوانید در نمودار مشاهده کنید.</string>
     <string name="errorSelectDate_newDay">یک روز انتخاب کنید!</string>
     <string name="toastAddNewDaySuccess_newDay">روز جدید با موفقیت افزوده شد
     \n
     میتوانید برای امروز برنامه ریزی کنید.
     </string>
+    <string name="btnAddDate_newDay">انتخاب تاریخ</string>
 
 
     <string name="selectDateFrom_dialogSelectDate">از تاریخ:</string>
@@ -100,6 +98,7 @@
     <string name="descriptionUndoneChart_charts">کارهای انجام نشده</string>
 
     <string name="switchReminder_settings">یادآور کارهای روزانه</string>
+    <string name="descriptionReminder_settings">با شروع همه ی کارهایی که در لیست هست؛ یک نوتیفیکیشن دریافت میکنید تا همه کارهای لیست را در زمان خود انجام دهید.</string>
     <string name="saveSettings_settings">ذخیره</string>
     <string name="errorNoCalender_settings">
         تقویمی یافت نشد!
@@ -107,6 +106,7 @@
         لطفا مطمئن شوید که تقویم دستگاه شما فعال است
     </string>
     <string name="dailyNotification_settings">دریافت نوتیفیکیشن های انگیزشی</string>
+    <string name="descriptionDailyNotification_settings">صبح هر روز یک نوتیفیکشن انگیزشی دریافت خواهید کرد. ممکن است وقتی دستگاه شما در حالت ذخیره نیرو یا شارژ شما رو به اتمام باشد؛ در آن روز نوتیفیکشنی دریافت نکنید.</string>
 
     <string name="iCan_notification">من میتوانم!</string>
     <string-array name="motivationalSentences_notification">

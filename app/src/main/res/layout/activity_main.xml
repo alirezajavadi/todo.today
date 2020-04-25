@@ -8,20 +8,20 @@
     <TextView
         android:id="@+id/txv_titleFirstRun_menu"
         android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:background="@drawable/shape_bg_header_main_widget"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:background="@drawable/shape_bg_header"
         android:gravity="center"
         android:text="@string/firstRunTitle_menu"
-        android:textColor="@android:color/black"
+        android:textColor="@color/textColorHigh"
         android:textStyle="bold" />
 
     <View
         android:id="@+id/view_topView_menu"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_header_shadow" />
 
-
+    <!--todo change-->
     <TextView
         android:id="@+id/txv_descriptionFirstRun_menu"
         android:layout_width="match_parent"
@@ -32,24 +32,25 @@
         android:paddingRight="16dp"
         android:paddingBottom="8dp"
         android:text="@string/firstRunDescription_menu"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/textColor" />
 
     <View
         android:id="@+id/view_bottomView_menu"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_footer_shadow" />
 
     <TextView
         android:id="@+id/txv_okFirstRun_menu"
         android:layout_width="match_parent"
-        android:layout_height="22dp"
+        android:layout_height="@dimen/heightFooterHeader"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
+        android:padding="3dp"
         android:text="@string/intimateOk"
-        android:textColor="@android:color/black"
+        android:textColor="@color/textColorHigh"
         android:textStyle="bold" />
 
 

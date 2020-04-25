@@ -11,21 +11,20 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:background="@drawable/shape_bg_header_main_widget"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:background="@drawable/shape_bg_header"
         android:padding="3dp"
         android:src="@drawable/ic_menu_widget" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_header_shadow" />
 
     <TextView
         android:id="@+id/txv_newDay_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_item"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -42,7 +41,6 @@
         android:id="@+id/txv_newTaskTodo_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_item"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -59,7 +57,6 @@
         android:id="@+id/txv_newTaskTitle_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_item"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -76,7 +73,6 @@
         android:id="@+id/txv_charts_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_item"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -93,7 +89,6 @@
         android:id="@+id/txv_settings_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_item"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -110,7 +105,6 @@
         android:id="@+id/txv_help_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_bg_item"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
@@ -120,19 +114,18 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_footer_shadow" />
 
     <ImageView
         android:id="@+id/img_closeMenu_menu"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="@dimen/heightFooterHeader"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
         android:focusable="true"
-        android:padding="3dp"
+        android:padding="4dp"
         android:src="@drawable/ic_close" />
-
 
 
 </LinearLayout>

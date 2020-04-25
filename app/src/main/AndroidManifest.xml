@@ -29,7 +29,8 @@
             android:excludeFromRecents="true" />
         <activity
             android:name=".activity.NewTaskTodoActivity"
-            android:excludeFromRecents="true" />
+            android:excludeFromRecents="true"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".activity.NewDayActivity"
             android:excludeFromRecents="true" />

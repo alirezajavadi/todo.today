@@ -8,34 +8,34 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_bg_header_main_widget"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:background="@drawable/shape_bg_header"
         android:gravity="center"
-        android:padding="3dp"
         android:text="@string/title_newTaskTodo"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/textColorHigh" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_header_shadow" />
 
     <TextView
         android:id="@+id/txv_message_newTaskTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/textColor"
+        android:textSize="13sp"
         tools:text="@string/message_newTaskTodo" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="0.4dp"
         android:background="@color/view" />
 
     <Spinner
@@ -43,12 +43,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/selector_arrow_icon_spinner"
-        android:popupBackground="#AAAAAA" />
+        android:popupBackground="@color/bgPopupSpinner" />
 
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.4dp"
         android:background="@color/view" />
 
     <LinearLayout
@@ -56,77 +56,89 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txv_startFrom_newTaskTodo"
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:text="@string/tapHere"
-            android:textColor="@android:color/black"
-            tools:text="16:24" />
+            android:orientation="vertical">
 
-        <TextView
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@string/endTo_newTaskTodo"
+                android:textColor="@color/textColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txv_endTo_newTaskTodo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/selector_bg_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/tapHere"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13.5sp"
+                tools:text="15:34" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.05dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/view" />
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:singleLine="true"
-            android:text="@string/startFrom_newTaskTodo"
-            android:textColor="@android:color/black" />
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@string/startFrom_newTaskTodo"
+                android:textColor="@color/textColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txv_startFrom_newTaskTodo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/selector_bg_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/tapHere"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13.5sp"
+                tools:text="16:24" />
+
+
+        </LinearLayout>
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/txv_endTo_newTaskTodo"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:text="@string/tapHere"
-            android:textColor="@android:color/black"
-            tools:text="15:34" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:singleLine="true"
-            android:text="@string/endTo_newTaskTodo"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_footer_shadow" />
 
     <TextView
         android:id="@+id/txv_addNewTaskTodo_newTaskTodo"
@@ -138,7 +150,8 @@
         android:gravity="center"
         android:padding="3dp"
         android:text="@string/add"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/textColorHigh"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

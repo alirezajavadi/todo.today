@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="radiusMainWidget">8dp</dimen>
+    <dimen name="heightFooterHeader">24dp</dimen>
+    <dimen name="heightShadow">3dp</dimen>
+    <dimen name="paddingBtn">11dp</dimen>
+    <dimen name="textSizeDescription">12sp</dimen>
 </resources>

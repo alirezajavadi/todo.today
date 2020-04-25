@@ -12,6 +12,13 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
+        <item name="android:dropDownListViewStyle">@style/TestSpinnerStyle</item>
+    </style>
+
+    <style name="TestSpinnerStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">@color/view</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:listSelector">@color/bgDropDownItemSelected</item>
     </style>
 
 

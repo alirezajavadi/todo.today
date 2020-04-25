@@ -69,9 +69,9 @@
     <item>
         <shape>
             <corners android:radius="8dp" />
-            <solid android:color="@color/bgHeaderFooter_pressed" />
+            <solid android:color="@color/bgHeaderFooter" />
             <stroke
-                android:width="0.3dp"
+                android:width="0.1dp"
                 android:color="@color/view" />
         </shape>
     </item>

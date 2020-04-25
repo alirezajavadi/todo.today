@@ -8,106 +8,119 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/shape_bg_header_main_widget"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:background="@drawable/shape_bg_header"
         android:gravity="center"
-        android:padding="6dp"
+        android:padding="3dp"
         android:text="@string/selectDate_charts"
-        android:textColor="@android:color/black"
-        android:textSize="15sp"/>
+        android:textColor="@color/textColorHigh" />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_header_shadow" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/txv_selectDateFrom_dialogSelectDate"
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
             android:gravity="center"
-            android:padding="4dp"
-            android:text="@string/tapHere"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="0dp"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/selectDateTo_dialogSelectData"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txv_selectDateTo_dialogSelectDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/tapHere"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13.5sp" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="0.05dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@color/view" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:singleLine="true"
-            android:text="@string/selectDateFrom_dialogSelectDate"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:singleLine="true"
+                android:text="@string/selectDateFrom_dialogSelectDate"
+                android:textColor="@color/textColor"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txv_selectDateFrom_dialogSelectDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_button"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="@string/tapHere"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13.5sp" />
+
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_footer_shadow" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-
-        <TextView
-            android:id="@+id/txv_selectDateTo_dialogSelectDate"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/selector_bg_item"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="@string/tapHere"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/selectDateTo_dialogSelectData"
-            android:textColor="@android:color/black"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
-
-<!--    todo change this tags background -->
     <TextView
         android:id="@+id/txv_okSelectedDate_dialogSelectDate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/heightFooterHeader"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="3dp"
         android:text="@string/okSelectDate_dialogSelectDate"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
+        android:textColor="@color/textColorHigh"
         android:textStyle="bold" />
 
 </LinearLayout>
