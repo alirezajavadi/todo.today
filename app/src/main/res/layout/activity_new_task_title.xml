@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_bg_activities"
     android:gravity="center"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
-    <TextView
+    <ImageView
+        android:id="@+id/img_header_taskTitle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
+        android:layout_alignParentTop="true"
         android:background="@drawable/shape_bg_header"
-        android:gravity="center"
-        android:text="@string/title_newTaskTitle"
-        android:textColor="@color/textColorHigh" />
+        android:padding="3dp"
+        android:src="@drawable/ic_new_title" />
 
     <View
+        android:id="@+id/view_shadowHeader_TaskTitle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/img_header_taskTitle"
         android:background="@drawable/shape_header_shadow" />
 
     <TextView
+        android:id="@+id/txv_A_taskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/view_shadowHeader_TaskTitle"
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:paddingLeft="8dp"
@@ -30,8 +36,10 @@
         android:textColor="@color/textColor" />
 
     <TextView
+        android:id="@+id/txv_B_taskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/txv_A_taskTitle"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="8dp"
         android:gravity="center"
@@ -46,6 +54,7 @@
         android:id="@+id/edt_newTaskTitle_newTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/txv_B_taskTitle"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="5dp"
@@ -58,14 +67,17 @@
         android:textSize="15sp" />
 
     <View
+        android:id="@+id/view_shadowFooter_TaskTitle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/edt_newTaskTitle_newTaskTitle"
         android:background="@drawable/shape_footer_shadow" />
 
     <TextView
         android:id="@+id/txv_addNewTaskTitle_newTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/view_shadowFooter_TaskTitle"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
         android:focusable="true"
@@ -75,4 +87,4 @@
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
-</LinearLayout>
+</RelativeLayout>

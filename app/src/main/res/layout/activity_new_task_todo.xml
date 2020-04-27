@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_bg_activities"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
-    <TextView
+    <ImageView
+        android:id="@+id/img_header_taskTodo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
+        android:layout_alignParentTop="true"
         android:background="@drawable/shape_bg_header"
-        android:gravity="center"
-        android:text="@string/title_newTaskTodo"
-        android:textColor="@color/textColorHigh" />
+        android:padding="3dp"
+        android:src="@drawable/ic_new_task" />
 
     <View
+        android:id="@+id/view_shadowHeader_taskTodo"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/img_header_taskTodo"
         android:background="@drawable/shape_header_shadow" />
 
     <TextView
         android:id="@+id/txv_message_newTaskTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/view_shadowHeader_taskTodo"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="8dp"
@@ -34,26 +39,33 @@
         tools:text="@string/message_newTaskTodo" />
 
     <View
+        android:id="@+id/view_A_taskTodo"
         android:layout_width="match_parent"
         android:layout_height="0.4dp"
+        android:layout_below="@id/txv_message_newTaskTodo"
         android:background="@color/view" />
 
     <Spinner
         android:id="@+id/spn_selectTaskTitle_newTaskTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_arrow_icon_spinner"
+        android:layout_below="@id/view_A_taskTodo"
+        android:layoutDirection="rtl"
         android:popupBackground="@color/bgPopupSpinner" />
 
 
     <View
+        android:id="@+id/view_B_taskTodo"
         android:layout_width="match_parent"
         android:layout_height="0.4dp"
+        android:layout_below="@id/spn_selectTaskTitle_newTaskTodo"
         android:background="@color/view" />
 
     <LinearLayout
+        android:id="@+id/lnl_A_taskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/view_B_taskTodo"
         android:orientation="horizontal">
 
 
@@ -136,14 +148,17 @@
     </LinearLayout>
 
     <View
+        android:id="@+id/view_c_taskTitle"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/lnl_A_taskTitle"
         android:background="@drawable/shape_footer_shadow" />
 
     <TextView
         android:id="@+id/txv_addNewTaskTodo_newTaskTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/view_c_taskTitle"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
         android:focusable="true"
@@ -154,4 +169,4 @@
         android:textStyle="bold" />
 
 
-</LinearLayout>
+</RelativeLayout>

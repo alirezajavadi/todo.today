@@ -14,26 +14,23 @@ import java.util.List;
 import alirezajavadi.todotoday.model.Todo;
 
 public class DataBase extends SQLiteOpenHelper {
-    private static final String TAG = "DataBase";
-
-
     private static final String DATA_BASE_NAME = "todoDatabase";
 
     //table main
-    private static final String TB_NAME_MAIN = "tableMain";
-    private static final String KEY_MAIN_ID = "mainId";
-    private static final String KEY_MAIN_START_FROM = "mainStartFrom";
-    private static final String KEY_MAIN_END_TO = "mainEndTo";
-    private static final String KEY_MAIN_IS_DONE = "mainIsDone";
-    private static final String KEY_MAIN_DATE = "mainDate";
-    private static final String KEY_MAIN_TASK_TITLE = "mainTaskTitle";
-    private static final String KEY_MAIN_IS_DISPLAY_IN_LIST = "mainIsDisplayInList"; //that mean is: show in charts or not (if displayInList is true -> it will not apply to the chart)
-    private static final String KEY_MAIN_REMINDER_ID = "mainReminderId";
+    private final String TB_NAME_MAIN = "tableMain";
+    private final String KEY_MAIN_ID = "mainId";
+    private final String KEY_MAIN_START_FROM = "mainStartFrom";
+    private final String KEY_MAIN_END_TO = "mainEndTo";
+    private final String KEY_MAIN_IS_DONE = "mainIsDone";
+    private final String KEY_MAIN_DATE = "mainDate";
+    private final String KEY_MAIN_TASK_TITLE = "mainTaskTitle";
+    private final String KEY_MAIN_IS_DISPLAY_IN_LIST = "mainIsDisplayInList"; //that mean is: show in charts or not (if displayInList is true -> it will not apply to the chart)
+    private final String KEY_MAIN_REMINDER_ID = "mainReminderId";
 
     //table taskTitle
-    private static final String TB_NAME_TASK_TITLE = "tableTaskTitle";
-    private static final String KEY_TASK_TITLE_ID = "taskTitleId";
-    private static final String KEY_TASK_TITLE_TASK_TITLE = "taskTitleTaskTitle";
+    private final String TB_NAME_TASK_TITLE = "tableTaskTitle";
+    private final String KEY_TASK_TITLE_ID = "taskTitleId";
+    private final String KEY_TASK_TITLE_TASK_TITLE = "taskTitleTaskTitle";
 
     public DataBase(@Nullable Context context) {
         super(context, DATA_BASE_NAME, null, 1);

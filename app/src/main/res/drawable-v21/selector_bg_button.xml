@@ -4,5 +4,5 @@
     <item android:drawable="@drawable/shape_bg_button" />
     <item
         android:id="@android:id/mask"
-        android:drawable="@drawable/shape_bg_button_pressed" />
+        android:drawable="@drawable/shape_bg_button_selected" />
 </ripple>

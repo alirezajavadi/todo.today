@@ -28,5 +28,11 @@
 
     <color name="doneTask_itemListTodoMainWidget">#515151</color>
 
+    <color name="bgButton">#A6B3B3B3</color>
+    <color name="bgButtonSelected">#A69A9A9A</color>
+
+    <color name="bgMoreMenu">#F3CACACA</color>
+    <color name="bgBtnMoreMenu">#F39C9C9C</color>
+
 
 </resources>

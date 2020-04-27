@@ -69,7 +69,7 @@
     <item>
         <shape>
             <corners android:radius="8dp" />
-            <solid android:color="@color/bgHeaderFooter_pressed" />
+            <solid android:color="@color/bgButtonSelected" />
             <stroke
                 android:width="0.3dp"
                 android:color="@color/view" />

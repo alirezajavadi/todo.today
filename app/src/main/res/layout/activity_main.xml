@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_bg_activities"
+    android:layoutDirection="ltr"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/txv_titleFirstRun_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
+        android:layout_alignParentTop="true"
         android:background="@drawable/shape_bg_header"
         android:gravity="center"
         android:text="@string/firstRunTitle_menu"
@@ -19,6 +21,7 @@
         android:id="@+id/view_topView_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/txv_titleFirstRun_menu"
         android:background="@drawable/shape_header_shadow" />
 
     <!--todo change-->
@@ -26,6 +29,7 @@
         android:id="@+id/txv_descriptionFirstRun_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/view_topView_menu"
         android:gravity="right"
         android:paddingLeft="16dp"
         android:paddingTop="8dp"
@@ -38,12 +42,14 @@
         android:id="@+id/view_bottomView_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/txv_descriptionFirstRun_menu"
         android:background="@drawable/shape_footer_shadow" />
 
     <TextView
         android:id="@+id/txv_okFirstRun_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
+        android:layout_below="@id/view_bottomView_menu"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
         android:focusable="true"
@@ -54,4 +60,4 @@
         android:textStyle="bold" />
 
 
-</LinearLayout>
+</RelativeLayout>

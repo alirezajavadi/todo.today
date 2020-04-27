@@ -11,9 +11,11 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="false"
+        android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.SettingsActivity"/>
+        <activity android:name=".activity.HelpActivity"></activity>
+        <activity android:name=".activity.AboutUsActivity" />
+        <activity android:name=".activity.SettingsActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +32,7 @@
         <activity
             android:name=".activity.NewTaskTodoActivity"
             android:excludeFromRecents="true"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".activity.NewDayActivity"
             android:excludeFromRecents="true" />
@@ -52,7 +54,6 @@
             android:name=".widget.MainWidgetWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-
         <receiver android:name=".dailyNotification.DailyNotificationBroadcastReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -62,8 +63,6 @@
         <service
             android:name=".dailyNotification.AlarmManagerService"
             android:permission="android.permission.BIND_JOB_SERVICE" />
-
-
     </application>
 
 </manifest>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/lnl_rootView_menu"
-    android:layout_width="wrap_content"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:layout_margin="28dp"
+    android:animateLayoutChanges="true"
     android:background="@drawable/shape_bg_activities"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:layoutDirection="ltr">
 
     <ImageView
+        android:id="@+id/img_header_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
+        android:layout_alignParentTop="true"
         android:background="@drawable/shape_bg_header"
         android:padding="3dp"
         android:src="@drawable/ic_menu_widget" />
@@ -19,113 +19,244 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/img_header_menu"
         android:background="@drawable/shape_header_shadow" />
 
-    <TextView
-        android:id="@+id/txv_newDay_menu"
+    <LinearLayout
+        android:id="@+id/lnl_containerA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_below="@id/img_header_menu"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/newDay_menu"
-        android:textColor="@android:color/black" />
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lnl_newDay_menu"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/selector_bg_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_new_day" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/newDay_menu"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnl_newTask_menu"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/selector_bg_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_new_task" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/newTaskTodo_menu"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnl_containerB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lnl_containerA"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lnl_charts_menu"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/selector_bg_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_chart" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/charts_menu"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lnl_newTaskTitle_menu"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/selector_bg_button"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_new_title" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="@string/newTaskTitle_menu"
+                android:textColor="@color/textColorHigh"
+                android:textSize="13sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
-
-    <TextView
-        android:id="@+id/txv_newTaskTodo_menu"
-        android:layout_width="match_parent"
+        android:id="@+id/view_backgroundMoreMenu_menu"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@id/frl_containerMore_menu"
+        android:layout_below="@id/img_header_menu"
+        android:alpha="0"
+        android:background="@android:color/black"
+        android:clickable="false"
+        android:focusable="false"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/lnl_containerMore_menu"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@id/frl_containerMore_menu"
+        android:background="@drawable/shape_bg_more_menu"
         android:clickable="true"
         android:focusable="true"
         android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/newTaskTodo_menu"
-        android:textColor="@android:color/black" />
+        android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        <TextView
+            android:id="@+id/txv_settings_menu"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_bg_button_menu_more"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/settings"
+            android:textColor="@color/textColorHigh"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/txv_newTaskTitle_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/newTaskTitle_menu"
-        android:textColor="@android:color/black" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
+        <TextView
+            android:id="@+id/txv_help_menu"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/selector_bg_button_menu_more"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/help"
+            android:textColor="@color/textColorHigh"
+            android:textSize="12sp" />
 
-    <TextView
-        android:id="@+id/txv_charts_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/charts_menu"
-        android:textColor="@android:color/black" />
+        <TextView
+            android:id="@+id/txv_aboutUs_menu"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/selector_bg_button_menu_more"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="@string/aboutUs"
+            android:textColor="@color/textColor"
+            android:textSize="12sp" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
 
-    <TextView
-        android:id="@+id/txv_settings_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/settings"
-        android:textColor="@android:color/black" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/view" />
-
-    <TextView
-        android:id="@+id/txv_help_menu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="@string/help"
-        android:textColor="@android:color/black" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
+        android:layout_above="@id/frl_containerMore_menu"
         android:background="@drawable/shape_footer_shadow" />
 
-    <ImageView
-        android:id="@+id/img_closeMenu_menu"
+    <FrameLayout
+        android:id="@+id/frl_containerMore_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
+        android:layout_below="@id/lnl_containerB"
         android:background="@drawable/selector_bg_footer"
         android:clickable="true"
-        android:focusable="true"
-        android:padding="4dp"
-        android:src="@drawable/ic_close" />
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/img_moreMenu_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:src="@drawable/ic_more" />
+    </FrameLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

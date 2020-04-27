@@ -11,9 +11,9 @@
     <string name="add">اضافه کن</string>
 
 
-    <string name="newTaskTodo_menu">اضافه کردن کار جدید</string>
+    <string name="newTaskTodo_menu">برنامه ریزی</string>
     <string name="newDay_menu">روز جدید</string>
-    <string name="newTaskTitle_menu">اضافه کردن یک کار به لیست کارهای روزانه</string>
+    <string name="newTaskTitle_menu">عنوان کار</string>
     <string name="charts_menu">نمودارها</string>
     <string name="firstRunTitle_menu">اولین اجرا</string>
     <string name="firstRunDescription_menu">
