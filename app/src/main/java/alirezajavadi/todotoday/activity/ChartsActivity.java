@@ -11,15 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-//
-//import com.github.mikephil.charting.charts.BarChart;
-//import com.github.mikephil.charting.components.XAxis;
-//import com.github.mikephil.charting.components.YAxis;
-//import com.github.mikephil.charting.data.BarData;
-//import com.github.mikephil.charting.data.BarDataSet;
-//import com.github.mikephil.charting.data.BarEntry;
-//import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
-//import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 
 import java.util.ArrayList;
@@ -31,7 +22,6 @@ import alirezajavadi.todotoday.Prefs;
 import alirezajavadi.todotoday.R;
 import alirezajavadi.todotoday.model.Todo;
 import alirezajavadi.todotoday.model.TodoChart;
-import lecho.lib.hellocharts.formatter.ColumnChartValueFormatter;
 import lecho.lib.hellocharts.gesture.ZoomType;
 import lecho.lib.hellocharts.model.Axis;
 import lecho.lib.hellocharts.model.AxisValue;
@@ -89,11 +79,16 @@ public class ChartsActivity extends AppCompatActivity {
         String startFrom = Prefs.read(Prefs.DEFAULT_START_DATE_CHARTS, firstRunDate);
         String endTo = CurrentDate.getCurrentDate();
         txv_detailChartsDate.setText(getString(R.string.detailChartsDate_charts, startFrom, endTo));
-        getTasksData(startFrom, endTo);
+        int taskListSize=getTasksData(startFrom, endTo);
 
-        //charts
-        doneChart();
-        undoneChart();
+        if (taskListSize==0)
+            showHideCharts(false);
+        else {
+            showHideCharts(true);
+            //charts
+            doneChart();
+            undoneChart();
+        }
 
 
         //handle everything about selectData dialog (like onClick, getAllData from database, dismissDialog and ...)
@@ -242,11 +237,16 @@ public class ChartsActivity extends AppCompatActivity {
                 }
 
                 //get new date between "startDate" and "endDate"
-                getTasksData(txv_selectDateFrom.getText().toString(), txv_selectDateTo.getText().toString());
+                int taskListSize=getTasksData(txv_selectDateFrom.getText().toString(), txv_selectDateTo.getText().toString());
 
-                //initial charts with new data
-                doneChart();
-                undoneChart();
+                if (taskListSize==0)
+                    showHideCharts(false);
+                else {
+                    showHideCharts(true);
+                    //update charts with new data
+                    doneChart();
+                    undoneChart();
+                }
 
                 //update detailSelectDate
                 txv_detailChartsDate.setText(getString(R.string.detailChartsDate_charts, txv_selectDateFrom.getText(), txv_selectDateTo.getText()));
@@ -260,7 +260,7 @@ public class ChartsActivity extends AppCompatActivity {
     }
 
     //get data from database to show in the charts
-    private void getTasksData(String startFrom, String endTo) {
+    private int getTasksData(String startFrom, String endTo) {
         //
         taskList = dataBase.getAllData(startFrom, endTo);
         //
@@ -373,6 +373,8 @@ public class ChartsActivity extends AppCompatActivity {
 
         }
 
+        //To check if the list is empty
+        return taskList.size();
     }
 
 
@@ -397,6 +399,7 @@ public class ChartsActivity extends AppCompatActivity {
         //doneChart init
         chartViewDone = findViewById(R.id.chart_doneTask_charts);
         chartViewDone.setZoomEnabled(true);
+        chartViewDone.setZoomType(ZoomType.HORIZONTAL);
         doneChartData = new ColumnChartData();
         doneChartData.setAxisXBottom(axisXDoneChart);
         doneChartData.setAxisYLeft(axisY);
@@ -417,7 +420,7 @@ public class ChartsActivity extends AppCompatActivity {
         //undoneChart init
         chartViewUndone = findViewById(R.id.chart_undoneTask_charts);
         chartViewUndone.setZoomEnabled(true);
-        chartViewUndone.setZoomType(ZoomType.HORIZONTAL_AND_VERTICAL);
+        chartViewUndone.setZoomType(ZoomType.HORIZONTAL);
         undoneChartData = new ColumnChartData();
         undoneChartData.setAxisYLeft(axisY);
         undoneChartData.setAxisXBottom(axisXUndoneChart);
@@ -500,4 +503,27 @@ public class ChartsActivity extends AppCompatActivity {
         chartViewUndone.setColumnChartData(undoneChartData);
 
     }
+
+
+    //hide/show charts and show\hide textView "list is empty"
+    //false for hide charts and true for show charts
+    private void showHideCharts(boolean showIt) {
+        if (showIt){
+            findViewById(R.id.txv_descriptionDoneChart_charts).setVisibility(View.VISIBLE);
+            findViewById(R.id.chart_doneTask_charts).setVisibility(View.VISIBLE);
+            findViewById(R.id.view_B_charts).setVisibility(View.VISIBLE);
+            findViewById(R.id.txv_descriptionUndoneChart_charts).setVisibility(View.VISIBLE);
+            findViewById(R.id.chart_undoneTask_charts).setVisibility(View.VISIBLE);
+            findViewById(R.id.txv_listIsEmpty_charts).setVisibility(View.GONE);
+        }else {
+            findViewById(R.id.txv_descriptionDoneChart_charts).setVisibility(View.GONE);
+            findViewById(R.id.chart_doneTask_charts).setVisibility(View.GONE);
+            findViewById(R.id.view_B_charts).setVisibility(View.GONE);
+            findViewById(R.id.txv_descriptionUndoneChart_charts).setVisibility(View.GONE);
+            findViewById(R.id.chart_undoneTask_charts).setVisibility(View.GONE);
+            findViewById(R.id.txv_listIsEmpty_charts).setVisibility(View.VISIBLE);
+        }
+
+    }
+
 }

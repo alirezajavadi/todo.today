@@ -22,9 +22,11 @@
         android:background="@drawable/shape_header_shadow" />
 
     <ScrollView
+        android:id="@+id/scv_chartContainer_charts"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/img_header_chart"
+        android:focusableInTouchMode="true"
         android:scrollbars="none">
 
 
@@ -68,7 +70,7 @@
                 android:textSize="14sp" />
 
             <View
-                android:id="@+id/view_viewA"
+                android:id="@+id/view_A_charts"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@id/txv_showDialogSelectDate_charts"
@@ -78,7 +80,7 @@
                 android:id="@+id/txv_descriptionDoneChart_charts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/view_viewA"
+                android:layout_below="@id/view_A_charts"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
@@ -101,7 +103,7 @@
 
 
             <View
-                android:id="@+id/view_viewB"
+                android:id="@+id/view_B_charts"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@id/chart_doneTask_charts"
@@ -113,7 +115,7 @@
                 android:id="@+id/txv_descriptionUndoneChart_charts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/view_viewB"
+                android:layout_below="@id/view_B_charts"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
@@ -132,6 +134,17 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp" />
+
+
+            <TextView
+                android:id="@+id/txv_listIsEmpty_charts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/listIsEmpty_charts"
+                android:gravity="center"
+                android:textColor="@color/textColorHigh"
+                android:layout_margin="16dp"
+                android:layout_below="@id/chart_undoneTask_charts"/>
 
         </RelativeLayout>
     </ScrollView>

@@ -96,6 +96,7 @@
     <string name="descriptionYAxisChart_charts">ساعت</string>
     <string name="descriptionDoneChart_charts">کارهای انجام شده</string>
     <string name="descriptionUndoneChart_charts">کارهای انجام نشده</string>
+    <string name="listIsEmpty_charts">لیست شما برای تاریخ های انتخابی خالی است!</string>
 
     <string name="switchReminder_settings">یادآور کارهای روزانه</string>
     <string name="descriptionReminder_settings">با شروع همه ی کارهایی که در لیست هست؛ یک نوتیفیکیشن دریافت میکنید تا همه کارهای لیست را در زمان خود انجام دهید.</string>
