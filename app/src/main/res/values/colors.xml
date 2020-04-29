@@ -48,7 +48,7 @@
     <color name="dark_colorAccent">#939393</color>
 
 
-    <color name="dark_appColor">#F034343A</color>
+    <color name="dark_appColor">#F0343437</color>
 
     <color name="dark_textColor">#CACACA</color>
     <color name="dark_textColorHigh">#E8E8E8</color>
@@ -57,22 +57,22 @@
     <color name="dark_bgPopupSpinner">#FD222222</color>
     <color name="dark_bgDropDownItemSelected">#FD302F2F</color>
 
-    <color name="dark_bgHeaderFooter">#F0202023</color>
-    <color name="dark_bgHeaderFooterSelected">#F029292C</color>\
+    <color name="dark_bgHeaderFooter">#F0222223</color>
+    <color name="dark_bgHeaderFooterSelected">#F0373739</color>\
 
-    <color name="dark_bgMain_mainWidget">#F02A2A2C</color>
+    <color name="dark_bgMain_mainWidget">#F02A2A2B</color>
 
-    <color name="dark_bgActivities">#F02A2A2E</color>
+    <color name="dark_bgActivities">#F0272729</color>
 
     <color name="dark_view">#B5B5B5</color>
 
 
     <color name="dark_doneTask_itemListMainWidget">#8E8E8E</color>
 
-    <color name="dark_bgButton">#F828282B</color>
-    <color name="dark_bgButtonSelected">#F83D3D40</color>
+    <color name="dark_bgButton">#F829292B</color>
+    <color name="dark_bgButtonSelected">#F8404042</color>
 
-    <color name="dark_bgMoreMenu">#F82A2A2E</color>
+    <color name="dark_bgMoreMenu">#F8272729</color>
     <color name="dark_bgBtnMoreMenu">#333333</color>
 
     <color name="dark_imageTint">#CACACA</color>

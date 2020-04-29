@@ -14,24 +14,6 @@
     <string name="newTaskTitle_menu">عنوان کار</string>
     <string name="charts_menu">نمودارها</string>
     <string name="firstRunTitle_menu">اولین اجرا</string>
-    <string name="firstRunDescription_menu">
-<!--        todo change this string-->
-        شما برای اولین از برنامه استفاده میکنید
-       \n
-        ویجت را فعال کنید
-        \n
-        بقیه راهنما
-        این تست است
-        یک دو سه
-        این تست است
-        یک دو سه
-        این تست است
-        یک دو سه
-        این تست است
-        یک دو سه
-        این تست است
-        یک دو سه
-    </string>
 
     <string name="help">راهنما</string>
     <string name="settings">تنظیمات</string>
@@ -111,6 +93,28 @@
     <string name="darkTheme_settings">تیره</string>
     <string name="descriptionSettings_settings">تنظیمات بعد از ذخیره سازی اعمال خواهند شد.</string>
     <string name="toastSettingsSave">تنظیمات با موفقیت ذخیره شد.</string>
+
+    <string name="nextButton_main">بعدی</string>
+
+    <string name="descriptionSlider1_main_slider1">
+        این برنامه براساس ویجتی که بر روی صفحه اصلی قرار میگیرد؛ کار میکند.
+    \n
+        برای استفاده از این برنامه ابتدا باید ویجت برنامه را از لیست ویجت های دستگاه انتخاب کرده و آن را به صفحه اصلی اضافه کنید.
+    </string>
+    <string name="descriptionSlider2_main_slider2">
+        برای آگاهی از فرا رسیدن زمان کارهای روزانه خود بصورت نوتیفیکیشن؛ میتوانید گزینه ”یادآور کارهای روزانه” را از تنظیمات فعال کنید.
+    </string>
+    <string name="descriptionSlider3_main_slider3">
+        روزتان را با جملات انگیزشی شروع کنید!
+        \n
+        برای رسیدن به اهدافتان کمک خواهد کرد
+    </string>
+    <string name="descriptionSlider4_main_slider4">
+        برنامه دارای دو تم تیره و خاکستری است؛
+        \n
+        برای تغییر تم به تنظیمات مراجعه کنید…
+    </string>
+
 
     <string name="iCan_notification">من میتوانم!</string>
     <string-array name="motivationalSentences_notification">
