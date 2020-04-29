@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="textColor" format="color" />
+    <attr name="textColorHigh" format="color" />
+    <attr name="textColorLow" format="color" />
+
+    <attr name="appColor" format="color" />
+
+    <attr name="bgPopupSpinner" format="color" />
+
+    <attr name="bgHeaderFooter" format="color" />
+    <attr name="bgHeaderFooterSelected" format="color" />
+
+    <attr name="bgMain_mainWidget" format="color" />
+
+    <attr name="bgActivities" format="color" />
+
+    <attr name="view" format="color" />
+
+    <attr name="doneTask_itemListMainWidget" format="color" />
+
+    <attr name="bgButton" format="color" />
+    <attr name="bgButtonSelected" format="color" />
+
+    <attr name="bgMoreMenu" format="color" />
+    <attr name="bgBtnMoreMenu" format="color" />
+
+    <attr name="tint" format="color"/>
+
+    <attr name="startShadow" format="color"/>
+
+    <attr name="hintColor" format="color"/>
+
+
+</resources>

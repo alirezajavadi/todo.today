@@ -13,13 +13,9 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/shape_bg_header"
         android:padding="3dp"
+        android:tint="?attr/tint"
         android:src="@drawable/ic_chart" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/heightShadow"
-        android:layout_below="@id/img_header_chart"
-        android:background="@drawable/shape_header_shadow" />
 
     <ScrollView
         android:id="@+id/scv_chartContainer_charts"
@@ -45,7 +41,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginRight="16dp"
                 android:gravity="center"
-                android:textColor="@color/textColor"
+                android:textColor="?textColor"
                 android:textSize="14sp"
                 android:visibility="visible"
                 tools:text="@string/detailChartsDate_charts" />
@@ -66,7 +62,7 @@
                 android:gravity="center"
                 android:padding="@dimen/paddingBtn"
                 android:text="@string/selectDate_charts"
-                android:textColor="@color/textColorHigh"
+                android:textColor="?textColorHigh"
                 android:textSize="14sp" />
 
             <View
@@ -74,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_below="@id/txv_showDialogSelectDate_charts"
-                android:background="@color/view" />
+                android:background="?view" />
 
             <TextView
                 android:id="@+id/txv_descriptionDoneChart_charts"
@@ -87,7 +83,7 @@
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:text="@string/descriptionDoneChart_charts"
-                android:textColor="@color/textColor"
+                android:textColor="?textColor"
                 android:textSize="12sp" />
 
 
@@ -108,7 +104,7 @@
                 android:layout_height="1dp"
                 android:layout_below="@id/chart_doneTask_charts"
                 android:layout_marginTop="8dp"
-                android:background="@color/view" />
+                android:background="?view" />
 
 
             <TextView
@@ -122,7 +118,7 @@
                 android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:text="@string/descriptionUndoneChart_charts"
-                android:textColor="@color/textColor"
+                android:textColor="?textColor"
                 android:textSize="12sp" />
 
             <lecho.lib.hellocharts.view.ColumnChartView
@@ -140,13 +136,19 @@
                 android:id="@+id/txv_listIsEmpty_charts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/listIsEmpty_charts"
-                android:gravity="center"
-                android:textColor="@color/textColorHigh"
+                android:layout_below="@id/chart_undoneTask_charts"
                 android:layout_margin="16dp"
-                android:layout_below="@id/chart_undoneTask_charts"/>
+                android:gravity="center"
+                android:text="@string/listIsEmpty_charts"
+                android:textColor="?textColorHigh" />
 
         </RelativeLayout>
     </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/img_header_chart"
+        android:background="@drawable/shape_header_shadow" />
 </RelativeLayout>
 

@@ -46,6 +46,12 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //set theme to activity
+        Prefs.initial(getApplicationContext());
+        if (Prefs.read(Prefs.THEME_IS_GRAY,true))
+            this.setTheme(R.style.GrayTheme);
+        else
+            this.setTheme(R.style.DarkTheme);
         setContentView(R.layout.activity_menu);
         init();
 
@@ -111,8 +117,8 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.txv_settings_menu:
-                openCloseMore();
                 startActivity(new Intent(MenuActivity.this, SettingsActivity.class));
+                finish();//destroy this activity because maybe user change the appTheme and when user come back to this activity, the app theme must have changed
                 break;
             case R.id.frl_containerMore_menu:
             case R.id.view_backgroundMoreMenu_menu:

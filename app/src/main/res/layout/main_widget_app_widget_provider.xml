@@ -1,89 +1,88 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rll_containerMainWidget_mainWidget"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_bg_main_widget"
     android:layoutDirection="ltr">
 
     <LinearLayout
-        android:id="@+id/lnl_viewA"
+        android:id="@+id/lnl_containerHeaderWidget_mainWidget"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
         android:layout_alignParentTop="true"
-        android:background="@drawable/shape_bg_header"
+        tools:background="@drawable/shape_bg_header"
         android:orientation="horizontal"
-        android:padding="1dp">
+        android:padding="1dp"
+        android:tint="?attr/tint">
 
         <TextView
-
+            android:id="@+id/txv_endTo_mainWidget"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/endTo_mainWidget"
-            android:textColor="@color/textColorHigh"
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/txv_startFrom_mainWidget"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="left|center_vertical"
             android:text="@string/startFrom_mainWidget"
-            android:textColor="@color/textColorHigh"
             android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/test"
+            android:id="@+id/txv_taskTitle_mainWidget"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginEnd="39dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/taskToDo_mainWidget"
-            android:textColor="@color/textColorHigh"
             android:textSize="12sp" />
 
 
     </LinearLayout>
 
     <FrameLayout
+        android:id="@+id/frl_headerShadow_mainWidget"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
-        android:layout_below="@id/lnl_viewA"
-        android:background="@drawable/shape_header_shadow" />
+        android:layout_below="@id/lnl_containerHeaderWidget_mainWidget" />
 
     <ListView
         android:id="@+id/lsv_todoList_mainWidget"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/img_openMenu_mainWidget"
-        android:layout_below="@id/lnl_viewA" />
+        android:layout_below="@id/lnl_containerHeaderWidget_mainWidget" />
 
     <TextView
         android:id="@+id/txv_emptyView_mainWidget"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/img_openMenu_mainWidget"
-        android:layout_below="@id/lnl_viewA"
+        android:layout_below="@id/lnl_containerHeaderWidget_mainWidget"
         android:gravity="center"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:text="@string/emptyListView_mainWidget"
-        android:textColor="@color/textColor" />
+        android:text="@string/emptyListView_mainWidget" />
 
     <FrameLayout
+        android:id="@+id/frl_footerShadow_mainWidget"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightShadow"
         android:layout_above="@id/img_openMenu_mainWidget"
-        android:background="@drawable/shape_footer_shadow" />
+        tools:background="@drawable/shape_footer_shadow" />
 
     <ImageView
         android:id="@+id/img_openMenu_mainWidget"
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/selector_bg_footer"
         android:padding="3dp"
-        android:src="@drawable/ic_menu_widget" />
+        tools:src="@drawable/ic_menu_widget" />
 </RelativeLayout>

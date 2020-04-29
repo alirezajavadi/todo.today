@@ -69,10 +69,10 @@
     <item>
         <shape>
             <corners android:radius="8dp" />
-            <solid android:color="@color/bgButtonSelected" />
+            <solid android:color="?bgButtonSelected" />
             <stroke
                 android:width="0.3dp"
-                android:color="@color/view" />
+                android:color="?view" />
         </shape>
     </item>
 

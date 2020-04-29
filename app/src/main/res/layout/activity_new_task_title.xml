@@ -14,7 +14,8 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/shape_bg_header"
         android:padding="3dp"
-        android:src="@drawable/ic_new_title" />
+        android:src="@drawable/ic_new_title"
+        android:tint="?attr/tint" />
 
     <View
         android:id="@+id/view_shadowHeader_TaskTitle"
@@ -33,7 +34,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/message_newTaskTitle"
-        android:textColor="@color/textColor" />
+        android:textColor="?textColor" />
 
     <TextView
         android:id="@+id/txv_B_taskTitle"
@@ -46,7 +47,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/description_newTaskTitle"
-        android:textColor="@color/textColorLow"
+        android:textColor="?textColorLow"
         android:textSize="@dimen/textSizeDescription" />
 
 
@@ -63,7 +64,8 @@
         android:maxLength="18"
         android:maxLines="1"
         android:singleLine="true"
-        android:textColor="@color/textColor"
+        android:textColor="?textColor"
+        android:textColorHint="@color/hintColor"
         android:textSize="15sp" />
 
     <View
@@ -84,7 +86,7 @@
         android:gravity="center"
         android:padding="3dp"
         android:text="@string/add"
-        android:textColor="@android:color/black"
+        android:textColor="?textColorHigh"
         android:textStyle="bold" />
 
 </RelativeLayout>

@@ -21,6 +21,9 @@ public class Prefs {
     //
     public static final String IS_ENABLE_DAILY_NOTIFICATION="isEnableDailyNotification";
 
+    //
+    public static final String THEME_IS_GRAY="themeIsGray";
+
 
     private static SharedPreferences mSharedPref;
 

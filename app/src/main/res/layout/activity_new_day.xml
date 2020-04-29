@@ -15,7 +15,8 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/shape_bg_header"
         android:padding="3dp"
-        android:src="@drawable/ic_new_day" />
+        android:src="@drawable/ic_new_day"
+        android:tint="?attr/tint" />
 
 
     <View
@@ -36,7 +37,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/message_newDay"
-        android:textColor="@android:color/black" />
+        android:textColor="?textColor" />
 
     <TextView
         android:id="@+id/txv_B_newDay"
@@ -48,7 +49,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:text="@string/description_newDay"
-        android:textColor="@color/textColorLow"
+        android:textColor="?textColorLow"
         android:textSize="@dimen/textSizeDescription" />
 
 
@@ -67,7 +68,7 @@
         android:paddingTop="@dimen/paddingBtn"
         android:paddingBottom="@dimen/paddingBtn"
         android:text="@string/btnAddDate_newDay"
-        android:textColor="@color/textColorHigh" />
+        android:textColor="?textColorHigh" />
 
     <View
         android:id="@+id/view_shadowFooter_newDay"
@@ -87,7 +88,7 @@
         android:gravity="center"
         android:padding="3dp"
         android:text="@string/add"
-        android:textColor="@android:color/black"
+        android:textColor="?textColorHigh"
         android:textStyle="bold" />
 
 </RelativeLayout>

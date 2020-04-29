@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/heightFooterHeader"
         android:layout_alignParentTop="true"
+        android:tint="?attr/tint"
         android:background="@drawable/shape_bg_header"
         android:padding="3dp"
         android:src="@drawable/ic_menu_widget" />
@@ -46,7 +47,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_new_day" />
+                android:src="@drawable/ic_new_day"
+                android:tint="?attr/tint" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -56,7 +58,7 @@
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="@string/newDay_menu"
-                android:textColor="@color/textColorHigh"
+                android:textColor="?textColorHigh"
                 android:textSize="13sp" />
 
 
@@ -76,7 +78,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_new_task" />
+                android:src="@drawable/ic_new_task"
+                android:tint="?attr/tint" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -87,7 +90,7 @@
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="@string/newTaskTodo_menu"
-                android:textColor="@color/textColorHigh"
+                android:textColor="?textColorHigh"
                 android:textSize="13sp" />
         </LinearLayout>
 
@@ -116,7 +119,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
-                android:src="@drawable/ic_chart" />
+                android:src="@drawable/ic_chart"
+                android:tint="?attr/tint" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -126,7 +130,7 @@
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="@string/charts_menu"
-                android:textColor="@color/textColorHigh"
+                android:textColor="?textColorHigh"
                 android:textSize="13sp" />
 
 
@@ -147,7 +151,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ic_new_title" />
+                android:src="@drawable/ic_new_title"
+                android:tint="?attr/tint" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -157,7 +162,7 @@
                 android:gravity="center"
                 android:padding="4dp"
                 android:text="@string/newTaskTitle_menu"
-                android:textColor="@color/textColorHigh"
+                android:textColor="?textColorHigh"
                 android:textSize="13sp" />
 
 
@@ -200,7 +205,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:text="@string/settings"
-            android:textColor="@color/textColorHigh"
+            android:textColor="?textColorHigh"
             android:textSize="12sp" />
 
 
@@ -215,7 +220,7 @@
             android:gravity="center"
             android:padding="8dp"
             android:text="@string/help"
-            android:textColor="@color/textColorHigh"
+            android:textColor="?textColorHigh"
             android:textSize="12sp" />
 
         <TextView
@@ -229,7 +234,7 @@
             android:gravity="center"
             android:padding="2dp"
             android:text="@string/aboutUs"
-            android:textColor="@color/textColor"
+            android:textColor="?textColor"
             android:textSize="12sp" />
 
 
@@ -255,6 +260,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
+            android:tint="?attr/tint"
             android:src="@drawable/ic_more" />
     </FrameLayout>
 

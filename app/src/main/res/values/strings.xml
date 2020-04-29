@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">TODO today</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
 
     <string name="startFrom_mainWidget">شروع</string>
     <string name="endTo_mainWidget">پایان</string>
@@ -62,7 +60,7 @@
     </string>
     <string name="startFrom_newTaskTodo">شروع از ساعت:</string>
     <string name="endTo_newTaskTodo">پایان تا ساعت:</string>
-    <string name="selectTaskTitle_newTaskTodo">یکی از وظایف خود را انتخاب کنید</string>
+    <string name="selectTaskTitle_newTaskTodo">یکی از عناوین وظایف خود را انتخاب کنید</string>
     <string name="errorSelectPastTime_newTaskTodo">زمان گذشته را نمیتوانید انتخاب کنید!</string>
     <string name="errorSelectStartFromFirst_newTaskTodo">ابتدا زمان شروع را انتخاب کنید!</string>
     <string name="errorEmptyCells_newTaskTodo">لطفا همه اطلاعات را پرکنید!</string>
@@ -99,7 +97,7 @@
     <string name="listIsEmpty_charts">لیست شما برای تاریخ های انتخابی خالی است!</string>
 
     <string name="switchReminder_settings">یادآور کارهای روزانه</string>
-    <string name="descriptionReminder_settings">با شروع همه ی کارهایی که در لیست هست؛ یک نوتیفیکیشن دریافت میکنید تا همه کارهای لیست را در زمان خود انجام دهید.</string>
+    <string name="descriptionReminder_settings">با شروع همه ی کارهایی که در لیست هست؛ یک نوتیفیکیشن دریافت میکنید تا همه کارهای تعریف شده را در زمان خود انجام دهید.</string>
     <string name="saveSettings_settings">ذخیره</string>
     <string name="errorNoCalender_settings">
         تقویمی یافت نشد!
@@ -108,6 +106,11 @@
     </string>
     <string name="dailyNotification_settings">دریافت نوتیفیکیشن های انگیزشی</string>
     <string name="descriptionDailyNotification_settings">صبح هر روز یک نوتیفیکشن انگیزشی دریافت خواهید کرد. ممکن است وقتی دستگاه شما در حالت ذخیره نیرو یا شارژ شما رو به اتمام باشد؛ در آن روز نوتیفیکشنی دریافت نکنید.</string>
+    <string name="titleRadioGroupTheme_settings">پوسته ها</string>
+    <string name="grayTheme_settings">خاکستری</string>
+    <string name="darkTheme_settings">تیره</string>
+    <string name="descriptionSettings_settings">تنظیمات بعد از ذخیره سازی اعمال خواهند شد.</string>
+    <string name="toastSettingsSave">تنظیمات با موفقیت ذخیره شد.</string>
 
     <string name="iCan_notification">من میتوانم!</string>
     <string-array name="motivationalSentences_notification">

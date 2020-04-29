@@ -14,7 +14,7 @@
         android:gravity="center"
         android:padding="3dp"
         android:text="@string/selectDate_charts"
-        android:textColor="@color/textColorHigh" />
+        android:textColor="?textColorHigh" />
 
     <View
         android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                 android:gravity="center"
                 android:padding="5dp"
                 android:text="@string/selectDateTo_dialogSelectData"
-                android:textColor="@android:color/black"
+                android:textColor="?textColorHigh"
                 android:textSize="12sp" />
 
             <TextView
@@ -55,7 +55,7 @@
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/tapHere"
-                android:textColor="@color/textColorHigh"
+                android:textColor="?textColorHigh"
                 android:textSize="13.5sp" />
 
 
@@ -67,7 +67,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
-            android:background="@color/view" />
+            android:background="?view" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -83,7 +83,7 @@
                 android:padding="5dp"
                 android:singleLine="true"
                 android:text="@string/selectDateFrom_dialogSelectDate"
-                android:textColor="@color/textColor"
+                android:textColor="?textColor"
                 android:textSize="12sp" />
 
             <TextView
@@ -96,7 +96,7 @@
                 android:gravity="center"
                 android:padding="8dp"
                 android:text="@string/tapHere"
-                android:textColor="@color/textColorHigh"
+                android:textColor="?textColorHigh"
                 android:textSize="13.5sp" />
 
 
@@ -121,7 +121,7 @@
         android:gravity="center"
         android:padding="3dp"
         android:text="@string/okSelectDate_dialogSelectDate"
-        android:textColor="@color/textColorHigh"
+        android:textColor="?textColorHigh"
         android:textStyle="bold" />
 
 </LinearLayout>

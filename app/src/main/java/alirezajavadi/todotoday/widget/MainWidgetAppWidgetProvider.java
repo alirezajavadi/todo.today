@@ -1,16 +1,19 @@
 package alirezajavadi.todotoday.widget;
 
-import android.app.Activity;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import alirezajavadi.todotoday.DataBase;
+import alirezajavadi.todotoday.Prefs;
 import alirezajavadi.todotoday.Reminder;
 import alirezajavadi.todotoday.activity.MenuActivity;
 import alirezajavadi.todotoday.R;
@@ -18,7 +21,6 @@ import alirezajavadi.todotoday.R;
 public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
     public static final String ACTION_CLICK_LIST_VIEW = "actionClickListView";
     public static final String EXTRA_ITEM_CLICKED = "itemClicked";
-    public static final String EXTRA_ITEM_POSITION = "itemPosition";
     public static final String EXTRA_ITEM_POSITION_IN_DATABASE = "itemPositionInDatabase";
     public static final String EXTRA_ITEM_IS_DONE = "itemIsDone";
     public static final String EXTRA_ITEM_REMINDER_ID = "itemIsDone";
@@ -26,8 +28,6 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
-        //connect to DB when user add Widget
-//        dataBase=new DataBase(context);
         super.onEnabled(context);
     }
 
@@ -57,6 +57,9 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
             remoteViews.setEmptyView(R.id.lsv_todoList_mainWidget, R.id.txv_emptyView_mainWidget);
             remoteViews.setPendingIntentTemplate(R.id.lsv_todoList_mainWidget, clickPendingIntent);
 
+            //change widget theme
+            themeSetting(remoteViews,context);
+
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
             appWidgetManager.notifyAppWidgetViewDataChanged(widgetId, R.id.lsv_todoList_mainWidget);
         }
@@ -74,8 +77,6 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
 
 
             if (clickedItem == R.id.img_checkBox_itemListTodoMainWidget) {
-                RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.main_widget_app_widget_provider);
-
                 //update database if user clicked on img_checkBox_itemListTodoMainWidget and change his is Done
                 int isDone = intent.getIntExtra(EXTRA_ITEM_IS_DONE, 0);
                 int result;
@@ -107,6 +108,56 @@ public class MainWidgetAppWidgetProvider extends AppWidgetProvider {
         }
 
         super.onReceive(context, intent);
+    }
+
+
+    private void themeSetting(RemoteViews remoteViews,Context context) {
+        Prefs.initial(context);
+        boolean themeIsGray=Prefs.read(Prefs.THEME_IS_GRAY,true);
+
+        int backgroundMain;
+        int backgroundHeader;
+        int backgroundFooter;
+        int checkboxImageRec;
+        int textColor;
+        int headerShadow;
+        int footerShadow;
+
+        if (themeIsGray){
+            backgroundMain=R.drawable.shape_gray_bg_main_widget;
+            backgroundHeader=R.drawable.shape_gray_bg_header_widget;
+            backgroundFooter=R.drawable.selector_gray_bg_footer_widget;
+            textColor=ContextCompat.getColor(context,R.color.gray_textColorHigh);
+            headerShadow=R.drawable.shape_gray_header_shadow_widget;
+            footerShadow=R.drawable.shape_gray_footer_shadow_widget;
+            checkboxImageRec=R.drawable.ic_menu_widget;
+        }else {
+            backgroundMain=R.drawable.shape_dark_bg_main_widget;
+            backgroundHeader=R.drawable.shape_dark_bg_header_widget;
+            backgroundFooter=R.drawable.selector_dark_bg_footer_widget;
+            textColor=ContextCompat.getColor(context,R.color.dark_textColorHigh);
+            headerShadow=R.drawable.shape_dark_header_shadow_widget;
+            footerShadow=R.drawable.shape_dark_footer_shadow_widget;
+            checkboxImageRec=R.drawable.ic_dark_menu_widget;
+        }
+
+        //main background
+        remoteViews.setInt(R.id.rll_containerMainWidget_mainWidget,"setBackgroundResource",backgroundMain);
+        //header widget
+        remoteViews.setInt(R.id.lnl_containerHeaderWidget_mainWidget,"setBackgroundResource",backgroundHeader);
+        //text in header
+        remoteViews.setTextColor(R.id.txv_startFrom_mainWidget,textColor);
+        remoteViews.setTextColor(R.id.txv_endTo_mainWidget,textColor);
+        remoteViews.setTextColor(R.id.txv_taskTitle_mainWidget,textColor);
+        //textView "List is empty" (EmptyView)
+        remoteViews.setTextColor(R.id.txv_emptyView_mainWidget,textColor);
+        //footer widget
+        remoteViews.setInt(R.id.img_openMenu_mainWidget,"setBackgroundResource",backgroundFooter);
+        remoteViews.setImageViewResource(R.id.img_openMenu_mainWidget, checkboxImageRec);
+        //header and footer shadow
+        remoteViews.setInt(R.id.frl_footerShadow_mainWidget,"setBackgroundResource",footerShadow);
+        remoteViews.setInt(R.id.frl_headerShadow_mainWidget,"setBackgroundResource",headerShadow);
+
     }
 }
 

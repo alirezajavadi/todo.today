@@ -6,10 +6,10 @@ android {
 
     defaultConfig {
         applicationId "alirezajavadi.todotoday"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
-        versionName "0.06"
+        versionName "0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

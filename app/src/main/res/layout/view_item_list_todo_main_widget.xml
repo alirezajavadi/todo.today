@@ -12,7 +12,7 @@
         android:id="@+id/img_deleteItem_itemListTodoMainWidget"
         android:layout_width="13dp"
         android:layout_height="13dp"
-        android:src="@drawable/ic_delete" />
+        tools:src="@drawable/ic_gray_delete" />
 
     <TextView
         android:id="@+id/txv_endTo_itemListTodoMainWidget"
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.8"
         android:gravity="center"
-        android:textColor="@color/textColor"
+        tools:textColor="@color/gray_textColor"
         android:textSize="12sp"
         tools:text="15:24" />
 
@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.7"
         android:gravity="start"
-        android:textColor="@color/textColor"
+        tools:textColor="@color/gray_textColor"
         android:textSize="12sp"
         tools:text="15:24" />
 
@@ -42,7 +42,7 @@
         android:layout_marginEnd="8dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="@color/textColor"
+        tools:textColor="@color/gray_textColor"
         android:textStyle="bold"
         tools:text="این یک تست است این یک تست است" />
 
@@ -50,7 +50,7 @@
         android:id="@+id/img_checkBox_itemListTodoMainWidget"
         android:layout_width="16dp"
         android:layout_height="16dp"
-        android:src="@drawable/ic_checkbox_not_checked" />
+        tools:src="@drawable/ic_gray_checkbox_not_checked" />
 
 
 </LinearLayout>

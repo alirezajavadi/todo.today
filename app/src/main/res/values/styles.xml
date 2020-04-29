@@ -1,25 +1,103 @@
 <resources>
 
-    <style name="AppTheme" parent="FloatingActivityTheme">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="FloatingActivityTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="BaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
-        <item name="android:dropDownListViewStyle">@style/TestSpinnerStyle</item>
         <item name="android:fontFamily">@font/font</item>
     </style>
 
-    <style name="TestSpinnerStyle" parent="android:style/Widget.ListView.DropDown">
-        <item name="android:divider">@color/view</item>
+    <!--    gray theme-->
+    <style name="GrayTheme" parent="BaseTheme">
+
+        <item name="colorPrimary">@color/gray_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/gray_colorPrimaryDark</item>
+        <item name="colorAccent">@color/gray_colorAccent</item>
+
+        <item name="android:dropDownListViewStyle">@style/GraySpinnerStyle</item>
+
+        <item name="textColor">@color/gray_textColor</item>
+        <item name="textColorHigh">@color/gray_textColorHigh</item>
+        <item name="textColorLow">@color/gray_textColorLow</item>
+
+        <item name="appColor">@color/gray_appColor</item>
+
+        <item name="bgPopupSpinner">@color/gray_bgPopupSpinner</item>
+
+        <item name="bgHeaderFooter">@color/gray_bgHeaderFooter</item>
+        <item name="bgHeaderFooterSelected">@color/gray_bgHeaderFooterSelected</item>
+
+        <item name="bgMain_mainWidget">@color/gray_bgMain_mainWidget</item>
+
+        <item name="bgActivities">@color/gray_bgActivities</item>
+
+        <item name="view">@color/gray_view</item>
+
+        <item name="doneTask_itemListMainWidget">@color/gray_doneTask_itemListMainWidget</item>
+
+        <item name="bgButton">@color/gray_bgButton</item>
+        <item name="bgButtonSelected">@color/gray_bgButtonSelected</item>
+
+        <item name="bgMoreMenu">@color/gray_bgMoreMenu</item>
+        <item name="bgBtnMoreMenu">@color/gray_bgBtnMoreMenu</item>
+
+        <item name="tint">@color/gray_imageTint</item>
+
+        <item name="startShadow">@color/gray_startShadow</item>
+
+    </style>
+
+    <style name="GraySpinnerStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">@color/gray_view</item>
         <item name="android:dividerHeight">1dp</item>
-        <item name="android:listSelector">@color/bgDropDownItemSelected</item>
+        <item name="android:listSelector">@color/gray_bgDropDownItemSelected</item>
+    </style>
+
+    <!--    dark theme-->
+
+    <style name="DarkTheme" parent="BaseTheme">
+        <item name="colorPrimary">@color/dark_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/dark_colorPrimaryDark</item>
+        <item name="colorAccent">@color/dark_colorAccent</item>
+
+        <item name="android:dropDownListViewStyle">@style/DarkSpinnerStyle</item>
+
+        <item name="textColor">@color/dark_textColor</item>
+        <item name="textColorHigh">@color/dark_textColorHigh</item>
+        <item name="textColorLow">@color/dark_textColorLow</item>
+
+        <item name="appColor">@color/dark_appColor</item>
+
+        <item name="bgPopupSpinner">@color/dark_bgPopupSpinner</item>
+
+        <item name="bgHeaderFooter">@color/dark_bgHeaderFooter</item>
+        <item name="bgHeaderFooterSelected">@color/dark_bgHeaderFooterSelected</item>
+
+        <item name="bgMain_mainWidget">@color/dark_bgMain_mainWidget</item>
+
+        <item name="bgActivities">@color/dark_bgActivities</item>
+
+        <item name="view">@color/dark_view</item>
+
+        <item name="doneTask_itemListMainWidget">@color/dark_doneTask_itemListMainWidget</item>
+
+        <item name="bgButton">@color/dark_bgButton</item>
+        <item name="bgButtonSelected">@color/dark_bgButtonSelected</item>
+
+        <item name="bgMoreMenu">@color/dark_bgMoreMenu</item>
+        <item name="bgBtnMoreMenu">@color/dark_bgBtnMoreMenu</item>
+
+        <item name="tint">@color/dark_imageTint</item>
+
+        <item name="startShadow">@color/dark_startShadow</item>
+    </style>
+
+    <style name="DarkSpinnerStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:divider">@color/dark_view</item>
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:listSelector">@color/dark_bgDropDownItemSelected</item>
     </style>
 
 

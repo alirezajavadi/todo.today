@@ -28,6 +28,12 @@ public class NewDayActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //set theme to activity
+        Prefs.initial(getApplicationContext());
+        if (Prefs.read(Prefs.THEME_IS_GRAY,true))
+            this.setTheme(R.style.GrayTheme);
+        else
+            this.setTheme(R.style.DarkTheme);
         setContentView(R.layout.activity_new_day);
         init();
 
