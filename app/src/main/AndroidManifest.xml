@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
+    <!--        todo change app icon-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
