@@ -1,10 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.HelpActivity"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bg_activities"
     android:layoutDirection="ltr">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/img_header_help"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/shape_bg_header"
+        android:padding="3dp"
+        android:src="@drawable/ic_help"
+        android:tint="?tint" />
+
+
+    <LinearLayout
+        android:id="@+id/lnl_containerA_help"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/img_header_help"
+        android:layoutDirection="rtl">
+
+        <ExpandableListView
+            android:id="@+id/exv_expandableHelp_help"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:childDivider="?view"
+            android:clipToPadding="false"
+            android:groupIndicator="@null"
+            android:divider="?view"
+            android:dividerHeight="0.5dp"
+            android:paddingBottom="16dp" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightShadow"
+        android:layout_below="@id/img_header_help"
+        android:background="@drawable/shape_header_shadow" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightShadow"
+        android:layout_above="@id/txv_ok_help"
+        android:background="@drawable/shape_footer_shadow" />
+
+
+    <TextView
+        android:id="@+id/txv_ok_help"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:layout_below="@id/lnl_containerA_help"
+        android:background="@drawable/selector_bg_footer"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/intimateOk"
+        android:textColor="?textColorHigh" />
+
+</RelativeLayout>

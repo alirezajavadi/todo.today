@@ -5,14 +5,13 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import alirezajavadi.todotoday.CurrentDate;
 import alirezajavadi.todotoday.Prefs;
 import alirezajavadi.todotoday.R;
-import alirezajavadi.todotoday.SliderViewPagerAdapter;
+import alirezajavadi.todotoday.adapter.SliderViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
     private TextView txv_next;

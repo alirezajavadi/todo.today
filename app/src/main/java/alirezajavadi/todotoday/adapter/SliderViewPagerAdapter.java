@@ -1,4 +1,4 @@
-package alirezajavadi.todotoday;
+package alirezajavadi.todotoday.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
