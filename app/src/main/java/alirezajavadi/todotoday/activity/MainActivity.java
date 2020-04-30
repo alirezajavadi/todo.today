@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void firstRun() {
-        Prefs.write(Prefs.IS_FIRST_RUN, true);
         if (Prefs.read(Prefs.IS_FIRST_RUN, true)) {
 
             //save today's date to sharedPrefs (display it by default in the charts)
