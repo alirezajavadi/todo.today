@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.AboutUsActivity"
-    android:layoutDirection="ltr">
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_bg_activities"
+    android:layoutDirection="ltr"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:background="@drawable/shape_bg_header"
+        android:gravity="center"
+        android:padding="3dp"
+        android:text="@string/aboutTitle"
+        android:textColor="?textColorHigh"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_header_shadow" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:lineSpacingExtra="5dp"
+        android:gravity="right"
+        android:text="@string/about"
+        android:textColor="?textColor" />
+
+    <TextView
+        android:id="@+id/txv_openLink_about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:lineSpacingExtra="8dp"
+        android:clickable="true"
+        android:text="@string/aboutLink"
+        android:textColor="?textColorHigh"
+        android:focusable="true" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightShadow"
+        android:background="@drawable/shape_footer_shadow" />
+
+    <TextView
+        android:id="@+id/txv_ok_about"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/heightFooterHeader"
+        android:background="@drawable/selector_bg_footer"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:textColor="?textColorHigh"
+        android:text="@string/intimateOk"
+        android:textStyle="bold" />
+
+</LinearLayout>
