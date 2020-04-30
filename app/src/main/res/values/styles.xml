@@ -47,6 +47,10 @@
 
         <item name="startShadow">@color/gray_startShadow</item>
 
+        <item name="colorControlActivated">#434343</item>
+        <item name="colorControlHighlight">#A8A8A8</item>
+        <item name="android:colorForeground">#9F3131</item>
+
     </style>
 
     <style name="GraySpinnerStyle" parent="android:style/Widget.ListView.DropDown">
@@ -92,6 +96,10 @@
         <item name="tint">@color/dark_imageTint</item>
 
         <item name="startShadow">@color/dark_startShadow</item>
+
+        <item name="colorControlActivated">#FFFFFF</item>
+        <item name="colorControlHighlight">#777777</item>
+        <item name="android:colorForeground">#A53E3E</item>
     </style>
 
     <style name="DarkSpinnerStyle" parent="android:style/Widget.ListView.DropDown">
@@ -99,6 +107,5 @@
         <item name="android:dividerHeight">1dp</item>
         <item name="android:listSelector">@color/dark_bgDropDownItemSelected</item>
     </style>
-
 
 </resources>
