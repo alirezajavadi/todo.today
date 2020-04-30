@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/img_deleteItem_itemListTodoMainWidget"
-        android:layout_width="13dp"
-        android:layout_height="13dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         tools:src="@drawable/ic_gray_delete" />
 
     <TextView
