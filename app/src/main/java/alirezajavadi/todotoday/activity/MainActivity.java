@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (txv_next.getText().equals(getString(R.string.nextButton_main)))
                     //next
-                    vpg_containerSlider.setCurrentItem(vpg_containerSlider.getCurrentItem()+1,true);
+                    vpg_containerSlider.setCurrentItem(vpg_containerSlider.getCurrentItem() + 1, true);
                 else
                     //ok
                     onBackPressed();
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.view_dot1_main),
                 findViewById(R.id.view_dot2_main),
                 findViewById(R.id.view_dot3_main),
-                findViewById(R.id.view_dot4_main)
+//                findViewById(R.id.view_dot4_main)
         };
 
 
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             pages = new int[]{
                     R.layout.view_intro_slider1,
                     R.layout.view_intro_slider2,
-                    R.layout.view_intro_slider3,
+                    //   R.layout.view_intro_slider3,
                     R.layout.view_intro_slider4
             };
 

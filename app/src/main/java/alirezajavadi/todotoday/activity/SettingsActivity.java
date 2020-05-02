@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -110,6 +111,11 @@ public class SettingsActivity extends AppCompatActivity {
         sw_dailyNotification = findViewById(R.id.sw_dailyNotification_settings);
         rdb_darkTheme = findViewById(R.id.rdb_darkTheme_settings);
         rdb_grayTheme = findViewById(R.id.rdb_grayTheme_settings);
+
+        TextView txv_description=findViewById(R.id.txv_descriptionDailyNotification_settings);
+        txv_description.setPaintFlags(txv_description.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        TextView txv=findViewById(R.id.textViewDailyNotification);
+        txv.setPaintFlags(txv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
     @Override

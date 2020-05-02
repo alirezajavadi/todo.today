@@ -62,12 +62,12 @@
             android:background="@drawable/shape_dot_light" />
 
 
-        <View
-            android:id="@+id/view_dot4_main"
-            android:layout_width="6dp"
-            android:layout_height="6dp"
-            android:layout_margin="4dp"
-            android:background="@drawable/shape_dot_light" />
+<!--        <View-->
+<!--            android:id="@+id/view_dot4_main"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="3dp"-->
+<!--            android:layout_margin="4dp"-->
+<!--            android:background="@drawable/shape_dot_light" />-->
 
 
     </LinearLayout>

@@ -70,7 +70,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/viewA_setting"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginLeft="16dp"
+        android:enabled="false" />
 
     <TextView
         android:id="@+id/textViewDailyNotification"
@@ -81,6 +82,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         android:layout_toRightOf="@id/sw_dailyNotification_settings"
+        android:enabled="false"
         android:gravity="right|center_vertical"
         android:text="@string/dailyNotification_settings"
         android:textColor="?textColor" />
@@ -90,6 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/sw_dailyNotification_settings"
+        android:enabled="false"
         android:gravity="right"
         android:paddingLeft="16dp"
         android:paddingTop="4dp"
