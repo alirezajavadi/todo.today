@@ -1,9 +1,11 @@
-# todo.today
+# todoToday
 You can manage your daily tasks with this app, also you can find out the history of what you did in the past!
 <br>
 <br>
 <br>
-**<p>screenshot 1<p>**
-<img src="https://user-images.githubusercontent.com/61364128/78450230-6a5cf080-7692-11ea-99dd-e9b7bd306bc5.jpg" height="600"/>
-**<p>screenshot 2<p>**
-<img src="https://user-images.githubusercontent.com/61364128/78450233-6fba3b00-7692-11ea-8712-54d35a650049.jpg" height="600"/>
+**<h1>screenshots<h1>**
+<img src="https://user-images.githubusercontent.com/61364128/80863504-2c072100-8c92-11ea-89e5-ceb5f3d56c8b.png" height="600"/>
+<img src="https://user-images.githubusercontent.com/61364128/80863506-2f9aa800-8c92-11ea-8b89-4dbe1f0dfd32.png" height="600"/>
+  <br>
+  <img src="https://user-images.githubusercontent.com/61364128/80863509-30cbd500-8c92-11ea-9417-e56efa26c070.png" height="600"/>
+  <img src="https://user-images.githubusercontent.com/61364128/80863510-31646b80-8c92-11ea-8530-b66a825ccd33.png" height="600"/>
