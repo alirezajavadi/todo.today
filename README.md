@@ -1,5 +1,5 @@
 # todoToday
-You can manage your daily tasks with this app, also you can find out the history of what you did in the past!
+You can manage your daily tasks with this app, also you can find out the history of what you did in the past!!
 <br>
 <br>
 <br>
