@@ -8,9 +8,11 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.mohamadamin.persianmaterialdatetimepicker.date.DatePickerDialog;
 
 import java.util.ArrayList;
@@ -72,10 +74,11 @@ public class ChartsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //set theme to activity
         Prefs.initial(getApplicationContext());
-        if (Prefs.read(Prefs.THEME_IS_GRAY,true))
+        if (Prefs.read(Prefs.THEME_IS_GRAY, true))
             this.setTheme(R.style.GrayTheme);
         else
-            this.setTheme(R.style.DarkTheme);;
+            this.setTheme(R.style.DarkTheme);
+        ;
         setContentView(R.layout.activity_charts);
         init();
 
@@ -85,9 +88,9 @@ public class ChartsActivity extends AppCompatActivity {
         String startFrom = Prefs.read(Prefs.DEFAULT_START_DATE_CHARTS, firstRunDate);
         String endTo = CurrentDate.getCurrentDate();
         txv_detailChartsDate.setText(getString(R.string.detailChartsDate_charts, startFrom, endTo));
-        int taskListSize=getTasksData(startFrom, endTo);
+        int taskListSize = getTasksData(startFrom, endTo);
 
-        if (taskListSize==0)
+        if (taskListSize == 0)
             showHideCharts(false);
         else {
             showHideCharts(true);
@@ -243,9 +246,9 @@ public class ChartsActivity extends AppCompatActivity {
                 }
 
                 //get new date between "startDate" and "endDate"
-                int taskListSize=getTasksData(txv_selectDateFrom.getText().toString(), txv_selectDateTo.getText().toString());
+                int taskListSize = getTasksData(txv_selectDateFrom.getText().toString(), txv_selectDateTo.getText().toString());
 
-                if (taskListSize==0)
+                if (taskListSize == 0)
                     showHideCharts(false);
                 else {
                     showHideCharts(true);
@@ -307,14 +310,16 @@ public class ChartsActivity extends AppCompatActivity {
                 hour = hourEndTo - hourStartFrom - 1;
 
             if (minuteStartFrom > minuteEndTo)
-                minute = (60 - minuteStartFrom) + minuteEndTo;
+                minute = ((60 - minuteStartFrom) + minuteEndTo);
             else
-                minute = (minuteStartFrom - minuteEndTo) * -1;
+                minute = ((minuteStartFrom - minuteEndTo) * -1);
+
+            minute /= 60; // that mean is: minute = minute * 1 / 60 (minute per natural number)
 
             //separate all date based on the isDone
             if (task.getIsDone() == 1) {
                 int finalI = 0;
-                boolean isAlreadyInList = false;//fuck this name
+                boolean isAlreadyInList = false;
                 for (int i = 0; i < finalTaskDataDone.size(); i++)
                     //if the title is already in the list
                     if (task.getTaskTitle().equals(finalTaskDataDone.get(i).getTaskTitle())) {
@@ -330,8 +335,7 @@ public class ChartsActivity extends AppCompatActivity {
                     //if minute more than 60 ---> hour = minute / 60   and    minute = minute % 60
                     hour += Math.round(minute) / 60;
                     finalHour = finalTaskDataDone.get(finalI).getHour() + hour;
-                    minute %= 60;
-                    finalMinute = minute / 60;// that mean is: minute = minute * 1 / 60 (minute per natural number)
+                    finalMinute = minute % 60;
 
                     //set new time
                     finalTaskDataDone.get(finalI).setMinute(finalMinute);
@@ -344,7 +348,7 @@ public class ChartsActivity extends AppCompatActivity {
                 }
 
             } else {
-                boolean isAlreadyInList = false;//too
+                boolean isAlreadyInList = false;
                 int finalI = 0;
                 for (int i = 0; i < finalTaskDataUndone.size(); i++)
                     if (task.getTaskTitle().equals(finalTaskDataUndone.get(i).getTaskTitle())) {
@@ -361,8 +365,7 @@ public class ChartsActivity extends AppCompatActivity {
                     //if minute more than 60 ---> hour = minute / 60   and    minute = minute % 60
                     hour += Math.round(minute) / 60;
                     finalHour = finalTaskDataUndone.get(finalI).getHour() + hour;
-                    minute %= 60;
-                    finalMinute = minute / 60;// that mean is: minute = minute * 1 / 60 (minute per natural number)
+                    finalMinute = minute % 60;
 
                     //set new time
                     finalTaskDataUndone.get(finalI).setMinute(finalMinute);
@@ -388,12 +391,12 @@ public class ChartsActivity extends AppCompatActivity {
         //theme color
         int textColor;
         int lineColor;
-        if (Prefs.read(Prefs.THEME_IS_GRAY,true)){
-            textColor=ContextCompat.getColor(ChartsActivity.this, R.color.gray_textColorHigh);
-            lineColor=ContextCompat.getColor(ChartsActivity.this, android.R.color.black);
-        }else{
-            textColor=ContextCompat.getColor(ChartsActivity.this, R.color.dark_textColorHigh);
-            lineColor=ContextCompat.getColor(ChartsActivity.this, android.R.color.white);
+        if (Prefs.read(Prefs.THEME_IS_GRAY, true)) {
+            textColor = ContextCompat.getColor(ChartsActivity.this, R.color.gray_textColorHigh);
+            lineColor = ContextCompat.getColor(ChartsActivity.this, android.R.color.black);
+        } else {
+            textColor = ContextCompat.getColor(ChartsActivity.this, R.color.dark_textColorHigh);
+            lineColor = ContextCompat.getColor(ChartsActivity.this, android.R.color.white);
         }
         //axis Y setting
         Axis axisY = new Axis();
@@ -440,7 +443,7 @@ public class ChartsActivity extends AppCompatActivity {
         undoneChartData = new ColumnChartData();
         undoneChartData.setAxisYLeft(axisY);
         undoneChartData.setAxisXBottom(axisXUndoneChart);
-        columnListUndoneChart=new ArrayList<>();
+        columnListUndoneChart = new ArrayList<>();
 
         axisXValueListUndone = new ArrayList<>();
 
@@ -460,11 +463,12 @@ public class ChartsActivity extends AppCompatActivity {
         //set value , animation
         columnListDoneChart.clear();
         for (TodoChart todoChart : finalTaskDataDone) {
+            Log.i(TAG, "doneChart: " + todoChart.getMinute());
             List<SubcolumnValue> subColumnValueList = new ArrayList<>();
             SubcolumnValue subcolumnValue = new SubcolumnValue();
-            subcolumnValue.setColor( ContextCompat.getColor(ChartsActivity.this, R.color.gray_bgHeaderFooter));
+            subcolumnValue.setColor(ContextCompat.getColor(ChartsActivity.this, R.color.gray_bgHeaderFooter));
             subcolumnValue.setTarget(todoChart.getHour() + todoChart.getMinute());
-            subcolumnValue.setLabel(todoChart.getHour() + todoChart.getMinute()+"");
+            subcolumnValue.setLabel(todoChart.getHour() + todoChart.getMinute() + "");
             subColumnValueList.add(subcolumnValue);
 
             Column column = new Column(subColumnValueList);
@@ -499,9 +503,9 @@ public class ChartsActivity extends AppCompatActivity {
 
             List<SubcolumnValue> subColumnValueList = new ArrayList<>();
             SubcolumnValue subcolumnValue = new SubcolumnValue();
-            subcolumnValue.setColor( ContextCompat.getColor(ChartsActivity.this, R.color.gray_bgHeaderFooter));
+            subcolumnValue.setColor(ContextCompat.getColor(ChartsActivity.this, R.color.gray_bgHeaderFooter));
             subcolumnValue.setTarget(todoChart.getHour() + todoChart.getMinute());
-            subcolumnValue.setLabel(todoChart.getHour() + todoChart.getMinute()+"");
+            subcolumnValue.setLabel(todoChart.getHour() + todoChart.getMinute() + "");
             subColumnValueList.add(subcolumnValue);
 
             Column column = new Column(subColumnValueList);
@@ -524,14 +528,14 @@ public class ChartsActivity extends AppCompatActivity {
     //hide/show charts and show\hide textView "list is empty"
     //false for hide charts and true for show charts
     private void showHideCharts(boolean showIt) {
-        if (showIt){
+        if (showIt) {
             findViewById(R.id.txv_descriptionDoneChart_charts).setVisibility(View.VISIBLE);
             findViewById(R.id.chart_doneTask_charts).setVisibility(View.VISIBLE);
             findViewById(R.id.view_B_charts).setVisibility(View.VISIBLE);
             findViewById(R.id.txv_descriptionUndoneChart_charts).setVisibility(View.VISIBLE);
             findViewById(R.id.chart_undoneTask_charts).setVisibility(View.VISIBLE);
             findViewById(R.id.txv_listIsEmpty_charts).setVisibility(View.GONE);
-        }else {
+        } else {
             findViewById(R.id.txv_descriptionDoneChart_charts).setVisibility(View.GONE);
             findViewById(R.id.chart_doneTask_charts).setVisibility(View.GONE);
             findViewById(R.id.view_B_charts).setVisibility(View.GONE);
