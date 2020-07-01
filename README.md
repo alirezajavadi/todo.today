@@ -3,7 +3,7 @@ You can manage your daily tasks with this app, also you can find out the history
 </br>
 </br>
  <h1>Download</h1>
- You can download release app from <a href="https://www.w3schools.com">here</a>!
+ You can download release app from <a href="https://github.com/alirezajavadi/todo.today/tree/master/app/release">here</a>!
 </br>
 </br>
 <h1>screenshots</h1>
